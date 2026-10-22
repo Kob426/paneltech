@@ -12,7 +12,7 @@
 | Область | Файлы |
 | --- | --- |
 | Требования | `Codex_Marking_MVP.md`, `ARCHITECTURE.md`, `TASKS.md` |
-| Панель Vue | `web/src/App.vue`, `web/src/style.css`, `DESIGN.md` |
+| Панель Vue | `web/src/App.vue`, `web/src/components/`, `web/src/composables/`, `web/src/style.css`, `DESIGN.md` |
 | API / очередь / SQLite | `server/app.ts`, `server/core.ts`, `server/store.ts` |
 | Контракты | `shared/contracts.ts`, `agent/Contracts.cs` |
 | Windows-агент | `agent/Worker.cs`, `agent/Qos.cs`, `agent/qos.ps1`, `docs/AGENT.md` |

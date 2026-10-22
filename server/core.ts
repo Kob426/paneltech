@@ -48,6 +48,17 @@ export class Core {
  const previous=structuredClone(d.rules);
  d.rules=d.rules.filter(r=>!(r.owned&&r.gameId===j.gameId));
  if(j.operation==='apply_marking')for(const e of j.exes)d.rules.push({name:ruleName(j.gameId,e),gameId:j.gameId,exe:e,dscp:j.variant!,owned:true});
+ if(d.scenario==='rollback_failed'){
+ // Simulate a write failure after one own rule changed, followed by failed compensation.
+ // Foreign rules and other games remain byte-for-byte unchanged.
+ d.rules=d.rules.filter(r=>!(r.owned&&r.gameId===j.gameId));
+ if(j.operation==='apply_marking'){
+ const e=j.exes[0];d.rules.push({name:ruleName(j.gameId,e),gameId:j.gameId,exe:e,dscp:j.variant!,owned:true});
+ }else if(previous.some(r=>r.owned&&r.gameId===j.gameId)){
+ d.rules.push(structuredClone(previous.find(r=>r.owned&&r.gameId===j.gameId)!));
+ }
+ return done('failed','rollback_failed','DEMO: частичный сбой, откат не выполнен. Возможны остаточные изменения; нужна инспекция правил симулятора.','failed; предыдущий собственный набор не восстановлен; фактический остаточный набор сохранён в результате');
+ }
  if(d.scenario==='partial'){d.rules=previous;return done('failed','partial_failure','DEMO: частичный сбой. Предыдущие собственные правила восстановлены.','succeeded; остаточных изменений нет');}
  if(d.scenario==='lost'){this.store.put('device',d);j.state='unknown';j.code='connection_lost';j.message='DEMO: ответ потерян после изменения. Результат неизвестен до сверки.';this.store.put('job',j);return;}
  if(!this.expected(j,d.rules))return done('failed','verification','Фактический набор не совпал');

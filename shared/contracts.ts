@@ -10,6 +10,6 @@ export type State='queued'|'running'|'succeeded'|'failed'|'expired'|'unknown';
 export type Rule={name:string;gameId:string;exe:string;dscp:number;owned:boolean};
 export type Job={id:string;batchId:string;deviceId:string;deviceName:string;clubId:string;clubName:string;gameId:string;gameName:string;revision:number;exes:string[];operation:z.infer<typeof operation>;variant?:number;variantName?:string;allowedVariants:number[];author:string;created:number;expires:number;bootId:string;state:State;demo:boolean;attempts:number;started?:number;finished?:number;code?:string;message?:string;rules?:Rule[];rollback?:string;feedback?:z.infer<typeof feedbackInput>&{author:string;at:number};reconciled?:number};
 export type Device={id:string;name:string;clubId:string;demo:boolean;bootId:string;lastSeen:number;scenario:string;rules:Rule[];inspectedAt:number|null;tokenHash?:string;revoked?:boolean};
-export const scenarios=['success','offline','rights','partial','lost','conflict'] as const;
+export const scenarios=['success','offline','rights','partial','rollback_failed','lost','conflict'] as const;
 export const prefix='PanelTech-';
 export const ruleName=(gameId:string,exe:string)=>`${prefix}${gameId}-${exe.toLowerCase()}`;

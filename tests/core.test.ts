@@ -20,3 +20,29 @@ test('exe revision and variant labels in history are immutable snapshots',()=>{c
 test('SQLite survives closing and reopening with technical and human outcomes',()=>{const dir=mkdtempSync(join(tmpdir(),'paneltech-test-'));try{const path=join(dir,'db.sqlite');const s=new Store(path);const c=new Core(s);c.seed();const [j]=c.create(params(),'admin');c.tick();const saved=s.get<Job>('job',j.id)!;saved.feedback={outcome:'helped',reason:'voice',comment:'Тест',author:'operator',at:Date.now()};s.put('job',saved);s.close();const reopened=new Store(path);assert.equal(reopened.get<Job>('job',j.id)!.feedback!.outcome,'helped');assert.equal(reopened.get<Job>('job',j.id)!.state,'succeeded');reopened.close();}finally{rmSync(dir,{recursive:true,force:true});}});
 
 test('stale repeated delivery after completion cannot undo a newer marking',()=>{const {c,s}=setup();const [first]=c.create(params(),'a');const delivery=c.poll(c.device('aurora-1'))!;c.executeDemo(delivery);c.create(params(['aurora-1'],'fortnite',40),'a');c.tick();c.executeDemo({...delivery,state:'running'});assert.equal(c.device('aurora-1').rules.every(r=>r.dscp===40),true);assert.equal(s.get<Job>('job',first.id)!.state,'succeeded');s.close();});
+test('failed rollback leaves an explicit failed snapshot, preserves foreign/other-game rules and is not replayed',()=>{
+ const {c,s}=setup();
+ s.put('game',{id:'other',name:'Other',exes:['other.exe'],revision:1});
+ c.create(params(['aurora-1'],'other'),'a');c.tick();
+ c.create(params(),'a');c.tick();
+ const d=c.device('aurora-1');
+ d.rules.push({name:'Legacy-Unrelated',gameId:'foreign',exe:'unrelated.exe',dscp:10,owned:false});
+ const others=structuredClone(d.rules.filter(r=>r.gameId!=='fortnite'));
+ d.scenario='rollback_failed';s.put('device',d);
+ const [j]=c.create(params(['aurora-1'],'fortnite',40),'a');c.tick();
+ const result=s.get<Job>('job',j.id)!;
+ assert.equal(result.state,'failed');assert.equal(result.code,'rollback_failed');
+ assert.match(result.rollback!,/^failed;/);assert.match(result.message!,/остаточные изменения/);
+ assert.deepEqual(c.device(d.id).rules.filter(r=>r.gameId!=='fortnite'),others);
+ const residual=result.rules!.filter(r=>r.gameId==='fortnite');assert.equal(residual.length,1);assert.equal(residual[0].dscp,40);
+ assert.equal(c.expected(result,result.rules!),false);
+ c.executeDemo({...result,state:'running'});assert.deepEqual(c.device(d.id).rules,result.rules);
+ c.create(params(['aurora-1'],'fortnite',40,'inspect_rules'),'a');c.tick();
+ assert.equal(c.device(d.id).rules.filter(r=>r.gameId==='fortnite').length,1);
+ s.close();
+});
+test('failed rollback of removal records the remaining own rule instead of claiming success',()=>{
+ const {c,s}=setup();c.create(params(),'a');c.tick();const d=c.device('aurora-1');d.scenario='rollback_failed';s.put('device',d);
+ const [j]=c.create(params(['aurora-1'],'fortnite',36,'remove_marking'),'a');c.tick();const result=s.get<Job>('job',j.id)!;
+ assert.equal(result.state,'failed');assert.equal(result.code,'rollback_failed');assert.equal(result.rules!.length,1);assert.equal(c.expected(result,result.rules!),false);s.close();
+});
