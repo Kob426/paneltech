@@ -1,0 +1,15 @@
+import { z } from 'zod';
+export const exe = z.string().regex(/^[A-Za-z0-9][A-Za-z0-9_.-]{0,119}\.exe$/i,'Нужно имя .exe без пути и аргументов');
+export const gameInput = z.object({name:z.string().trim().min(1).max(100),exes:z.array(exe).max(30).refine(a=>new Set(a.map(x=>x.toLowerCase())).size===a.length,'Повторяющиеся exe')});
+export const variant = z.object({id:z.number().int().min(0).max(63),name:z.string().trim().min(1).max(100)});
+export const clubInput = z.object({name:z.string().trim().min(1).max(100),variants:z.array(variant).min(1).max(64).refine(a=>new Set(a.map(x=>x.id)).size===a.length)});
+export const operation = z.enum(['apply_marking','remove_marking','inspect_rules','health']);
+export const jobInput = z.object({deviceIds:z.array(z.string().min(1)).min(1).max(200).refine(a=>new Set(a).size===a.length),gameId:z.string().min(1),operation,variant:z.number().int().min(0).max(63).optional()});
+export const feedbackInput=z.object({outcome:z.enum(['helped','not_helped','unchecked']),reason:z.enum(['launch','server','ping','voice','other']),comment:z.string().max(1000).default('')});
+export type State='queued'|'running'|'succeeded'|'failed'|'expired'|'unknown';
+export type Rule={name:string;gameId:string;exe:string;dscp:number;owned:boolean};
+export type Job={id:string;batchId:string;deviceId:string;deviceName:string;clubId:string;clubName:string;gameId:string;gameName:string;revision:number;exes:string[];operation:z.infer<typeof operation>;variant?:number;variantName?:string;allowedVariants:number[];author:string;created:number;expires:number;bootId:string;state:State;demo:boolean;attempts:number;started?:number;finished?:number;code?:string;message?:string;rules?:Rule[];rollback?:string;feedback?:z.infer<typeof feedbackInput>&{author:string;at:number};reconciled?:number};
+export type Device={id:string;name:string;clubId:string;demo:boolean;bootId:string;lastSeen:number;scenario:string;rules:Rule[];inspectedAt:number|null;tokenHash?:string;revoked?:boolean};
+export const scenarios=['success','offline','rights','partial','lost','conflict'] as const;
+export const prefix='PanelTech-';
+export const ruleName=(gameId:string,exe:string)=>`${prefix}${gameId}-${exe.toLowerCase()}`;

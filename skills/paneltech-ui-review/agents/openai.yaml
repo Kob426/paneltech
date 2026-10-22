@@ -1,0 +1,4 @@
+interface:
+  display_name: "Интерфейс PanelTech"
+  short_description: "Дизайн и доступность рабочей панели поддержки"
+  default_prompt: "Используй $paneltech-ui-review для соответствующей задачи в PanelTech."

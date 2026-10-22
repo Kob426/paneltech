@@ -1,0 +1,4 @@
+interface:
+  display_name: "Windows-агент PanelTech"
+  short_description: "Контракты агента, QoS и границы безопасного пилота"
+  default_prompt: "Используй $paneltech-windows-agent для соответствующей задачи в PanelTech."

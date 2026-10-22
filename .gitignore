@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.data/
+.tools/
+agent/bin/
+agent/obj/
+*.log
+__pycache__/
+test-results/

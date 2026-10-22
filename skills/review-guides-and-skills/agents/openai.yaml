@@ -1,0 +1,4 @@
+interface:
+  display_name: "Разбор гайдов и навыков"
+  short_description: "Оценка PDF, библиотек навыков и настроек агента"
+  default_prompt: "Используй $review-guides-and-skills для соответствующей задачи в PanelTech."

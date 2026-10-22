@@ -1,0 +1,4 @@
+interface:
+  display_name: "Проверка PanelTech"
+  short_description: "Проверки API, Chromium и Linux dry-run агента"
+  default_prompt: "Используй $paneltech-verification для соответствующей задачи в PanelTech."

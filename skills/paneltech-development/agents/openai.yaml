@@ -1,0 +1,4 @@
+interface:
+  display_name: "Разработка PanelTech"
+  short_description: "Изменения PanelTech с сохранением рабочих сценариев"
+  default_prompt: "Используй $paneltech-development для соответствующей задачи в PanelTech."
