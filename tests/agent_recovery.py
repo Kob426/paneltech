@@ -16,7 +16,7 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = Path(__file__).resolve().parents[1]
-DOTNET = shutil.which('dotnet') or '/workspace/.tools/dotnet/dotnet'
+DOTNET = os.environ.get('PANELTECH_DOTNET') or shutil.which('dotnet') or '/workspace/.tools/dotnet/dotnet'
 DLL = ROOT / 'tests/agent-harness/bin/Release/net8.0/AgentHarness.dll'
 TOKEN = 'ab' * 32
 DEVICE = str(uuid.uuid4())

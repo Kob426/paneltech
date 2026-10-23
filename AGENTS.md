@@ -17,6 +17,7 @@
 | Контракты | `shared/contracts.ts`, `agent/Contracts.cs` |
 | Windows-агент | `agent/Worker.cs`, `agent/Qos.cs`, `agent/qos.ps1`, `docs/AGENT.md` |
 | Проверки | `tests/`, `agent/SelfTest.cs`, `package.json` |
+| CI | `.github/workflows/ci.yml`, `scripts/check-web.sh`, `scripts/check-agent.sh`, `docs/CI.md` |
 | Настройка среды | `scripts/setup-cloud.sh`, `.nvmrc`, `agent/global.json`, lockfiles |
 
 ## Навыки: загружай только подходящий
