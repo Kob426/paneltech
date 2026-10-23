@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using System.Text.Json;
 namespace PanelTech.Agent;
-public sealed class Qos(string stateDirectory,bool enabled) {
+public sealed class Qos(string stateDirectory,bool enabled):IAgentExecutor {
  public async Task<Result> Execute(Job job,CancellationToken ct){
   if(!enabled)return new(job.BootId,"failed","dry_run","DRY-RUN: параметры проверены, система не изменена.",[],null,true);
   if(!OperatingSystem.IsWindows())return new(job.BootId,"failed","platform","Для QoS необходим Windows.",[],null,false);

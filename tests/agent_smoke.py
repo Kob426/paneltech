@@ -89,7 +89,7 @@ def run():
             assert state["devices"][0]["inspectedAt"] is None
             request("/admin/devices/" + device["id"] + "/revoke", "POST", {})
             last = request("/state")[0]["devices"][0]["lastSeen"]
-            time.sleep(3)
+            assert agent.wait(timeout=8) == 1, "Revoked worker must stop with an error, preserving state"
             assert request("/state")[0]["devices"][0]["lastSeen"] == last
             print("PASS .NET Linux worker: enrollment → polling → dry-run rejected as QoS success → persistent identity/token/outbox → process restart → revocation; no Windows operations")
         except Exception:

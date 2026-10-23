@@ -81,6 +81,10 @@ dotnet bin/Release/net8.0/PanelTech.Agent.dll --self-test
 
 ```sh
 python3 tests/agent_smoke.py
+# Аварии настоящего .NET-процесса с отдельным файловым имитатором:
+dotnet restore tests/agent-harness/AgentHarness.csproj --locked-mode
+dotnet build tests/agent-harness/AgentHarness.csproj --no-restore -c Release -m:2
+python3 tests/agent_recovery.py
 ```
 
 Это отдельный **Linux dry-run** .NET-процесса на порту 3101: регистрация одноразовым токеном на временном стенде, polling, задание, ответ `dry_run`, сохранение идентификатора/токена, перезапуск процесса и отзыв. Ни Windows, ни клубные ПК не используются. При другом SDK задайте `PANELTECH_DOTNET=/path/to/dotnet`.
@@ -106,3 +110,5 @@ Windows-служба, права, TLS, постоянное хранение п�
 В `skills/` находятся пять проектных навыков: разработка, UI-review, проверка, Windows-агент и критический разбор внешних гайдов. У каждого есть `SKILL.md` и `agents/openai.yaml`. `.agents/skills` ссылается на ту же папку для обнаружения совместимым клиентом; после добавления может потребоваться перечитывание навыков/новая сессия. Пока каталог клиента не обновлён, AGENTS.md указывает нужный файл явно. Если клиент/checkout не сохраняет symlink, восстановите `.agents/skills → ../skills`, не копируйте библиотеку второй раз.
 
 Проверка структуры, локальных ссылок и команд: `node scripts/validate-agent-library.mjs`. Разбор доступных библиотек/настроек и решений по всем трём пользовательским PDF: [аудит](docs/AGENT-AND-SKILLS-AUDIT.md), [разбор PDF](docs/PDF-REVIEW.md). Внешние генераторы, плагины и hooks ради этой настройки не устанавливались; runtime-модель и настройки доступа не менялись.
+
+Аварийные проверки агента и ручное восстановление состояния: [AGENT-RECOVERY-TESTS.md](docs/AGENT-RECOVERY-TESTS.md). Это Linux-проверки Worker с имитацией действий; они не подтверждают Windows QoS.

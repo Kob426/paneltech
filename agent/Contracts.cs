@@ -21,11 +21,11 @@ public static class Contracts {
   if(j.DeviceId!=deviceId)throw new InvalidDataException("wrong_device");
   if(j.BootId!=bootId)throw new InvalidDataException("boot_changed");
   if(j.Expires<=now)throw new InvalidDataException("expired");
-  if(!Regex.IsMatch(j.GameId,"^[a-zA-Z0-9-]{1,80}$"))throw new InvalidDataException("invalid_game");
+  if(j.GameId is null||!Regex.IsMatch(j.GameId,"^[a-zA-Z0-9-]{1,80}$"))throw new InvalidDataException("invalid_game");
   if(!new[]{"health","inspect_rules","apply_marking","remove_marking"}.Contains(j.Operation))throw new InvalidDataException("invalid_operation");
-  if(j.Exes.Length>30||j.Exes.Any(e=>!Regex.IsMatch(e,@"^[A-Za-z0-9][A-Za-z0-9_.-]{0,119}\.exe$",RegexOptions.IgnoreCase))||j.Exes.Distinct(StringComparer.OrdinalIgnoreCase).Count()!=j.Exes.Length)throw new InvalidDataException("invalid_exe");
+  if(j.Exes is null||j.Exes.Length>30||j.Exes.Any(e=>e is null||!Regex.IsMatch(e,@"^[A-Za-z0-9][A-Za-z0-9_.-]{0,119}\.exe$",RegexOptions.IgnoreCase))||j.Exes.Distinct(StringComparer.OrdinalIgnoreCase).Count()!=j.Exes.Length)throw new InvalidDataException("invalid_exe");
   if(j.Operation is "apply_marking" or "remove_marking" && j.Exes.Length==0)throw new InvalidDataException("empty_exes");
-  if(j.Operation=="apply_marking"&&(j.Variant is null or <0 or >63||!allowed.Contains(j.Variant.Value)||!j.AllowedVariants.Contains(j.Variant.Value)))throw new InvalidDataException("variant_unavailable");
+  if(j.Operation=="apply_marking"&&(j.Variant is null or <0 or >63||allowed is null||j.AllowedVariants is null||!allowed.Contains(j.Variant.Value)||!j.AllowedVariants.Contains(j.Variant.Value)))throw new InvalidDataException("variant_unavailable");
  }
 }
 public sealed class AgentConfig {
@@ -34,9 +34,20 @@ public sealed class AgentConfig {
  public string Name {get;set;}=Environment.MachineName;
  public void Validate(){var u=new Uri(ServerUrl);if(u.Scheme!="https"&&!(u.Scheme=="http"&&u.IsLoopback))throw new InvalidDataException("HTTPS required outside loopback");if(u.UserInfo!=""||u.Query!=""||u.Fragment!=""||u.AbsolutePath!="/")throw new InvalidDataException("Server URL must be an origin");}
 }
-public sealed class Identity {public string DeviceId {get;set;}=Guid.NewGuid().ToString();public string DeviceToken {get;set;}="";}
+public sealed class Identity {[System.Text.Json.Serialization.JsonRequired]public string DeviceId {get;set;}=Guid.NewGuid().ToString();[System.Text.Json.Serialization.JsonRequired]public string DeviceToken {get;set;}="";}
 public sealed class Receipt {public required Job Job {get;set;} public Result? Result {get;set;} public bool Delivered {get;set;}}
 public static class Disk {
- public static T? Read<T>(string p)=>File.Exists(p)?JsonSerializer.Deserialize<T>(File.ReadAllText(p),Contracts.Json):default;
- public static void Write<T>(string p,T value){Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(p))!);var tmp=p+".tmp";File.WriteAllText(tmp,JsonSerializer.Serialize(value,Contracts.Json));if(!OperatingSystem.IsWindows())File.SetUnixFileMode(tmp,UnixFileMode.UserRead|UnixFileMode.UserWrite);File.Move(tmp,p,true);}
+ public static T? Read<T>(string p){
+  if(!File.Exists(p)){if(File.Exists(p+".tmp"))throw new InvalidDataException("incomplete_state");return default;}
+  try{return JsonSerializer.Deserialize<T>(File.ReadAllText(p),Contracts.Json)??throw new InvalidDataException("null_state");}
+  catch(JsonException){throw new InvalidDataException("invalid_state_json");}
+ }
+ public static void Write<T>(string p,T value){
+  Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(p))!);var tmp=p+".tmp";
+  using(var stream=new FileStream(tmp,FileMode.Create,FileAccess.Write,FileShare.None)){
+   if(!OperatingSystem.IsWindows())File.SetUnixFileMode(tmp,UnixFileMode.UserRead|UnixFileMode.UserWrite);
+   JsonSerializer.Serialize(stream,value,Contracts.Json);stream.Flush(true);
+  }
+  File.Move(tmp,p,true);
+ }
 }

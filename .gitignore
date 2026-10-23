@@ -7,3 +7,5 @@ agent/obj/
 *.log
 __pycache__/
 test-results/
+tests/agent-harness/bin/
+tests/agent-harness/obj/
