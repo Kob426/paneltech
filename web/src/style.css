@@ -23,3 +23,11 @@ header > div,.catalog-item { min-width:0; }
 h1,.clubs button,.catalog-item b { overflow-wrap:anywhere; }
 .action-fields { grid-template-columns:minmax(0,1.5fr) minmax(0,1fr) auto; }
 @media(max-width:1150px) { .action-fields { grid-template-columns:minmax(0,1fr) minmax(0,1fr); } }
+
+.form-error{margin:12px 0;overflow-wrap:anywhere}
+.form-error:focus{outline:3px solid #315de7;outline-offset:2px}
+.empty-state{padding:16px;margin:12px 0;background:#f4f6fa;border:1px solid #b7c1d0;border-radius:7px;color:#33435e}
+.empty-state p{margin:8px 0}
+.user-row{flex-wrap:wrap}
+.user-row>*{min-width:0;max-width:100%}
+.user-row>b{overflow-wrap:anywhere}

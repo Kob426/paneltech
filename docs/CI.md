@@ -4,7 +4,7 @@ Workflow [ci.yml](../.github/workflows/ci.yml) запускается на push,
 
 | Задача GitHub Actions | Что выполняет |
 | --- | --- |
-| Web, API and Chromium (Linux DEMO) | Node из `.nvmrc`, Python 3.12, `npm ci`, фиксированный Playwright и его Chromium; typecheck, 44 API/core-теста, build, настоящий браузерный сценарий desktop/mobile |
+| Web, API and Chromium (Linux DEMO) | Node из `.nvmrc`, Python 3.12, `npm ci`, фиксированный Playwright и его Chromium; typecheck, 48 Node-тестов API/core/валидации форм, build, настоящий браузерный сценарий desktop/mobile |
 | Agent recovery (Linux simulation, no Windows QoS) | Node и Python, SDK из `agent/global.json`, locked NuGet restore обоих проектов, Release build, 17 self-test, 19 аварийных process-тестов с файловым имитатором и dry-run Worker с настоящим loopback API |
 
 Сценарии используют временные БД и loopback-порты. Агентская задача не требует `dist`: проверяет только API. Настоящая Windows-инспекция, PowerShell, SCM, UWF и MikroTik не подтверждаются зелёным Linux CI. Детали аварийных тестов — [AGENT-RECOVERY-TESTS.md](AGENT-RECOVERY-TESTS.md).
@@ -36,7 +36,7 @@ bash scripts/check-agent.sh
 - Actions закреплены полными commit SHA; версии указаны в комментариях. Обновление SHA — отдельное проверяемое изменение. npm и NuGet используют lockfiles; Playwright закреплён в requirements.
 - `GITHUB_TOKEN` имеет только `contents: read`; checkout не сохраняет credentials. Секреты репозитория не используются, `pull_request_target` и привилегированные runner не используются.
 - Две задачи независимы, каждая ограничена 15 минутами. Новый запуск той же ветки/PR отменяет предыдущий незавершённый запуск.
-- Скриншоты вымышленного DEMO сохраняются как artifact `demo-chromium-screenshots` на 7 дней, если успели создаться. БД, agent state, токены и сырые логи в artifacts не входят. Остальная диагностика — stdout шагов Actions.
+- Скриншоты вымышленного DEMO (основной экран, формы, пустой каталог на desktop/mobile) сохраняются как artifact `demo-chromium-screenshots` на 7 дней, если успели создаться. БД, agent state, токены и сырые логи в artifacts не входят. Остальная диагностика — stdout шагов Actions.
 - Статус смотреть в [Actions репозитория](https://github.com/Kob426/paneltech/actions/workflows/ci.yml). Ошибки npm/NuGet/скачивания браузера проверять в соответствующем install-шаге; ошибки поведения — в Verify. Не обходить failing test через `continue-on-error`.
 
 При добавлении workflow здесь прошли `actionlint 1.7.7`, `bash -n` и оба check-скрипта целиком. Проверка actionlint выполнена временным официальным binary с SHA-256 сверкой, он не добавлен в репозиторий. Использованы предустановленные зависимости облачной среды; установка на чистом GitHub runner, кэши и загрузка artifact локальным прогоном не доказаны.

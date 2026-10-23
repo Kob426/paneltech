@@ -59,6 +59,10 @@ jobs:
           path: |
             test-results/dashboard.png
             test-results/mobile.png
+            test-results/admin-1512.png
+            test-results/admin-390.png
+            test-results/empty-catalog-1512.png
+            test-results/empty-catalog-390.png
           if-no-files-found: ignore
           retention-days: 7
 

@@ -36,7 +36,7 @@ python3 tests/agent_smoke.py
 
 `npm run demo` запускает панель/API/симулятор на loopback port 3000. Проверить `/api/health`: ok, DEMO, realAgents=false; затем аутентифицированные state, создание задания, индивидуальный результат и историю. Порт/PID не доказывает работоспособность.
 
-Browser smoke использует временную SQLite и порт 3099; .NET smoke — другую временную БД, порт 3101 и отдельный Linux dry-run Worker. Проверить наличие Python Playwright/Chromium; настройки — README и tests/requirements-browser.txt. Не регистрировать настоящий ПК ради smoke-теста. Не стирать `.data` пользователя; временные данные держать отдельно.
+Browser smoke использует временную SQLite и порт 3099, admin/empty-catalog сценарий — отдельную SQLite и порт 3102; .NET smoke — другую временную БД, порт 3101 и отдельный Linux dry-run Worker. Проверить наличие Python Playwright/Chromium; настройки — README и tests/requirements-browser.txt. Не регистрировать настоящий ПК ради smoke-теста. Не стирать `.data` пользователя; временные данные держать отдельно.
 
 ## Оценка результата
 
