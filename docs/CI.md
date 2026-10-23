@@ -4,7 +4,7 @@ Workflow [ci.yml](../.github/workflows/ci.yml) запускается на push,
 
 | Задача GitHub Actions | Что выполняет |
 | --- | --- |
-| Web, API and Chromium (Linux DEMO) | Node из `.nvmrc`, Python 3.12, `npm ci`, фиксированный Playwright и его Chromium; typecheck, 48 Node-тестов API/core/валидации форм, build, настоящий браузерный сценарий desktop/mobile |
+| Web, API and Chromium (Linux DEMO) | Node из `.nvmrc`, Python 3.12, `npm ci`, фиксированный Playwright и его Chromium; typecheck, 61 Node-тест API/core/валидации форм/catalog reconciliation, build, настоящий браузерный сценарий desktop/mobile |
 | Agent recovery (Linux simulation, no Windows QoS) | Node и Python, SDK из `agent/global.json`, locked NuGet restore обоих проектов, Release build, 17 self-test, 19 аварийных process-тестов с файловым имитатором и dry-run Worker с настоящим loopback API |
 
 Сценарии используют временные БД и loopback-порты. Агентская задача не требует `dist`: проверяет только API. Настоящая Windows-инспекция, PowerShell, SCM, UWF и MikroTik не подтверждаются зелёным Linux CI. Детали аварийных тестов — [AGENT-RECOVERY-TESTS.md](AGENT-RECOVERY-TESTS.md).

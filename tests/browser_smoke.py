@@ -235,6 +235,31 @@ def run():
                 page.locator(".clubs button").filter(has_text="Аврора · DEMO").click()
                 page.get_by_role("button", name="Компьютеры", exact=True).click()
                 page.get_by_role("checkbox", name="Выбрать ПК-01", exact=True).check()
+                # Unknown uses the delivered snapshot, even if both game and club change.
+                created = admin.post(URL + "/api/jobs", headers=csrf_headers, data={"deviceIds":["aurora-5"],"gameId":"fortnite","operation":"apply_marking","variant":36})
+                assert created.status == 201
+                uncertain = created.json()[0]
+                card = page.locator('article.job[data-job-id="' + uncertain['id'] + '"]')
+                expect(card.locator(".badge")).to_have_text("Неизвестно", timeout=10000)
+                before = next(d for d in admin.get(URL + "/api/state").json()["devices"] if d["id"] == "aurora-5")["rules"]
+                assert admin.put(URL + "/api/admin/games/fortnite", headers=csrf_headers, data={"name":"Fortnite — новая ревизия","exes":["NewRevision.exe"]}).status == 200
+                assert admin.put(URL + "/api/admin/clubs/aurora", headers=csrf_headers, data={"name":long_club,"variants":[{"id":40,"name":"Остался вариант 40"}]}).status == 200
+                expect(page.locator(".action-fields select").first).to_contain_text("новая ревизия", timeout=10000)
+                expect(page.locator(".action-fields select").nth(1).locator("option")).to_have_count(1)
+                expect(page.get_by_role("button", name="Применить к 1 ПК")).to_be_disabled()
+                expect(page.locator("td.recommendation").first).to_contain_text("ревизия изменилась")
+                expect(page.locator("td.recommendation").first).to_contain_text("сейчас недоступен")
+                blocked = admin.post(URL + "/api/jobs", headers=csrf_headers, data={"deviceIds":["aurora-5"],"gameId":"fortnite","operation":"apply_marking","variant":40}).json()[0]
+                assert blocked["code"] == "busy"
+                card.get_by_role("button", name="Сверить фактические правила симулятора").click()
+                expect(card.locator(".badge")).to_have_text("Выполнено")
+                expect(card).to_contain_text(f"по снимку задания r{uncertain['revision']}")
+                checked = next(j for j in admin.get(URL + "/api/history").json() if j["id"] == uncertain["id"])
+                assert checked["exes"] == uncertain["exes"] and checked["variant"] == 36 and checked["attempts"] == 1
+                assert next(d for d in admin.get(URL + "/api/state").json()["devices"] if d["id"] == "aurora-5")["rules"] == before
+                # Choosing an available variant is explicit; no automatic restore/new mutation.
+                page.locator(".action-fields select").nth(1).select_option("40")
+                expect(page.get_by_role("button", name="Применить к 1 ПК")).to_be_enabled()
                 admin_context.close()
                 # No runtime JS errors; source assets are local.
                 assert not errors, errors
@@ -250,7 +275,7 @@ def run():
                 page.emulate_media(reduced_motion="reduce")
                 assert page.get_by_role("button", name="Применить к 1 ПК").evaluate("el => getComputedStyle(el).transitionDuration") == "0s"
                 browser.close()
-                print("PASS Chromium: modal keyboard/focus/Enter safety; bulk outcomes; stale-history response; feedback across accounts; API loss/reconnect/no mutation replay; residual rollback failure; reboot; desktop/mobile; no JS errors")
+                print("PASS Chromium: modal keyboard/focus/Enter safety; bulk outcomes; stale-history response; feedback across accounts; API loss/reconnect/no mutation replay; residual rollback failure; catalog/variant changes during unknown; reboot; desktop/mobile; no JS errors")
         finally:
             stop()
             log.close()
