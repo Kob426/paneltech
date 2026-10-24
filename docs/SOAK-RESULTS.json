@@ -1,0 +1,902 @@
+{
+  "kind": "paneltech-synthetic-soak-and-backup-report",
+  "date": "2026-10-24",
+  "scope": "one Node API and SQLite on Linux loopback; no Windows, real PCs, external network or TLS",
+  "initialAttempt": {
+    "passed": false,
+    "durationPlannedSeconds": 600,
+    "completedJobFixture": 100000,
+    "heartbeatOfferedRps": 300,
+    "failure": "Incremental backup restarted on external commits and reached the existing 30-second copy timeout; the harness exited nonzero.",
+    "lastObservedSample": {
+      "elapsedSeconds": 150.285765764,
+      "markerSequence": 151,
+      "rssMiB": 308.8125,
+      "maxRssMiB": 309.71875,
+      "heapUsedMiB": 96.82267761230469,
+      "eventLoopP95Ms": 18.710527,
+      "eventLoopMaxMs": 51.445759,
+      "mainBytes": 96882688,
+      "walBytes": 18840792,
+      "halted": false,
+      "timerError": false,
+      "completed": {
+        "heartbeat": 45001,
+        "read": 900,
+        "jobs": 30
+      },
+      "dropped": {
+        "heartbeat": 0,
+        "read": 0,
+        "jobs": 0
+      },
+      "errors": 0
+    },
+    "backupImplementationSHA256": "40971494e6ba189615b7bdbb04167a6c48132221726ad6424b16b44aae0ac386",
+    "finalRestoreChecksRun": false
+  },
+  "shortHarnessValidation": {
+    "note": "30-second/10k validation before the backup fix; not the main soak result",
+    "result": {
+      "kind": "synthetic-linux-open-arrival-soak",
+      "durationSeconds": 30,
+      "heartbeatOfferedRps": 100,
+      "panelOfferedRps": 6,
+      "jobBatchEverySeconds": 5,
+      "jobsPerBatch": 4,
+      "maxInFlightLimit": 64,
+      "maxObservedInFlight": 4,
+      "offered": {
+        "heartbeat": 3000,
+        "read": 180,
+        "jobs": 6
+      },
+      "dropped": {
+        "heartbeat": 0,
+        "read": 0,
+        "jobs": 0
+      },
+      "errors": 0,
+      "errorDetails": [],
+      "requests": {
+        "heartbeat": {
+          "completed": 3000,
+          "latencyP50Ms": 1.932576997205615,
+          "latencyP95Ms": 7.210590993054211,
+          "latencyMaxMs": 29.341702000238
+        },
+        "read": {
+          "completed": 180,
+          "latencyP50Ms": 12.76735297869891,
+          "latencyP95Ms": 22.063433018047363,
+          "latencyMaxMs": 31.25260298838839
+        },
+        "jobs": {
+          "completed": 6,
+          "latencyP50Ms": 5.726748990127817,
+          "latencyP95Ms": 24.266185995656997,
+          "latencyMaxMs": 34.51110000605695
+        }
+      },
+      "schedulerLagP95Ms": 2.1669929861136694,
+      "schedulerLagMaxMs": 21.96284099249169,
+      "maxResponseBytes": 154379,
+      "server": {
+        "node": "v24.19.0",
+        "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+        "clubs": 52,
+        "devices": 3380,
+        "completedJobs": 10000,
+        "demoDevices": 60,
+        "protocolHeartbeatDevices": 3316,
+        "sqlite": "3.53.3"
+      },
+      "samples": [
+        {
+          "elapsedSeconds": 0.315404817,
+          "markerSequence": 1,
+          "rssMiB": 132.01171875,
+          "maxRssMiB": 132.01171875,
+          "heapUsedMiB": 19.050888061523438,
+          "eventLoopP95Ms": 62.849023,
+          "eventLoopMaxMs": 62.849023,
+          "mainBytes": 11157504,
+          "walBytes": 453232,
+          "halted": false,
+          "timerError": false,
+          "completed": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 7.793917737,
+          "markerSequence": 8,
+          "rssMiB": 184.2578125,
+          "maxRssMiB": 184.2578125,
+          "heapUsedMiB": 52.868560791015625,
+          "eventLoopP95Ms": 12.525567,
+          "eventLoopMaxMs": 62.849023,
+          "mainBytes": 11177984,
+          "walBytes": 4124152,
+          "halted": false,
+          "timerError": false,
+          "completed": {
+            "heartbeat": 750,
+            "read": 45,
+            "jobs": 2
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 15.293722181,
+          "markerSequence": 16,
+          "rssMiB": 267.4140625,
+          "maxRssMiB": 267.515625,
+          "heapUsedMiB": 86.90808868408203,
+          "eventLoopP95Ms": 12.337151,
+          "eventLoopMaxMs": 62.849023,
+          "mainBytes": 11182080,
+          "walBytes": 4128272,
+          "halted": false,
+          "timerError": false,
+          "completed": {
+            "heartbeat": 1500,
+            "read": 91,
+            "jobs": 3
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 22.806091835000004,
+          "markerSequence": 23,
+          "rssMiB": 281.70703125,
+          "maxRssMiB": 283.83984375,
+          "heapUsedMiB": 70.66297149658203,
+          "eventLoopP95Ms": 12.460031,
+          "eventLoopMaxMs": 62.849023,
+          "mainBytes": 11194368,
+          "walBytes": 4128272,
+          "halted": false,
+          "timerError": false,
+          "completed": {
+            "heartbeat": 2250,
+            "read": 135,
+            "jobs": 5
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        }
+      ],
+      "final": {
+        "elapsedSeconds": 31.45180496,
+        "markerSequence": 33,
+        "rssMiB": 294.10546875,
+        "maxRssMiB": 294.81640625,
+        "heapUsedMiB": 63.47869873046875,
+        "eventLoopP95Ms": 12.337151,
+        "eventLoopMaxMs": 62.849023,
+        "mainBytes": 11198464,
+        "walBytes": 4128272,
+        "halted": false,
+        "timerError": false,
+        "originalHistoryPreserved": true,
+        "addedJobs": 24,
+        "allNewDemoJobsSucceededOnce": true,
+        "historySHA256": "d96b69b064cecb17b26a02cf78d1bcc1da4bea957c390b644d7160297d2052c3",
+        "jobs": 10078
+      },
+      "backups": [
+        {
+          "startedSeconds": 6.287709653,
+          "finishedSeconds": 7.981749731,
+          "markerBefore": 7,
+          "markerAfter": 8,
+          "writesContinued": true,
+          "bytes": 11177984,
+          "schema": 5
+        },
+        {
+          "startedSeconds": 19.789492784,
+          "finishedSeconds": 21.756277081,
+          "markerBefore": 20,
+          "markerAfter": 22,
+          "writesContinued": true,
+          "bytes": 11194368,
+          "schema": 5
+        }
+      ],
+      "restored": [
+        {
+          "backup": "backup-2026-10-24T08-22-41-363Z-ccd9a97e-8398-4a91-a840-b7933bc2cfcc",
+          "bytes": 11177984,
+          "records": 15516,
+          "jobs": 10062,
+          "markerSequence": 8,
+          "terminalHash": "1947334d15ec5f48addf7058b26e3760ded9a4ca960dee13c60985ad8665ddda",
+          "auditHash": "93a33a989aa42a4b1d7a189e23b2a125d24b49ee7ff1689cab8364c18b42b5cf",
+          "terminalHistoryPreserved": true,
+          "auditPreserved": true,
+          "sessionsRevoked": true,
+          "deviceTrustRevoked": true,
+          "demoRulesCleared": true,
+          "queuedExpired": 1,
+          "runningOrUnknown": 53,
+          "noReplayAfterTicks": 3
+        },
+        {
+          "backup": "backup-2026-10-24T08-22-55-042Z-5cdcdc50-fba2-4113-a99e-5557bc2236f5",
+          "bytes": 11194368,
+          "records": 15531,
+          "jobs": 10074,
+          "markerSequence": 21,
+          "terminalHash": "390aab26ebc23b5a1d66de88f3103a4673f1dbe3c26628774234ad83d3b93117",
+          "auditHash": "11bec86736113b23405f0732f6160054899846355a513433343be301f1a5bbce",
+          "terminalHistoryPreserved": true,
+          "auditPreserved": true,
+          "sessionsRevoked": true,
+          "deviceTrustRevoked": true,
+          "demoRulesCleared": true,
+          "queuedExpired": 5,
+          "runningOrUnknown": 53,
+          "noReplayAfterTicks": 3
+        }
+      ],
+      "windowsQoSVerified": false,
+      "productionCapacityVerified": false,
+      "sourcesSHA256": {
+        "scripts/measure-soak.py": "c0f202ed6820d77e77669c7e28c5b870a719149d120e29649a43155f8fe87f47",
+        "scripts/soak-worker.ts": "0a464b7890c8ccc8f029e2fee88c896124808c474d894bce371f7835b46c1775",
+        "server/core.ts": "ee3df365da12e00fd022a45ec8e008c5c6cec5b77572a4bb8adfee5903c68bf9",
+        "server/app.ts": "75a0e4f52e8f86de100c3120a64a7d91efe1c014a6096c6230b5323c71f139a3",
+        "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+        "server/database-backup.ts": "40971494e6ba189615b7bdbb04167a6c48132221726ad6424b16b44aae0ac386"
+      },
+      "passed": true
+    }
+  },
+  "correctedRun": {
+    "kind": "synthetic-linux-open-arrival-soak",
+    "durationSeconds": 600,
+    "heartbeatOfferedRps": 300,
+    "panelOfferedRps": 6,
+    "jobBatchEverySeconds": 5,
+    "jobsPerBatch": 4,
+    "maxInFlightLimit": 64,
+    "maxObservedInFlight": 20,
+    "offered": {
+      "heartbeat": 180000,
+      "read": 3600,
+      "jobs": 120
+    },
+    "dropped": {
+      "heartbeat": 0,
+      "read": 0,
+      "jobs": 0
+    },
+    "errors": 0,
+    "errorDetails": [],
+    "requests": {
+      "heartbeat": {
+        "completed": 180000,
+        "latencyP50Ms": 1.082105009118095,
+        "latencyP95Ms": 15.394281974295154,
+        "latencyMaxMs": 61.510240979259834
+      },
+      "read": {
+        "completed": 3600,
+        "latencyP50Ms": 22.505330009153113,
+        "latencyP95Ms": 30.55639998638071,
+        "latencyMaxMs": 61.00887601496652
+      },
+      "jobs": {
+        "completed": 120,
+        "latencyP50Ms": 16.338725021341816,
+        "latencyP95Ms": 32.81346001313068,
+        "latencyMaxMs": 44.002151989843696
+      }
+    },
+    "schedulerLagP95Ms": 2.0955800785031897,
+    "schedulerLagMaxMs": 42.38490103378467,
+    "maxResponseBytes": 187652,
+    "server": {
+      "node": "v24.19.0",
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "clubs": 52,
+      "devices": 3380,
+      "completedJobs": 100000,
+      "demoDevices": 60,
+      "protocolHeartbeatDevices": 3316,
+      "sqlite": "3.53.3"
+    },
+    "samples": [
+      {
+        "elapsedSeconds": 0.2848556370000001,
+        "markerSequence": 1,
+        "rssMiB": 146.06640625,
+        "maxRssMiB": 146.06640625,
+        "heapUsedMiB": 17.97386932373047,
+        "eventLoopP95Ms": 41.123839,
+        "eventLoopMaxMs": 41.123839,
+        "mainBytes": 96731136,
+        "walBytes": 473832,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 30.276539934999995,
+        "markerSequence": 31,
+        "rssMiB": 290.05078125,
+        "maxRssMiB": 291.00390625,
+        "heapUsedMiB": 70.6167221069336,
+        "eventLoopP95Ms": 18.300927,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96780288,
+        "walBytes": 4128272,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 9001,
+          "read": 180,
+          "jobs": 6
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 60.275222541000005,
+        "markerSequence": 61,
+        "rssMiB": 299.86328125,
+        "maxRssMiB": 300.59375,
+        "heapUsedMiB": 61.92505645751953,
+        "eventLoopP95Ms": 18.317311,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96813056,
+        "walBytes": 4152992,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 18001,
+          "read": 360,
+          "jobs": 12
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 90.27835727,
+        "markerSequence": 91,
+        "rssMiB": 303.78125,
+        "maxRssMiB": 304.4375,
+        "heapUsedMiB": 91.28571319580078,
+        "eventLoopP95Ms": 18.972671,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96841728,
+        "walBytes": 4152992,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 27001,
+          "read": 540,
+          "jobs": 18
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 120.283244462,
+        "markerSequence": 121,
+        "rssMiB": 309.87890625,
+        "maxRssMiB": 310.58203125,
+        "heapUsedMiB": 46.77177429199219,
+        "eventLoopP95Ms": 19.169279,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96874496,
+        "walBytes": 4152992,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 36001,
+          "read": 720,
+          "jobs": 24
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 150.27604299599997,
+        "markerSequence": 151,
+        "rssMiB": 312.20703125,
+        "maxRssMiB": 313.12109375,
+        "heapUsedMiB": 100.15373992919922,
+        "eventLoopP95Ms": 19.185663,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96907264,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 45000,
+          "read": 900,
+          "jobs": 31
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 180.27944141999998,
+        "markerSequence": 181,
+        "rssMiB": 312.11328125,
+        "maxRssMiB": 313.20703125,
+        "heapUsedMiB": 49.82086181640625,
+        "eventLoopP95Ms": 19.169279,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96935936,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 54000,
+          "read": 1080,
+          "jobs": 36
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 210.279590986,
+        "markerSequence": 211,
+        "rssMiB": 312.24609375,
+        "maxRssMiB": 313.24609375,
+        "heapUsedMiB": 101.23728942871094,
+        "eventLoopP95Ms": 19.038207,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96968704,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 63001,
+          "read": 1260,
+          "jobs": 42
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 240.29200131999997,
+        "markerSequence": 241,
+        "rssMiB": 313.88671875,
+        "maxRssMiB": 314.95703125,
+        "heapUsedMiB": 80.10037994384766,
+        "eventLoopP95Ms": 19.005439,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 96997376,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 72000,
+          "read": 1440,
+          "jobs": 48
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 270.282297881,
+        "markerSequence": 271,
+        "rssMiB": 314.12109375,
+        "maxRssMiB": 315.2109375,
+        "heapUsedMiB": 51.12940216064453,
+        "eventLoopP95Ms": 19.054591,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97021952,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 81000,
+          "read": 1620,
+          "jobs": 54
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 300.28102346,
+        "markerSequence": 301,
+        "rssMiB": 314.18359375,
+        "maxRssMiB": 315.3046875,
+        "heapUsedMiB": 20.987403869628906,
+        "eventLoopP95Ms": 18.989055,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97050624,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 90001,
+          "read": 1800,
+          "jobs": 60
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 330.280355457,
+        "markerSequence": 331,
+        "rssMiB": 314.109375,
+        "maxRssMiB": 315.3046875,
+        "heapUsedMiB": 62.78643798828125,
+        "eventLoopP95Ms": 18.841599,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97091584,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 99000,
+          "read": 1980,
+          "jobs": 66
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 360.278596855,
+        "markerSequence": 361,
+        "rssMiB": 314.7421875,
+        "maxRssMiB": 315.78125,
+        "heapUsedMiB": 33.01531219482422,
+        "eventLoopP95Ms": 18.874367,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97128448,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 108001,
+          "read": 2160,
+          "jobs": 72
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 390.28717323099994,
+        "markerSequence": 391,
+        "rssMiB": 314.53125,
+        "maxRssMiB": 315.87890625,
+        "heapUsedMiB": 17.10162353515625,
+        "eventLoopP95Ms": 18.890751,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97157120,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 117001,
+          "read": 2340,
+          "jobs": 78
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 420.28133913199997,
+        "markerSequence": 421,
+        "rssMiB": 314.88671875,
+        "maxRssMiB": 316.11328125,
+        "heapUsedMiB": 54.335304260253906,
+        "eventLoopP95Ms": 18.825215,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97193984,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 126001,
+          "read": 2520,
+          "jobs": 84
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 450.299707574,
+        "markerSequence": 451,
+        "rssMiB": 314.9140625,
+        "maxRssMiB": 316.11328125,
+        "heapUsedMiB": 23.41382598876953,
+        "eventLoopP95Ms": 18.743295,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97222656,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 135001,
+          "read": 2700,
+          "jobs": 90
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 480.279172147,
+        "markerSequence": 481,
+        "rssMiB": 314.92578125,
+        "maxRssMiB": 316.11328125,
+        "heapUsedMiB": 23.85467529296875,
+        "eventLoopP95Ms": 18.792447,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97259520,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 144001,
+          "read": 2880,
+          "jobs": 96
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 510.289365036,
+        "markerSequence": 511,
+        "rssMiB": 315.015625,
+        "maxRssMiB": 316.11328125,
+        "heapUsedMiB": 92.8437271118164,
+        "eventLoopP95Ms": 18.792447,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97292288,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 153000,
+          "read": 3060,
+          "jobs": 102
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 540.2843528559999,
+        "markerSequence": 541,
+        "rssMiB": 315.0234375,
+        "maxRssMiB": 316.11328125,
+        "heapUsedMiB": 73.62639617919922,
+        "eventLoopP95Ms": 18.792447,
+        "eventLoopMaxMs": 59.932671,
+        "mainBytes": 97316864,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 162001,
+          "read": 3240,
+          "jobs": 109
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 570.2817379339999,
+        "markerSequence": 571,
+        "rssMiB": 314.83984375,
+        "maxRssMiB": 316.11328125,
+        "heapUsedMiB": 67.04965209960938,
+        "eventLoopP95Ms": 18.874367,
+        "eventLoopMaxMs": 61.603839,
+        "mainBytes": 97349632,
+        "walBytes": 19186872,
+        "halted": false,
+        "timerError": false,
+        "completed": {
+          "heartbeat": 171001,
+          "read": 3420,
+          "jobs": 114
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      }
+    ],
+    "final": {
+      "elapsedSeconds": 601.815329037,
+      "markerSequence": 603,
+      "rssMiB": 314.75,
+      "maxRssMiB": 316.1484375,
+      "heapUsedMiB": 86.25181579589844,
+      "eventLoopP95Ms": 18.874367,
+      "eventLoopMaxMs": 61.603839,
+      "mainBytes": 97374208,
+      "walBytes": 19186872,
+      "halted": false,
+      "timerError": false,
+      "originalHistoryPreserved": true,
+      "addedJobs": 480,
+      "allNewDemoJobsSucceededOnce": true,
+      "historySHA256": "2a3a0f7e7a1534e1bedee5e1ecdaee120a86d7fefc58e7828ff992008c338d81",
+      "jobs": 100534
+    },
+    "backups": [
+      {
+        "startedSeconds": 120.254173714,
+        "finishedSeconds": 132.108158979,
+        "markerBefore": 121,
+        "markerAfter": 133,
+        "writesContinued": true,
+        "bytes": 96878592,
+        "schema": 5
+      },
+      {
+        "startedSeconds": 390.251929492,
+        "finishedSeconds": 401.81002846900003,
+        "markerBefore": 391,
+        "markerAfter": 402,
+        "writesContinued": true,
+        "bytes": 97161216,
+        "schema": 5
+      }
+    ],
+    "restored": [
+      {
+        "backup": "backup-2026-10-24T08-32-59-583Z-9f76d67d-77f2-4ad2-91de-6b6c1fff6ea4",
+        "bytes": 96878592,
+        "records": 123631,
+        "jobs": 100154,
+        "markerSequence": 121,
+        "terminalHash": "e12800e9f18356e71dcf5d94d18629bab51af0c7df6a09197c340e13552cb94d",
+        "auditHash": "0ed31b65d1f17c55bcb5745335df89c3f2c0f01711cc3203952adc483b9a61a1",
+        "terminalHistoryPreserved": true,
+        "auditPreserved": true,
+        "sessionsRevoked": true,
+        "deviceTrustRevoked": true,
+        "demoRulesCleared": true,
+        "queuedExpired": 5,
+        "runningOrUnknown": 53,
+        "noReplayAfterTicks": 3
+      },
+      {
+        "backup": "backup-2026-10-24T08-37-29-306Z-5c72f2b0-3914-43f9-aefe-0641dcbe4710",
+        "bytes": 97161216,
+        "records": 123901,
+        "jobs": 100370,
+        "markerSequence": 391,
+        "terminalHash": "04782083bca262554e15e9885b3c4c79a20a7f81341a32ab0fba3a66470d801a",
+        "auditHash": "80324b4e2ef8cdc33d1baec73368d16f6785f143ff7c85b25176956325b42c85",
+        "terminalHistoryPreserved": true,
+        "auditPreserved": true,
+        "sessionsRevoked": true,
+        "deviceTrustRevoked": true,
+        "demoRulesCleared": true,
+        "queuedExpired": 5,
+        "runningOrUnknown": 53,
+        "noReplayAfterTicks": 3
+      }
+    ],
+    "windowsQoSVerified": false,
+    "productionCapacityVerified": false,
+    "liveSourceUnchangedByRestore": true,
+    "sourcesSHA256": {
+      "scripts/measure-soak.py": "e4f4db0b7ddfea73507fd4146a9d86ca2e83d1d84ae88e22b9becd9a5ea992ec",
+      "scripts/soak-worker.ts": "0a464b7890c8ccc8f029e2fee88c896124808c474d894bce371f7835b46c1775",
+      "server/core.ts": "ee3df365da12e00fd022a45ec8e008c5c6cec5b77572a4bb8adfee5903c68bf9",
+      "server/app.ts": "75a0e4f52e8f86de100c3120a64a7d91efe1c014a6096c6230b5323c71f139a3",
+      "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+      "server/database-backup.ts": "bb7fc280df0a1da656ed4cb8bd24fc7be724ce08774dc1f39a76765f58135fdc"
+    },
+    "passed": true
+  }
+}

@@ -11,14 +11,14 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1
 export DOTNET_GENERATE_ASPNET_CERTIFICATE=false
 export NUGET_PACKAGES="${NUGET_PACKAGES:-/workspace/.tools/nuget}"
-if command -v dotnet >/dev/null && dotnet --list-sdks | rg -q '^8\.0\.426 '; then
+if command -v dotnet >/dev/null && dotnet --list-sdks | rg -q '^10\.0\.402 '; then
   paneltech_dotnet="$(command -v dotnet)"
 else
   python3 scripts/install-dotnet.py
   paneltech_dotnet="${PANELTECH_DOTNET_DIR:-/workspace/.tools/dotnet}/dotnet"
 fi
-(cd agent && "$paneltech_dotnet" --version | rg '^8\.0\.426$')
+(cd agent && "$paneltech_dotnet" --version | rg '^10\.0\.402$')
 "$paneltech_dotnet" restore agent/PanelTech.Agent.csproj --locked-mode
 "$paneltech_dotnet" build agent/PanelTech.Agent.csproj --no-restore -c Release -m:2
-"$paneltech_dotnet" agent/bin/Release/net8.0/PanelTech.Agent.dll --self-test
+"$paneltech_dotnet" agent/bin/Release/net10.0/PanelTech.Agent.dll --self-test
 npm test

@@ -1,0 +1,69 @@
+{
+  "kind": "paneltech-linux-agent-access-checks",
+  "date": "2026-10-24",
+  "schemaVersion": 5,
+  "scope": "synthetic private loopback API; .NET Linux dry-run/file simulation; no real PCs, service installation or Windows QoS",
+  "nodeTests": {
+    "passed": 150,
+    "newAccessTests": 10
+  },
+  "chromiumScenarios": {
+    "passed": 7,
+    "newDeviceAccessScenario": true,
+    "viewports": [
+      1512,
+      390
+    ]
+  },
+  "dotnet": {
+    "target": "net8.0",
+    "sdk": "8.0.426",
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "warnings": 0,
+    "errors": 0,
+    "selfTests": 31,
+    "processRecoveryTests": 32,
+    "apiDryRunSmoke": true,
+    "accessFaultProxySmoke": true
+  },
+  "checks": [
+    "idempotent registration after lost response",
+    "durable candidate confirmation after enrollment expiry",
+    "atomic rotation and old-token rejection",
+    "pending secret survives post-commit local write failure",
+    "device/club/origin-bound explicit recovery",
+    "idempotent local prepare and interrupted archive resumption",
+    "quarantine of identity/receipts/ownership/rollback",
+    "same ID and no outbox replay",
+    "command epoch rejects stale results on same boot",
+    "fresh inspection after lost ownership cannot declare old remove successful",
+    "revoke cancels recovery grant",
+    "credential collision/version/expiry/roles/CSRF/TLS boundaries",
+    "no raw secrets in state/audit/DOM/process logs",
+    "database CLI backup/restore regression"
+  ],
+  "loadBenchmarksRerun": false,
+  "windowsQosVerified": false,
+  "realHardwareConnected": false,
+  "sourcesSHA256": {
+    "server/device-access.ts": "bc049198613a5b191e01340b08f37c0979e0f14d9e83b8b01b8b0c5c76604dff",
+    "server/app.ts": "51b1b361eb24943c8e3080d1fae02a8795a4bb578d05450aa473cad2dbd3d186",
+    "server/core.ts": "6bea23a0d2b827810d5b21c827a870e8557698d79e3c02e6365063820f6c2de2",
+    "shared/contracts.ts": "d6c44b9bb22b6221174122008e18a60483aaf4969e1c249c137dec4f0e14b124",
+    "agent/Access.cs": "a5f2e9bf72b2a6bf5f4fac4afbe46bba94af5bec9d743a2a2c299ad66dc0344c",
+    "agent/Worker.cs": "8d8aa8fed3de3c7fa92ce7ee153d139ad88990cb8082a1b8ef6d13953d4c1723",
+    "agent/Contracts.cs": "92a0ed6be1f60890b397aadd0aebcfeab56a2ddf045a79ced6dff16b300f159e",
+    "agent/Program.cs": "51ea26c203295d9635592a9fe32314862fa05c9e8877c2c032fdcad97cc232dd",
+    "agent/SelfTest.cs": "2835a90547440dda06d311f82997d104ad04748933783ba3d64c53ad8302b14a",
+    "agent/Qos.cs": "db09b53c600394477380c13979e9b36195478adf98c8d39e4b25834437420fbb",
+    "agent/qos.ps1": "b1f7e0a1bc63ff887c778308cc1ebf54ac1776bd2a79a5750e6c1c9f40364144",
+    "tests/device-access.test.ts": "58ea9e938ad331c7c1a79239f8500e851d98c77ff2c12de91bbec2b5067db8e2",
+    "tests/agent_access_smoke.py": "8ca090ace6f2ce43374cc0a20ee504e7eeb04d6492ef293ef9b1b441bf9b8645",
+    "tests/agent_recovery.py": "6d90f0c16de7c9133331d43a5f235d4de9938f566ea6a5bf4d3252ff1e820418",
+    "tests/browser_device_access.py": "9bf18b4fc9cf1467ed71139b314a3b6968a7fa86029bd0e290a39ac9dd3d5520",
+    "web/src/components/DeviceAccessPanel.vue": "1f49d668fd0978d3f0982a191029117c7704b0421ea15bd98815ed72d40402a9",
+    "scripts/check-agent.sh": "e27c7f12b7bd81036c74409b7176fe511f929c4a97cb2932a12fe31236b66c5f",
+    "package.json": "edf3d9ee30bf1e3e157cd3f8ad083deecab027626704d3d1c09b4b3990e93048"
+  }
+}

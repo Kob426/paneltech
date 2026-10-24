@@ -6,3 +6,5 @@ npm run typecheck
 npm test
 npm run build
 npm run test:browser
+npm run test:database
+npm run test:operations

@@ -17,7 +17,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 ROOT = Path(__file__).resolve().parents[1]
 DOTNET = os.environ.get('PANELTECH_DOTNET') or shutil.which('dotnet') or '/workspace/.tools/dotnet/dotnet'
-DLL = ROOT / 'tests/agent-harness/bin/Release/net8.0/AgentHarness.dll'
+DLL = ROOT / 'tests/agent-harness/bin/Release/net10.0/AgentHarness.dll'
 TOKEN = 'ab' * 32
 DEVICE = str(uuid.uuid4())
 
@@ -67,6 +67,8 @@ class Handler(BaseHTTPRequestHandler):
             job = stub.job
             stub.job = None
             response = {'job': job, 'allowedVariants': [36], 'serverTime': int(time.time() * 1000)}
+            if stub.poll_override is not None:
+                response = copy.deepcopy(stub.poll_override)
             if stub.malformed:
                 stub.malformed = False
                 self.send_response(200)
@@ -80,7 +82,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.connection.shutdown(socket.SHUT_RDWR)
                 self.connection.close()
                 return
-            response = {'accepted': True}
+            response = copy.deepcopy(stub.ack) if stub.ack is not None else {'id': self.path.rsplit('/', 1)[-1], 'deviceId': DEVICE, 'bootId': body['bootId'], 'state': body['state']}
         else:
             status, response = 404, {}
         self.send_response(status)
@@ -103,6 +105,7 @@ class Recovery(unittest.TestCase):
         self.server.job = self.job()
         self.server.requests, self.server.polls, self.server.results = [], [], []
         self.server.revoked = self.server.drop_response = self.server.malformed = False
+        self.server.ack = self.server.poll_override = None
         threading.Thread(target=self.server.serve_forever, daemon=True).start()
         self.addCleanup(self.server.server_close)
         self.addCleanup(self.server.shutdown)
@@ -291,6 +294,16 @@ class Recovery(unittest.TestCase):
         self.assertFalse(self.receipts.exists())
         self.assertEqual(self.server.requests, [])
 
+    def test_missing_identity_and_journal_with_existing_manifest_never_creates_identity(self):
+        self.identity.unlink()
+        self.receipts.unlink()
+        (self.state / 'ownership.json').write_text('[{"name":"SECRET_OLD_MANIFEST"}]')
+        p = self.start()
+        self.assertEqual(p.wait(timeout=8), 1)
+        self.assertFalse(self.identity.exists())
+        self.assertEqual(self.server.requests, [])
+        self.assertEqual(self.count(), 0)
+
     def test_missing_identity_does_not_register_another_device(self):
         self.identity.unlink()
         p = self.start()
@@ -315,6 +328,145 @@ class Recovery(unittest.TestCase):
         wait_for(lambda: len(self.server.polls) >= 2)
         self.assertEqual(self.count(), 0)
         self.assertEqual(json.loads(self.receipts.read_text()), [])
+
+    def test_invalid_acknowledgement_retains_outbox_without_reexecution(self):
+        self.server.ack = {'accepted': True, 'SECRET_RESPONSE_CANARY': True}
+        self.start()
+        wait_for(lambda: len(self.server.results) >= 2)
+        self.assertFalse(self.delivered())
+        self.assertEqual(self.count(), 1)
+        self.server.ack = None
+        wait_for(self.delivered)
+        self.assertEqual(self.count(), 1)
+
+    def test_wrong_job_acknowledgement_is_not_delivery(self):
+        self.server.ack = {'id': str(uuid.uuid4()), 'deviceId': DEVICE, 'bootId': 'test-boot', 'state': 'succeeded'}
+        self.start()
+        wait_for(lambda: len(self.server.results) >= 2)
+        self.assertFalse(self.delivered())
+        self.assertEqual(self.count(), 1)
+
+    def test_untrusted_delivery_identity_does_not_poison_journal(self):
+        for field, value in [('id', 'not-a-uuid'), ('deviceId', str(uuid.uuid4()))]:
+            with self.subTest(field=field):
+                self.server.polls.clear()
+                self.server.job = self.job()
+                self.server.job[field] = value
+                p = self.start()
+                wait_for(lambda: len(self.server.polls) >= 2)
+                p.kill(); p.wait(timeout=5)
+                self.assertEqual(json.loads(self.receipts.read_text()), [])
+                self.assertEqual(self.count(), 0)
+                self.assertEqual(self.server.results, [])
+
+    def test_semantically_invalid_polls_never_execute(self):
+        for response in [None, [], {'job': self.job()},
+                         {'job': self.job(), 'allowedVariants': '36', 'serverTime': 1},
+                         {'job': self.job(), 'allowedVariants': [36], 'serverTime': 'bad'}]:
+            with self.subTest(response=response):
+                self.server.polls.clear()
+                self.server.poll_override = [] if response is None else response
+                p = self.start()
+                wait_for(lambda: len(self.server.polls) >= 2)
+                p.kill(); p.wait(timeout=5)
+                self.assertEqual(json.loads(self.receipts.read_text()), [])
+                self.assertEqual(self.count(), 0)
+        self.server.poll_override = None
+
+    def test_invalid_parameters_are_rejected_without_execution(self):
+        for field, value in [('operation', 'shell'), ('variant', 64), ('gameId', '*'),
+                             ('allowedVariants', [36, 36]), ('exes', ['g.exe', 'G.exe'])]:
+            with self.subTest(field=field):
+                self.server.results.clear()
+                self.server.job = self.job()
+                self.server.job[field] = value
+                p = self.start()
+                wait_for(lambda: self.server.results)
+                p.kill(); p.wait(timeout=5)
+                self.assertEqual(self.server.results[0]['state'], 'failed')
+                self.assertEqual(self.count(), 0)
+
+    def test_state_write_failure_before_action_stops_without_result(self):
+        (self.state / 'receipts.json.tmp').mkdir()
+        before = self.receipts.read_bytes()
+        p = self.start()
+        self.assertEqual(p.wait(timeout=8), 1)
+        self.assertEqual(self.count(), 0)
+        self.assertEqual(self.server.requests, [])
+        self.assertEqual(self.receipts.read_bytes(), before)
+
+    def test_new_receipt_write_failure_prevents_execution_after_delivery(self):
+        self.start('delivery_received')
+        wait_for(lambda: (self.state / 'barrier').exists())
+        (self.state / 'receipts.json.tmp').mkdir()
+        (self.state / 'continue').write_text('resume')
+        self.assertEqual(self.processes[-1].wait(timeout=8), 1)
+        self.assertEqual(self.count(), 0)
+        self.assertEqual(self.server.results, [])
+        self.assertEqual(json.loads(self.receipts.read_text()), [])
+
+    def test_result_write_failure_stops_and_restart_never_reexecutes(self):
+        (self.state / 'fail-executed').write_text('controlled write failure')
+        p = self.start()
+        self.assertEqual(p.wait(timeout=8), 1)
+        self.assertEqual(self.count(), 1)
+        self.assertEqual(self.server.results, [])
+        self.assertIsNone(json.loads(self.receipts.read_text())[0]['result'])
+        (self.state / 'fail-executed').unlink()
+        (self.state / 'receipts.json.tmp').rmdir()
+        self.start()
+        wait_for(self.delivered)
+        self.assertEqual(self.server.results[0]['state'], 'unknown')
+        self.assertEqual(self.count(), 1)
+
+    def test_delivery_flag_write_failure_keeps_durable_outbox(self):
+        self.start('result_acknowledged')
+        wait_for(lambda: (self.state / 'barrier').exists())
+        (self.state / 'receipts.json.tmp').mkdir()
+        (self.state / 'continue').write_text('resume')
+        self.assertEqual(self.processes[-1].wait(timeout=8), 1)
+        self.assertEqual(len(self.server.results), 1)
+        self.assertFalse(self.delivered())
+        (self.state / 'receipts.json.tmp').rmdir()
+        self.start()
+        wait_for(self.delivered)
+        self.assertEqual(self.count(), 1)
+
+    def test_clock_jump_during_action_is_unknown_both_directions(self):
+        for jump in [-120000, 120000]:
+            with self.subTest(jump=jump):
+                self.server.results.clear()
+                self.server.job = self.job()
+                self.start('executed')
+                wait_for(lambda: (self.state / 'barrier').exists())
+                (self.state / 'clock-offset').write_text(str(jump))
+                (self.state / 'continue').write_text('resume')
+                wait_for(self.delivered)
+                self.processes[-1].kill(); self.processes[-1].wait(timeout=5)
+                self.assertEqual(self.server.results[0]['state'], 'unknown')
+                self.assertEqual(self.server.results[0]['code'], 'clock_changed')
+                for name in ['clock-offset', 'continue', 'barrier']:
+                    (self.state / name).unlink()
+                self.receipts.write_text('[]')
+
+    def test_expiry_during_action_is_unknown(self):
+        deadline = int(time.time()*1000)+2000
+        self.server.job['expires'] = deadline
+        self.start('executed')
+        wait_for(lambda: (self.state / 'barrier').exists())
+        wait_for(lambda: int(time.time()*1000) > deadline)
+        (self.state / 'continue').write_text('resume')
+        wait_for(self.delivered)
+        self.assertEqual(self.server.results[0]['code'], 'expired_during_execution')
+        self.assertEqual(self.server.results[0]['state'], 'unknown')
+        self.assertEqual(self.count(), 1)
+
+    def test_executor_validation_exception_after_dispatch_is_uncertain(self):
+        (self.state / 'executor-throws').write_text('test executor failure')
+        self.start()
+        wait_for(self.delivered)
+        self.assertEqual(self.server.results[0]['state'], 'unknown')
+        self.assertEqual(self.server.results[0]['code'], 'execution_uncertain')
 
     def test_null_exes_rejected_without_execution(self):
         self.server.job['exes'] = None

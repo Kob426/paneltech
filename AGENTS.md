@@ -12,10 +12,12 @@
 | Область | Файлы |
 | --- | --- |
 | Требования | `Codex_Marking_MVP.md`, `ARCHITECTURE.md`, `TASKS.md` |
-| Панель Vue | `web/src/App.vue`, `web/src/components/`, `web/src/composables/`, `web/src/style.css`, `DESIGN.md` |
-| API / очередь / SQLite | `server/app.ts`, `server/core.ts`, `server/store.ts` |
+| Панель Vue | `web/src/App.vue` (оболочка), `web/src/components/` (включая GameCatalog/AdminManagement/ClubManagement/StaffManagement), `web/src/composables/` (useAdminActions/API/страницы), `web/src/admin.ts`, `web/src/style.css`, `DESIGN.md` |
+| API / очередь / SQLite | `server/app.ts`, `server/core.ts`, `server/store.ts`, `server/queue-queries.ts`, `server/job-queries.ts`, `server/device-access.ts` |
+| Автоматические копии / мониторинг | `server/operations.ts`, `server/automatic-backup.ts`, `server/backup-task.ts`, `web/src/components/ServerOperations.vue`, `docs/OPERATIONS.md` |
 | Контракты | `shared/contracts.ts`, `agent/Contracts.cs` |
-| Windows-агент | `agent/Worker.cs`, `agent/Qos.cs`, `agent/qos.ps1`, `docs/AGENT.md` |
+| Windows-пакет | `scripts/package-agent.py`, `tests/windows_package.py`, `docs/WINDOWS-PACKAGE.md` |
+| Windows-агент | `agent/Worker.cs`, `agent/Access.cs`, `agent/Qos.cs`, `agent/qos.ps1`, `docs/AGENT.md` |
 | Проверки | `tests/`, `agent/SelfTest.cs`, `package.json` |
 | CI | `.github/workflows/ci.yml`, `scripts/check-web.sh`, `scripts/check-agent.sh`, `docs/CI.md` |
 | Настройка среды | `scripts/setup-cloud.sh`, `.nvmrc`, `agent/global.json`, lockfiles |
@@ -33,6 +35,8 @@
 Исходники навыков — `skills/`; `.agents/skills` ссылается на эту папку для обнаружения совместимым клиентом. Не поддерживай две независимые копии. Доступность в UI после перечитывания/новой сессии зависит от клиента; карта выше работает и без регистрации в каталоге. SOUL/USER читаются по этой инструкции, а не автоматически как системные промпты.
 
 ## Команды и инструменты
+
+- Пользователь разрешил отправить все текущие изменения в GitHub 24.10.2026. Для этой передачи — обычный push без force и коммит с `[skip ci]`; Actions остаются приостановлены из-за лимитов, workflow не запускать/не менять. Последующие отправки выполнять по поручению пользователя. Проверки проводить локально/в облачной среде.
 
 - Используй доступные инструменты текущей сессии; имена API, наличие плагинов и права проверяй, не выдумывай.
 - Поиск: `rg`, `rg --files`. Читай целевые участки; независимые чтения можно объединять, зависимые изменения выполняй последовательно.

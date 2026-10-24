@@ -1,0 +1,8 @@
+<script setup lang="ts">
+import {emptyJobFilters,type JobFilters} from '../composables/useJobPage';
+import {statusNames} from '../workspace';
+defineProps<{filters:JobFilters;devices:any[];games:any[];authors:string[];tasks?:boolean}>();
+</script>
+<template>
+ <div class="filters operation-filters"><label>ПК<select aria-label="ПК" v-model="filters.deviceId"><option value="">Все ПК клуба</option><option v-for="d in devices" :key="d.id" :value="d.id">{{d.name}}</option></select></label><label>Игра<select aria-label="Игра" v-model="filters.gameId"><option value="">Все игры</option><option v-for="g in games" :key="g.id" :value="g.id">{{g.name}}</option></select></label><label>С<input type="datetime-local" v-model="filters.from"></label><label>По<input type="datetime-local" v-model="filters.to"></label><label>Сотрудник<select aria-label="Сотрудник" v-model="filters.author"><option value="">Все сотрудники</option><option v-if="filters.author&&!authors.includes(filters.author)" :value="filters.author">{{filters.author}}</option><option v-for="a in authors" :key="a" :value="a">{{a}}</option></select></label><label>Статус операции<select aria-label="Статус операции" v-model="filters.state"><option value="">Все статусы</option><option value="active">Незавершённые</option><option v-for="(name,id) in statusNames" :key="id" :value="id">{{name}}</option></select></label><label v-if="tasks">ID задания<input aria-label="ID задания" v-model="filters.batchId" maxlength="100" placeholder="Полный batch ID"></label><button @click="Object.assign(filters,emptyJobFilters())">Сбросить фильтры</button></div>
+</template>

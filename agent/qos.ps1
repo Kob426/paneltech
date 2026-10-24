@@ -1,4 +1,4 @@
-# Fixed local implementation. The server supplies typed data, never script text.
+﻿# Fixed local implementation. The server supplies typed data, never script text.
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 $inputData = [Console]::In.ReadToEnd() | ConvertFrom-Json

@@ -1,0 +1,3937 @@
+{
+  "format": "paneltech-automatic-load-results",
+  "formatVersion": 1,
+  "checkedAt": "2026-10-24T15:35:40.865015+00:00",
+  "full": {
+    "kind": "synthetic-linux-automatic-backup-load",
+    "durationSeconds": 900,
+    "heartbeatOfferedRps": 600,
+    "panelOfferedRps": 6,
+    "jobBatchEverySeconds": 5,
+    "jobsPerBatch": 4,
+    "maxInFlightLimit": 64,
+    "maxObservedInFlight": 54,
+    "offered": {
+      "heartbeat": 540000,
+      "read": 5400,
+      "jobs": 180
+    },
+    "dropped": {
+      "heartbeat": 0,
+      "read": 0,
+      "jobs": 0
+    },
+    "dropReasons": {
+      "capacity": 0,
+      "late": 0,
+      "endOfWindow": 0
+    },
+    "dropSamples": [],
+    "errors": 0,
+    "errorDetails": [],
+    "requests": {
+      "heartbeat": {
+        "completed": 540000,
+        "latencyP50Ms": 1.3714400120079517,
+        "latencyP95Ms": 20.31449999776669,
+        "latencyMaxMs": 91.05124598136172
+      },
+      "read": {
+        "completed": 5400,
+        "latencyP50Ms": 23.387743975035846,
+        "latencyP95Ms": 34.43493999657221,
+        "latencyMaxMs": 89.43634500610642
+      },
+      "jobs": {
+        "completed": 180,
+        "latencyP50Ms": 17.338057019514963,
+        "latencyP95Ms": 32.17647099518217,
+        "latencyMaxMs": 55.05501400330104
+      }
+    },
+    "schedulerLagP95Ms": 2.927271844214374,
+    "schedulerLagMaxMs": 88.05296443699717,
+    "maxResponseBytes": 187652,
+    "server": {
+      "node": "v24.19.0",
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "clubs": 52,
+      "devices": 3380,
+      "completedJobs": 100000,
+      "demoDevices": 60,
+      "protocolHeartbeatDevices": 3316,
+      "sqlite": "3.53.3"
+    },
+    "samples": [
+      {
+        "elapsedSeconds": 0.287696919,
+        "markerSequence": 1,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 157.12109375,
+        "maxRssMiB": 157.12109375,
+        "heapUsedMiB": 46.05414581298828,
+        "eventLoopP95Ms": 52.035583,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96706560,
+        "walBytes": 457352,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": null,
+          "lastSuccess": null,
+          "error": null,
+          "latest": null,
+          "count": 0,
+          "bytes": 0,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855246597
+        },
+        "completed": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 30.274380998,
+        "markerSequence": 31,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 309.92578125,
+        "maxRssMiB": 309.92578125,
+        "heapUsedMiB": 87.30297088623047,
+        "eventLoopP95Ms": 21.741567,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96751616,
+        "walBytes": 4128272,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": null,
+          "lastSuccess": null,
+          "error": null,
+          "latest": null,
+          "count": 0,
+          "bytes": 0,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855246597
+        },
+        "completed": {
+          "heartbeat": 18001,
+          "read": 180,
+          "jobs": 6
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 60.278178683,
+        "markerSequence": 61,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 317.53125,
+        "maxRssMiB": 317.9609375,
+        "heapUsedMiB": 51.393310546875,
+        "eventLoopP95Ms": 21.708799,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96788480,
+        "walBytes": 4140632,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "running",
+          "lastAttempt": 1792855246636,
+          "lastSuccess": null,
+          "error": null,
+          "latest": null,
+          "count": 0,
+          "bytes": 0,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": null
+        },
+        "completed": {
+          "heartbeat": 36001,
+          "read": 360,
+          "jobs": 12
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 90.279228349,
+        "markerSequence": 91,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 319.22265625,
+        "maxRssMiB": 319.7109375,
+        "heapUsedMiB": 62.32378387451172,
+        "eventLoopP95Ms": 22.233087,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96821248,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "running",
+          "lastAttempt": 1792855246636,
+          "lastSuccess": null,
+          "error": null,
+          "latest": null,
+          "count": 0,
+          "bytes": 0,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": null
+        },
+        "completed": {
+          "heartbeat": 54001,
+          "read": 540,
+          "jobs": 18
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 120.27752347799999,
+        "markerSequence": 121,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 320.703125,
+        "maxRssMiB": 321.17578125,
+        "heapUsedMiB": 86.57217407226562,
+        "eventLoopP95Ms": 22.167551,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96845824,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 72001,
+          "read": 720,
+          "jobs": 24
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 150.27752686300002,
+        "markerSequence": 151,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 320.609375,
+        "maxRssMiB": 321.30078125,
+        "heapUsedMiB": 93.72970581054688,
+        "eventLoopP95Ms": 21.970943,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96882688,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 90000,
+          "read": 900,
+          "jobs": 30
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 180.277484433,
+        "markerSequence": 181,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 320.55078125,
+        "maxRssMiB": 321.30078125,
+        "heapUsedMiB": 50.79949188232422,
+        "eventLoopP95Ms": 21.856255,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96907264,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 108001,
+          "read": 1080,
+          "jobs": 36
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 210.277378616,
+        "markerSequence": 211,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 320.8046875,
+        "maxRssMiB": 321.30078125,
+        "heapUsedMiB": 90.52022552490234,
+        "eventLoopP95Ms": 21.757951,
+        "eventLoopMaxMs": 52.035583,
+        "mainBytes": 96948224,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 126002,
+          "read": 1260,
+          "jobs": 42
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 240.280089267,
+        "markerSequence": 241,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 320.8125,
+        "maxRssMiB": 321.32421875,
+        "heapUsedMiB": 67.67255401611328,
+        "eventLoopP95Ms": 21.692415,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 96976896,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 144001,
+          "read": 1440,
+          "jobs": 48
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 270.27885559999993,
+        "markerSequence": 271,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 320.78515625,
+        "maxRssMiB": 321.32421875,
+        "heapUsedMiB": 55.046173095703125,
+        "eventLoopP95Ms": 21.676031,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97005568,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 162001,
+          "read": 1620,
+          "jobs": 54
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 300.29629299399994,
+        "markerSequence": 301,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.23828125,
+        "maxRssMiB": 321.953125,
+        "heapUsedMiB": 69.0086441040039,
+        "eventLoopP95Ms": 21.594111,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97034240,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 180000,
+          "read": 1800,
+          "jobs": 60
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 330.27948439,
+        "markerSequence": 331,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.45703125,
+        "maxRssMiB": 322.03515625,
+        "heapUsedMiB": 46.17425537109375,
+        "eventLoopP95Ms": 21.544959,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97067008,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 198001,
+          "read": 1980,
+          "jobs": 67
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 360.281163129,
+        "markerSequence": 361,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.4765625,
+        "maxRssMiB": 322.03515625,
+        "heapUsedMiB": 53.072242736816406,
+        "eventLoopP95Ms": 21.463039,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97099776,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 216000,
+          "read": 2160,
+          "jobs": 72
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 390.277922645,
+        "markerSequence": 391,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.59765625,
+        "maxRssMiB": 322.09765625,
+        "heapUsedMiB": 63.94878387451172,
+        "eventLoopP95Ms": 21.331967,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97124352,
+        "walBytes": 37005872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855246895,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855580753
+        },
+        "completed": {
+          "heartbeat": 234000,
+          "read": 2340,
+          "jobs": 78
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 420.282233921,
+        "markerSequence": 421,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.5390625,
+        "maxRssMiB": 322.09765625,
+        "heapUsedMiB": 62.836769104003906,
+        "eventLoopP95Ms": 21.561343,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97165312,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "running",
+          "lastAttempt": 1792855580878,
+          "lastSuccess": 1792855280722,
+          "error": null,
+          "latest": {
+            "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+            "createdAt": "2026-10-24T15:20:55.243Z",
+            "bytes": 96792576,
+            "verifiedAt": 1792855276029,
+            "drill": {
+              "checkedAt": 1792855276024,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 96793230,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": null
+        },
+        "completed": {
+          "heartbeat": 252001,
+          "read": 2520,
+          "jobs": 85
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 450.28698575399994,
+        "markerSequence": 451,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.5703125,
+        "maxRssMiB": 322.09765625,
+        "heapUsedMiB": 45.47925567626953,
+        "eventLoopP95Ms": 21.577727,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97198080,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 270001,
+          "read": 2700,
+          "jobs": 91
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 480.282118096,
+        "markerSequence": 481,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.47265625,
+        "maxRssMiB": 322.15234375,
+        "heapUsedMiB": 61.036468505859375,
+        "eventLoopP95Ms": 21.512191,
+        "eventLoopMaxMs": 62.554111,
+        "mainBytes": 97230848,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 288000,
+          "read": 2880,
+          "jobs": 97
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 510.28356083,
+        "markerSequence": 511,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.53515625,
+        "maxRssMiB": 322.15234375,
+        "heapUsedMiB": 47.90101623535156,
+        "eventLoopP95Ms": 21.430271,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97255424,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 306001,
+          "read": 3060,
+          "jobs": 103
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 540.2807108689999,
+        "markerSequence": 541,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.61328125,
+        "maxRssMiB": 322.27734375,
+        "heapUsedMiB": 38.63941192626953,
+        "eventLoopP95Ms": 21.397503,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97284096,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 324001,
+          "read": 3240,
+          "jobs": 108
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 570.291048414,
+        "markerSequence": 571,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.66796875,
+        "maxRssMiB": 322.27734375,
+        "heapUsedMiB": 60.771453857421875,
+        "eventLoopP95Ms": 21.364735,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97316864,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 342001,
+          "read": 3420,
+          "jobs": 115
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 600.283766817,
+        "markerSequence": 601,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.71875,
+        "maxRssMiB": 322.27734375,
+        "heapUsedMiB": 55.52665710449219,
+        "eventLoopP95Ms": 21.331967,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97341440,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 360001,
+          "read": 3600,
+          "jobs": 120
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 630.288680335,
+        "markerSequence": 631,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.67578125,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 62.17256164550781,
+        "eventLoopP95Ms": 21.331967,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97382400,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 378000,
+          "read": 3780,
+          "jobs": 127
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 660.2853196179999,
+        "markerSequence": 661,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.63671875,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 64.64212036132812,
+        "eventLoopP95Ms": 21.348351,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97406976,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 396001,
+          "read": 3961,
+          "jobs": 132
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 690.291656537,
+        "markerSequence": 691,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.6953125,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 80.24078369140625,
+        "eventLoopP95Ms": 21.299199,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97435648,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 414003,
+          "read": 4141,
+          "jobs": 139
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 720.28486211,
+        "markerSequence": 720,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.67578125,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 67.20830535888672,
+        "eventLoopP95Ms": 21.282815,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97476608,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855581159,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855920672
+        },
+        "completed": {
+          "heartbeat": 432004,
+          "read": 4321,
+          "jobs": 145
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 750.279679571,
+        "markerSequence": 750,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.70703125,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 83.49864196777344,
+        "eventLoopP95Ms": 21.331967,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97505280,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "running",
+          "lastAttempt": 1792855921040,
+          "lastSuccess": 1792855620651,
+          "error": null,
+          "latest": {
+            "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+            "createdAt": "2026-10-24T15:26:29.675Z",
+            "bytes": 97136640,
+            "verifiedAt": 1792855612282,
+            "drill": {
+              "checkedAt": 1792855612278,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 193930524,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": null
+        },
+        "completed": {
+          "heartbeat": 450003,
+          "read": 4501,
+          "jobs": 151
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 780.292394974,
+        "markerSequence": 780,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.6875,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 62.027626037597656,
+        "eventLoopP95Ms": 21.397503,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97533952,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855921286,
+          "lastSuccess": 1792855966859,
+          "error": null,
+          "latest": {
+            "id": "52ff57ad-51e9-4522-9617-235674c39049",
+            "createdAt": "2026-10-24T15:32:09.547Z",
+            "bytes": 97492992,
+            "verifiedAt": 1792855950167,
+            "drill": {
+              "checkedAt": 1792855950164,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 194630940,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792856266881
+        },
+        "completed": {
+          "heartbeat": 468001,
+          "read": 4681,
+          "jobs": 156
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 810.300087714,
+        "markerSequence": 810,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.7109375,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 22.073219299316406,
+        "eventLoopP95Ms": 21.397503,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97562624,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855921286,
+          "lastSuccess": 1792855966859,
+          "error": null,
+          "latest": {
+            "id": "52ff57ad-51e9-4522-9617-235674c39049",
+            "createdAt": "2026-10-24T15:32:09.547Z",
+            "bytes": 97492992,
+            "verifiedAt": 1792855950167,
+            "drill": {
+              "checkedAt": 1792855950164,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 194630940,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792856266881
+        },
+        "completed": {
+          "heartbeat": 486001,
+          "read": 4860,
+          "jobs": 163
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 840.2932645469999,
+        "markerSequence": 840,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.76171875,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 47.735809326171875,
+        "eventLoopP95Ms": 21.364735,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97591296,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855921286,
+          "lastSuccess": 1792855966859,
+          "error": null,
+          "latest": {
+            "id": "52ff57ad-51e9-4522-9617-235674c39049",
+            "createdAt": "2026-10-24T15:32:09.547Z",
+            "bytes": 97492992,
+            "verifiedAt": 1792855950167,
+            "drill": {
+              "checkedAt": 1792855950164,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 194630940,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792856266881
+        },
+        "completed": {
+          "heartbeat": 504004,
+          "read": 5041,
+          "jobs": 169
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 870.307547691,
+        "markerSequence": 870,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 321.44140625,
+        "maxRssMiB": 322.34375,
+        "heapUsedMiB": 42.946929931640625,
+        "eventLoopP95Ms": 21.364735,
+        "eventLoopMaxMs": 91.750399,
+        "mainBytes": 97628160,
+        "walBytes": 37887552,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792855921286,
+          "lastSuccess": 1792855966859,
+          "error": null,
+          "latest": {
+            "id": "52ff57ad-51e9-4522-9617-235674c39049",
+            "createdAt": "2026-10-24T15:32:09.547Z",
+            "bytes": 97492992,
+            "verifiedAt": 1792855950167,
+            "drill": {
+              "checkedAt": 1792855950164,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 194630940,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792856266881
+        },
+        "completed": {
+          "heartbeat": 522000,
+          "read": 5221,
+          "jobs": 174
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      }
+    ],
+    "final": {
+      "elapsedSeconds": 901.850906771,
+      "markerSequence": 903,
+      "backupChildrenRssMiB": null,
+      "rssMiB": 321.48828125,
+      "maxRssMiB": 322.34375,
+      "heapUsedMiB": 75.1175765991211,
+      "eventLoopP95Ms": 21.364735,
+      "eventLoopMaxMs": 91.750399,
+      "mainBytes": 97656832,
+      "walBytes": 37887552,
+      "halted": false,
+      "timerError": false,
+      "backup": {
+        "phase": "idle",
+        "lastAttempt": 1792855921286,
+        "lastSuccess": 1792855966859,
+        "error": null,
+        "latest": {
+          "id": "52ff57ad-51e9-4522-9617-235674c39049",
+          "createdAt": "2026-10-24T15:32:09.547Z",
+          "bytes": 97492992,
+          "verifiedAt": 1792855950167,
+          "drill": {
+            "checkedAt": 1792855950164,
+            "expired": 1,
+            "unknown": 53,
+            "revoked": 3320
+          }
+        },
+        "count": 2,
+        "bytes": 194630940,
+        "skipped": 0,
+        "budgetExceeded": false,
+        "enabled": true,
+        "intervalMinutes": 5,
+        "keep": 2,
+        "maxBytes": 536870912,
+        "nextAt": 1792856266881
+      },
+      "originalHistoryPreserved": true,
+      "addedJobs": 720,
+      "allNewDemoJobsSucceededOnce": true,
+      "historySHA256": "bdcc87d433964881f0ba02954f33792b490a4712e27c1ad9a4bf2e983887e5fe",
+      "jobs": 100774
+    },
+    "backups": [
+      {
+        "id": "1cdec23a-57c4-4134-b37f-cf2a4db742c5",
+        "startedSeconds": 60.190060576,
+        "finishedSeconds": 94.16768356399999,
+        "markerBefore": 61,
+        "markerAfter": 95,
+        "writesContinued": true,
+        "bytes": 96792576,
+        "drill": {
+          "checkedAt": 1792855276024,
+          "expired": 5,
+          "unknown": 53,
+          "revoked": 3320
+        },
+        "retainedCount": 1,
+        "retainedBytes": 96793230,
+        "skipped": 0
+      },
+      {
+        "id": "5b8f4779-082c-47c3-8417-94fa05ae0399",
+        "startedSeconds": 394.29156782499996,
+        "finishedSeconds": 434.102013285,
+        "markerBefore": 395,
+        "markerAfter": 434,
+        "writesContinued": true,
+        "bytes": 97136640,
+        "drill": {
+          "checkedAt": 1792855612278,
+          "expired": 1,
+          "unknown": 53,
+          "revoked": 3320
+        },
+        "retainedCount": 2,
+        "retainedBytes": 193930524,
+        "skipped": 0
+      },
+      {
+        "id": "52ff57ad-51e9-4522-9617-235674c39049",
+        "startedSeconds": 734.5685178140001,
+        "finishedSeconds": 780.443650665,
+        "markerBefore": 735,
+        "markerAfter": 781,
+        "writesContinued": true,
+        "bytes": 97492992,
+        "drill": {
+          "checkedAt": 1792855950164,
+          "expired": 1,
+          "unknown": 53,
+          "revoked": 3320
+        },
+        "retainedCount": 2,
+        "retainedBytes": 194630940,
+        "skipped": 0
+      }
+    ],
+    "restored": [
+      {
+        "backup": "backup-2026-10-24T15-26-25-485Z-5b8f4779-082c-47c3-8417-94fa05ae0399",
+        "bytes": 97136640,
+        "records": 123901,
+        "jobs": 100370,
+        "markerSequence": 395,
+        "terminalHash": "cf686158ebffb0a5cdbe804d2c3a79f8b300c708e1fd777d1d9614fa4acc622b",
+        "auditHash": "52fa8d7ea8490f80241ca1a77783b2c8545f2dfd5e0142141d3a0cc66cf8ce82",
+        "terminalHistoryPreserved": true,
+        "auditPreserved": true,
+        "sessionsRevoked": true,
+        "deviceTrustRevoked": true,
+        "demoRulesCleared": true,
+        "queuedExpired": 1,
+        "runningOrUnknown": 53,
+        "noReplayAfterTicks": 3
+      },
+      {
+        "backup": "backup-2026-10-24T15-32-05-299Z-52ff57ad-51e9-4522-9617-235674c39049",
+        "bytes": 97492992,
+        "records": 124241,
+        "jobs": 100642,
+        "markerSequence": 735,
+        "terminalHash": "4e42ea8ec64f0e288247dc6bc8732cfdd4521f752889f3f9bc998c6b63c47a80",
+        "auditHash": "1f10f3307498ee4bdd8863e05c10b65ba0046898c2100fbc84f5d047f1a66fea",
+        "terminalHistoryPreserved": true,
+        "auditPreserved": true,
+        "sessionsRevoked": true,
+        "deviceTrustRevoked": true,
+        "demoRulesCleared": true,
+        "queuedExpired": 1,
+        "runningOrUnknown": 53,
+        "noReplayAfterTicks": 3
+      }
+    ],
+    "windowsQoSVerified": false,
+    "productionCapacityVerified": false,
+    "liveSourceUnchangedByRestore": true,
+    "quickProfile": false,
+    "automaticIntervalSeconds": 300,
+    "startupDelaySeconds": 60,
+    "retentionKeep": 2,
+    "sourcesSHA256": {
+      "scripts/measure-operations-load.py": "b94e86555ba8985088650c11d00170b0d104bd60a66029279e0e8b520127e450",
+      "scripts/operations-load-worker.ts": "3624b3d7738970fc38ca8dc3c44e9eee4fc99760fb3e7d1faeb3749f2a72afe9",
+      "server/core.ts": "6bea23a0d2b827810d5b21c827a870e8557698d79e3c02e6365063820f6c2de2",
+      "server/app.ts": "2450d3a9653829aa0395a9d8ca935a640e057417bb5d64ec36202bc26b181ba4",
+      "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+      "server/database-backup.ts": "bb7fc280df0a1da656ed4cb8bd24fc7be724ce08774dc1f39a76765f58135fdc",
+      "server/operations.ts": "871b503e106da6c947cdcb491cfe41f8a925b95c9ec91c3bb0cc86e1755c24ba",
+      "server/automatic-backup.ts": "7897f5d052a889d2b8bf11862f4e6b5c7304b26cf5858730ec85cdb1f44f499d",
+      "server/backup-task.ts": "c02f9e476af2fc91000232641db26d0a31455ae71049f7653567922d5bf8b8ea"
+    },
+    "passed": true
+  },
+  "quick": {
+    "kind": "synthetic-linux-automatic-backup-load",
+    "durationSeconds": 120,
+    "heartbeatOfferedRps": 300,
+    "panelOfferedRps": 6,
+    "jobBatchEverySeconds": 5,
+    "jobsPerBatch": 4,
+    "maxInFlightLimit": 64,
+    "maxObservedInFlight": 32,
+    "offered": {
+      "heartbeat": 36000,
+      "read": 720,
+      "jobs": 24
+    },
+    "dropped": {
+      "heartbeat": 0,
+      "read": 0,
+      "jobs": 0
+    },
+    "errors": 0,
+    "errorDetails": [],
+    "requests": {
+      "heartbeat": {
+        "completed": 36000,
+        "latencyP50Ms": 1.1336659954395145,
+        "latencyP95Ms": 7.943998993141577,
+        "latencyMaxMs": 95.47620901139453
+      },
+      "read": {
+        "completed": 720,
+        "latencyP50Ms": 12.422861997038126,
+        "latencyP95Ms": 20.15754600870423,
+        "latencyMaxMs": 31.993812997825444
+      },
+      "jobs": {
+        "completed": 24,
+        "latencyP50Ms": 7.6153220143169165,
+        "latencyP95Ms": 16.68262798921205,
+        "latencyMaxMs": 28.226177993929014
+      }
+    },
+    "schedulerLagP95Ms": 2.135560025216421,
+    "schedulerLagMaxMs": 89.12626106146604,
+    "maxResponseBytes": 184945,
+    "server": {
+      "node": "v24.19.0",
+      "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+      "clubs": 52,
+      "devices": 3380,
+      "completedJobs": 10000,
+      "demoDevices": 60,
+      "protocolHeartbeatDevices": 3316,
+      "sqlite": "3.53.3"
+    },
+    "samples": [
+      {
+        "elapsedSeconds": 0.320941818,
+        "markerSequence": 1,
+        "rssMiB": 133.21484375,
+        "maxRssMiB": 133.21484375,
+        "heapUsedMiB": 21.26555633544922,
+        "eventLoopP95Ms": 56.033279,
+        "eventLoopMaxMs": 56.033279,
+        "mainBytes": 11161600,
+        "walBytes": 453232,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": null,
+          "lastSuccess": null,
+          "error": null,
+          "latest": null,
+          "count": 0,
+          "bytes": 0,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 0.5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792853963076
+        },
+        "completed": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 30.30927779,
+        "markerSequence": 31,
+        "rssMiB": 296.3203125,
+        "maxRssMiB": 297.078125,
+        "heapUsedMiB": 62.12169647216797,
+        "eventLoopP95Ms": 12.541951,
+        "eventLoopMaxMs": 56.033279,
+        "mainBytes": 11202560,
+        "walBytes": 5075872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792853963342,
+          "lastSuccess": 1792853967545,
+          "error": null,
+          "latest": {
+            "id": "5f49b967-2024-4225-95ee-8e9015de5bf6",
+            "createdAt": "2026-10-24T14:59:24.197Z",
+            "bytes": 11173888,
+            "verifiedAt": 1792853967025,
+            "drill": {
+              "checkedAt": 1792853967024,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 1,
+          "bytes": 11174541,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 0.5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792853997561
+        },
+        "completed": {
+          "heartbeat": 9000,
+          "read": 180,
+          "jobs": 6
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 60.311412346000004,
+        "markerSequence": 61,
+        "rssMiB": 305.640625,
+        "maxRssMiB": 306.4375,
+        "heapUsedMiB": 55.189064025878906,
+        "eventLoopP95Ms": 12.673023,
+        "eventLoopMaxMs": 56.033279,
+        "mainBytes": 11235328,
+        "walBytes": 5075872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792853998375,
+          "lastSuccess": 1792854002959,
+          "error": null,
+          "latest": {
+            "id": "3c7036b3-d990-426b-ab38-b85eecaf7e5f",
+            "createdAt": "2026-10-24T14:59:59.298Z",
+            "bytes": 11214848,
+            "verifiedAt": 1792854002102,
+            "drill": {
+              "checkedAt": 1792854002102,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 22390042,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 0.5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792854032971
+        },
+        "completed": {
+          "heartbeat": 18001,
+          "read": 360,
+          "jobs": 12
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      },
+      {
+        "elapsedSeconds": 90.308715471,
+        "markerSequence": 91,
+        "rssMiB": 310.83203125,
+        "maxRssMiB": 311.16015625,
+        "heapUsedMiB": 83.47163391113281,
+        "eventLoopP95Ms": 12.648447,
+        "eventLoopMaxMs": 56.033279,
+        "mainBytes": 11268096,
+        "walBytes": 5075872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792854033390,
+          "lastSuccess": 1792854038583,
+          "error": null,
+          "latest": {
+            "id": "1451c7b9-c4aa-427b-b888-00954c6a03f6",
+            "createdAt": "2026-10-24T15:00:34.248Z",
+            "bytes": 11259904,
+            "verifiedAt": 1792854036850,
+            "drill": {
+              "checkedAt": 1792854036850,
+              "expired": 5,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 22476058,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 0.5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792854068593
+        },
+        "completed": {
+          "heartbeat": 27001,
+          "read": 540,
+          "jobs": 18
+        },
+        "dropped": {
+          "heartbeat": 0,
+          "read": 0,
+          "jobs": 0
+        },
+        "errors": 0
+      }
+    ],
+    "final": {
+      "elapsedSeconds": 121.448895345,
+      "markerSequence": 123,
+      "rssMiB": 317.875,
+      "maxRssMiB": 317.875,
+      "heapUsedMiB": 110.18141174316406,
+      "eventLoopP95Ms": 12.476415,
+      "eventLoopMaxMs": 100.794367,
+      "mainBytes": 11296768,
+      "walBytes": 5174752,
+      "halted": false,
+      "timerError": false,
+      "backup": {
+        "phase": "idle",
+        "lastAttempt": 1792854069391,
+        "lastSuccess": 1792854074799,
+        "error": null,
+        "latest": {
+          "id": "dbe888c4-5bb9-4d30-b06e-589138286d1a",
+          "createdAt": "2026-10-24T15:01:10.282Z",
+          "bytes": 11292672,
+          "verifiedAt": 1792854072981,
+          "drill": {
+            "checkedAt": 1792854072980,
+            "expired": 1,
+            "unknown": 53,
+            "revoked": 3320
+          }
+        },
+        "count": 2,
+        "bytes": 22553882,
+        "skipped": 0,
+        "budgetExceeded": false,
+        "enabled": true,
+        "intervalMinutes": 0.5,
+        "keep": 2,
+        "maxBytes": 536870912,
+        "nextAt": 1792854104810
+      },
+      "originalHistoryPreserved": true,
+      "addedJobs": 96,
+      "allNewDemoJobsSucceededOnce": true,
+      "historySHA256": "c72bd63912e908187b52a7117c8b61b01d49ec66a54eaff3201af57853d758a4",
+      "jobs": 10150
+    },
+    "backups": [
+      {
+        "id": "5f49b967-2024-4225-95ee-8e9015de5bf6",
+        "startedSeconds": 5.1454149870000006,
+        "finishedSeconds": 9.550024244,
+        "markerBefore": 6,
+        "markerAfter": 10,
+        "writesContinued": true,
+        "bytes": 11173888,
+        "drill": {
+          "checkedAt": 1792853967024,
+          "expired": 1,
+          "unknown": 53,
+          "revoked": 3320
+        },
+        "retainedCount": 1,
+        "retainedBytes": 11174541,
+        "skipped": 0
+      },
+      {
+        "id": "3c7036b3-d990-426b-ab38-b85eecaf7e5f",
+        "startedSeconds": 40.101736333,
+        "finishedSeconds": 44.92004464,
+        "markerBefore": 41,
+        "markerAfter": 45,
+        "writesContinued": true,
+        "bytes": 11214848,
+        "drill": {
+          "checkedAt": 1792854002102,
+          "expired": 1,
+          "unknown": 53,
+          "revoked": 3320
+        },
+        "retainedCount": 2,
+        "retainedBytes": 22390042,
+        "skipped": 0
+      },
+      {
+        "id": "1451c7b9-c4aa-427b-b888-00954c6a03f6",
+        "startedSeconds": 75.066157445,
+        "finishedSeconds": 80.697932162,
+        "markerBefore": 76,
+        "markerAfter": 81,
+        "writesContinued": true,
+        "bytes": 11259904,
+        "drill": {
+          "checkedAt": 1792854036850,
+          "expired": 5,
+          "unknown": 53,
+          "revoked": 3320
+        },
+        "retainedCount": 2,
+        "retainedBytes": 22476058,
+        "skipped": 0
+      },
+      {
+        "id": "dbe888c4-5bb9-4d30-b06e-589138286d1a",
+        "startedSeconds": 111.254877157,
+        "finishedSeconds": 116.880928567,
+        "markerBefore": 112,
+        "markerAfter": 117,
+        "writesContinued": true,
+        "bytes": 11292672,
+        "drill": {
+          "checkedAt": 1792854072980,
+          "expired": 1,
+          "unknown": 53,
+          "revoked": 3320
+        },
+        "retainedCount": 2,
+        "retainedBytes": 22553882,
+        "skipped": 0
+      }
+    ],
+    "restored": [
+      {
+        "backup": "backup-2026-10-24T15-00-33-841Z-1451c7b9-c4aa-427b-b888-00954c6a03f6",
+        "bytes": 11259904,
+        "records": 15586,
+        "jobs": 10118,
+        "markerSequence": 76,
+        "terminalHash": "db7300db2b3d56c071067e7641a6fe4f81c93c7416f0623dd8703d95759defa3",
+        "auditHash": "62eba466bcbac7d11a8e866fb4ed1759dfb41815703aa8874092e80ede4b9b5a",
+        "terminalHistoryPreserved": true,
+        "auditPreserved": true,
+        "sessionsRevoked": true,
+        "deviceTrustRevoked": true,
+        "demoRulesCleared": true,
+        "queuedExpired": 5,
+        "runningOrUnknown": 53,
+        "noReplayAfterTicks": 3
+      },
+      {
+        "backup": "backup-2026-10-24T15-01-09-806Z-dbe888c4-5bb9-4d30-b06e-589138286d1a",
+        "bytes": 11292672,
+        "records": 15621,
+        "jobs": 10146,
+        "markerSequence": 112,
+        "terminalHash": "b641de0f15dee0f1644f37ad28cd738ea85dc69bef7a7a93342fa5bbf0ce1fbf",
+        "auditHash": "8b4d3f604014222c12e83a2d2432a1bc097bdb059ab0aad07c51e89e321dea98",
+        "terminalHistoryPreserved": true,
+        "auditPreserved": true,
+        "sessionsRevoked": true,
+        "deviceTrustRevoked": true,
+        "demoRulesCleared": true,
+        "queuedExpired": 1,
+        "runningOrUnknown": 53,
+        "noReplayAfterTicks": 3
+      }
+    ],
+    "windowsQoSVerified": false,
+    "productionCapacityVerified": false,
+    "liveSourceUnchangedByRestore": true,
+    "quickProfile": true,
+    "automaticIntervalSeconds": 30,
+    "startupDelaySeconds": 5,
+    "retentionKeep": 2,
+    "sourcesSHA256": {
+      "scripts/measure-operations-load.py": "47d5ce05f3fa22f8e88d7e60e61d5b9f218417fb92cdc5d99823b063b1e6ede0",
+      "scripts/operations-load-worker.ts": "dcd7a136c352cd0a72572ce9659e8bbae18712d78cef7fc0c9b9c78cc82562b2",
+      "server/core.ts": "6bea23a0d2b827810d5b21c827a870e8557698d79e3c02e6365063820f6c2de2",
+      "server/app.ts": "2450d3a9653829aa0395a9d8ca935a640e057417bb5d64ec36202bc26b181ba4",
+      "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+      "server/database-backup.ts": "bb7fc280df0a1da656ed4cb8bd24fc7be724ce08774dc1f39a76765f58135fdc",
+      "server/operations.ts": "871b503e106da6c947cdcb491cfe41f8a925b95c9ec91c3bb0cc86e1755c24ba",
+      "server/automatic-backup.ts": "7897f5d052a889d2b8bf11862f4e6b5c7304b26cf5858730ec85cdb1f44f499d",
+      "server/backup-task.ts": "c02f9e476af2fc91000232641db26d0a31455ae71049f7653567922d5bf8b8ea"
+    },
+    "passed": true
+  },
+  "failedAttempts": [
+    {
+      "kind": "synthetic-linux-automatic-backup-load",
+      "durationSeconds": 900,
+      "heartbeatOfferedRps": 600,
+      "panelOfferedRps": 6,
+      "jobBatchEverySeconds": 5,
+      "jobsPerBatch": 4,
+      "maxInFlightLimit": 64,
+      "maxObservedInFlight": 64,
+      "offered": {
+        "heartbeat": 540000,
+        "read": 5400,
+        "jobs": 180
+      },
+      "dropped": {
+        "heartbeat": 26,
+        "read": 1,
+        "jobs": 0
+      },
+      "errors": 0,
+      "errorDetails": [],
+      "requests": {
+        "heartbeat": {
+          "completed": 539974,
+          "latencyP50Ms": 1.554328016936779,
+          "latencyP95Ms": 21.761604002676904,
+          "latencyMaxMs": 136.9152829865925
+        },
+        "read": {
+          "completed": 5399,
+          "latencyP50Ms": 23.49532299558632,
+          "latencyP95Ms": 35.560678981710225,
+          "latencyMaxMs": 124.63344100979157
+        },
+        "jobs": {
+          "completed": 180,
+          "latencyP50Ms": 19.089909008471295,
+          "latencyP95Ms": 33.36816097726114,
+          "latencyMaxMs": 47.3531500028912
+        }
+      },
+      "schedulerLagP95Ms": 3.1860198577078336,
+      "schedulerLagMaxMs": 139.51481008473365,
+      "maxResponseBytes": 187652,
+      "server": {
+        "node": "v24.19.0",
+        "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+        "clubs": 52,
+        "devices": 3380,
+        "completedJobs": 100000,
+        "demoDevices": 60,
+        "protocolHeartbeatDevices": 3316,
+        "sqlite": "3.53.3"
+      },
+      "samples": [
+        {
+          "elapsedSeconds": 0.3296662799999999,
+          "markerSequence": 1,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 157.046875,
+          "maxRssMiB": 157.046875,
+          "heapUsedMiB": 45.955322265625,
+          "eventLoopP95Ms": 60.817407,
+          "eventLoopMaxMs": 60.817407,
+          "mainBytes": 96727040,
+          "walBytes": 457352,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": null,
+            "lastSuccess": null,
+            "error": null,
+            "latest": null,
+            "count": 0,
+            "bytes": 0,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854205629
+          },
+          "completed": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 30.306049306,
+          "markerSequence": 31,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 307.83984375,
+          "maxRssMiB": 307.83984375,
+          "heapUsedMiB": 71.48229217529297,
+          "eventLoopP95Ms": 22.970367,
+          "eventLoopMaxMs": 60.817407,
+          "mainBytes": 96772096,
+          "walBytes": 4128272,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": null,
+            "lastSuccess": null,
+            "error": null,
+            "latest": null,
+            "count": 0,
+            "bytes": 0,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854205629
+          },
+          "completed": {
+            "heartbeat": 18001,
+            "read": 180,
+            "jobs": 6
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 60.316384570000004,
+          "markerSequence": 61,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 316.08984375,
+          "maxRssMiB": 316.73828125,
+          "heapUsedMiB": 52.80663299560547,
+          "eventLoopP95Ms": 22.102015,
+          "eventLoopMaxMs": 60.817407,
+          "mainBytes": 96804864,
+          "walBytes": 4173592,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "running",
+            "lastAttempt": 1792854205693,
+            "lastSuccess": null,
+            "error": null,
+            "latest": null,
+            "count": 0,
+            "bytes": 0,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": null
+          },
+          "completed": {
+            "heartbeat": 36002,
+            "read": 360,
+            "jobs": 12
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 90.30941439,
+          "markerSequence": 91,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 316.359375,
+          "maxRssMiB": 316.859375,
+          "heapUsedMiB": 45.683685302734375,
+          "eventLoopP95Ms": 22.102015,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 96833536,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "running",
+            "lastAttempt": 1792854205693,
+            "lastSuccess": null,
+            "error": null,
+            "latest": null,
+            "count": 0,
+            "bytes": 0,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": null
+          },
+          "completed": {
+            "heartbeat": 54000,
+            "read": 540,
+            "jobs": 18
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 120.309756487,
+          "markerSequence": 121,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 317.5703125,
+          "maxRssMiB": 318.0859375,
+          "heapUsedMiB": 99.33544921875,
+          "eventLoopP95Ms": 21.921791,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 96862208,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 72001,
+            "read": 720,
+            "jobs": 25
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 150.30918798599998,
+          "markerSequence": 151,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 317.6875,
+          "maxRssMiB": 318.1875,
+          "heapUsedMiB": 70.83914947509766,
+          "eventLoopP95Ms": 21.757951,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 96894976,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 90001,
+            "read": 900,
+            "jobs": 30
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 180.31396360099998,
+          "markerSequence": 181,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 317.703125,
+          "maxRssMiB": 318.1875,
+          "heapUsedMiB": 98.6315689086914,
+          "eventLoopP95Ms": 21.807103,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 96923648,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 108001,
+            "read": 1080,
+            "jobs": 36
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 210.311714439,
+          "markerSequence": 211,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 317.7265625,
+          "maxRssMiB": 318.265625,
+          "heapUsedMiB": 69.13060760498047,
+          "eventLoopP95Ms": 21.741567,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 96956416,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 126000,
+            "read": 1260,
+            "jobs": 42
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 240.31393587899998,
+          "markerSequence": 241,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 317.7890625,
+          "maxRssMiB": 318.265625,
+          "heapUsedMiB": 81.63099670410156,
+          "eventLoopP95Ms": 21.725183,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 96989184,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 144000,
+            "read": 1440,
+            "jobs": 49
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 270.31186869199996,
+          "markerSequence": 271,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 318.01171875,
+          "maxRssMiB": 318.55078125,
+          "heapUsedMiB": 68.5053482055664,
+          "eventLoopP95Ms": 21.676031,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97013760,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 162001,
+            "read": 1620,
+            "jobs": 54
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 300.313722977,
+          "markerSequence": 301,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 318.0546875,
+          "maxRssMiB": 318.671875,
+          "heapUsedMiB": 92.3310546875,
+          "eventLoopP95Ms": 21.594111,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97042432,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 180001,
+            "read": 1800,
+            "jobs": 60
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 330.313499784,
+          "markerSequence": 331,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 317.953125,
+          "maxRssMiB": 318.671875,
+          "heapUsedMiB": 64.55057525634766,
+          "eventLoopP95Ms": 21.594111,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97079296,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 198001,
+            "read": 1980,
+            "jobs": 66
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 360.322110682,
+          "markerSequence": 361,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 318.1015625,
+          "maxRssMiB": 318.671875,
+          "heapUsedMiB": 74.0760498046875,
+          "eventLoopP95Ms": 21.626879,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97116160,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 216008,
+            "read": 2161,
+            "jobs": 73
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 390.328918106,
+          "markerSequence": 391,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 318.046875,
+          "maxRssMiB": 318.70703125,
+          "heapUsedMiB": 50.44457244873047,
+          "eventLoopP95Ms": 21.594111,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97144832,
+          "walBytes": 33310232,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854206046,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854538928
+          },
+          "completed": {
+            "heartbeat": 234015,
+            "read": 2341,
+            "jobs": 79
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 420.33523504699997,
+          "markerSequence": 421,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 324.48828125,
+          "maxRssMiB": 325.11328125,
+          "heapUsedMiB": 55.65564727783203,
+          "eventLoopP95Ms": 21.790719,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97185792,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "running",
+            "lastAttempt": 1792854538974,
+            "lastSuccess": 1792854238902,
+            "error": null,
+            "latest": {
+              "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+              "createdAt": "2026-10-24T15:03:34.296Z",
+              "bytes": 96808960,
+              "verifiedAt": 1792854234722,
+              "drill": {
+                "checkedAt": 1792854234718,
+                "expired": 5,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 1,
+            "bytes": 96809614,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": null
+          },
+          "completed": {
+            "heartbeat": 252018,
+            "read": 2521,
+            "jobs": 85
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 450.324499728,
+          "markerSequence": 450,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 325.06640625,
+          "maxRssMiB": 325.52734375,
+          "heapUsedMiB": 61.653343200683594,
+          "eventLoopP95Ms": 21.807103,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97222656,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 270025,
+            "read": 2701,
+            "jobs": 91
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 480.332220861,
+          "markerSequence": 480,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 324.99609375,
+          "maxRssMiB": 325.56640625,
+          "heapUsedMiB": 85.22100067138672,
+          "eventLoopP95Ms": 21.741567,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97243136,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 288017,
+            "read": 2881,
+            "jobs": 97
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 510.327378699,
+          "markerSequence": 510,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 325.640625,
+          "maxRssMiB": 326.140625,
+          "heapUsedMiB": 58.14012145996094,
+          "eventLoopP95Ms": 21.659647,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97275904,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 306027,
+            "read": 3061,
+            "jobs": 103
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 540.328277229,
+          "markerSequence": 540,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 325.91015625,
+          "maxRssMiB": 326.41015625,
+          "heapUsedMiB": 81.90735626220703,
+          "eventLoopP95Ms": 21.610495,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97308672,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 324028,
+            "read": 3241,
+            "jobs": 109
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 570.336882442,
+          "markerSequence": 570,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 325.96875,
+          "maxRssMiB": 326.46875,
+          "heapUsedMiB": 53.976234436035156,
+          "eventLoopP95Ms": 21.561343,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97345536,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 342018,
+            "read": 3421,
+            "jobs": 115
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 600.3338863050001,
+          "markerSequence": 600,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 325.94140625,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 66.39740753173828,
+          "eventLoopP95Ms": 21.594111,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97366016,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 360025,
+            "read": 3601,
+            "jobs": 121
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 630.3403873020001,
+          "markerSequence": 630,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 318.90234375,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 48.111854553222656,
+          "eventLoopP95Ms": 21.561343,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97398784,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 378020,
+            "read": 3781,
+            "jobs": 127
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 660.351228427,
+          "markerSequence": 660,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 319.125,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 66.44596099853516,
+          "eventLoopP95Ms": 21.577727,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97431552,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 396007,
+            "read": 3961,
+            "jobs": 133
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 690.3359664000001,
+          "markerSequence": 690,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 319.015625,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 28.740341186523438,
+          "eventLoopP95Ms": 21.577727,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97460224,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 414031,
+            "read": 4141,
+            "jobs": 139
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 720.3391062950001,
+          "markerSequence": 720,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 317.62890625,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 51.09971618652344,
+          "eventLoopP95Ms": 21.577727,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97505280,
+          "walBytes": 35312552,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854539368,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792854879508
+          },
+          "completed": {
+            "heartbeat": 432027,
+            "read": 4321,
+            "jobs": 145
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 750.342497084,
+          "markerSequence": 750,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 319.75390625,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 82.7559814453125,
+          "eventLoopP95Ms": 21.626879,
+          "eventLoopMaxMs": 69.599231,
+          "mainBytes": 97533952,
+          "walBytes": 35460872,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "running",
+            "lastAttempt": 1792854880139,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": null
+          },
+          "completed": {
+            "heartbeat": 450030,
+            "read": 4501,
+            "jobs": 151
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 780.348447667,
+          "markerSequence": 780,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 320.6015625,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 38.331214904785156,
+          "eventLoopP95Ms": 21.659647,
+          "eventLoopMaxMs": 91.029503,
+          "mainBytes": 97558528,
+          "walBytes": 35460872,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "running",
+            "lastAttempt": 1792854880139,
+            "lastSuccess": 1792854579481,
+            "error": null,
+            "latest": {
+              "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+              "createdAt": "2026-10-24T15:09:09.102Z",
+              "bytes": 97157120,
+              "verifiedAt": 1792854571286,
+              "drill": {
+                "checkedAt": 1792854571283,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 193967388,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": null
+          },
+          "completed": {
+            "heartbeat": 468024,
+            "read": 4681,
+            "jobs": 157
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 810.342473592,
+          "markerSequence": 810,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 320.63671875,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 60.35746765136719,
+          "eventLoopP95Ms": 21.708799,
+          "eventLoopMaxMs": 91.029503,
+          "mainBytes": 97587200,
+          "walBytes": 35460872,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854880430,
+            "lastSuccess": 1792854927630,
+            "error": null,
+            "latest": {
+              "id": "9e22ee3a-4850-4225-80af-18e89516c404",
+              "createdAt": "2026-10-24T15:14:48.796Z",
+              "bytes": 97521664,
+              "verifiedAt": 1792854910656,
+              "drill": {
+                "checkedAt": 1792854910653,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 194680092,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792855227652
+          },
+          "completed": {
+            "heartbeat": 486036,
+            "read": 4861,
+            "jobs": 163
+          },
+          "dropped": {
+            "heartbeat": 0,
+            "read": 0,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 840.343983986,
+          "markerSequence": 840,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 320.66796875,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 84.63812255859375,
+          "eventLoopP95Ms": 21.676031,
+          "eventLoopMaxMs": 91.029503,
+          "mainBytes": 97619968,
+          "walBytes": 35460872,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854880430,
+            "lastSuccess": 1792854927630,
+            "error": null,
+            "latest": {
+              "id": "9e22ee3a-4850-4225-80af-18e89516c404",
+              "createdAt": "2026-10-24T15:14:48.796Z",
+              "bytes": 97521664,
+              "verifiedAt": 1792854910656,
+              "drill": {
+                "checkedAt": 1792854910653,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 194680092,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792855227652
+          },
+          "completed": {
+            "heartbeat": 504010,
+            "read": 5040,
+            "jobs": 169
+          },
+          "dropped": {
+            "heartbeat": 26,
+            "read": 1,
+            "jobs": 0
+          },
+          "errors": 0
+        },
+        {
+          "elapsedSeconds": 870.3439637470001,
+          "markerSequence": 870,
+          "backupChildrenRssMiB": null,
+          "rssMiB": 320.55078125,
+          "maxRssMiB": 326.48828125,
+          "heapUsedMiB": 46.175384521484375,
+          "eventLoopP95Ms": 21.692415,
+          "eventLoopMaxMs": 91.029503,
+          "mainBytes": 97656832,
+          "walBytes": 35460872,
+          "halted": false,
+          "timerError": false,
+          "backup": {
+            "phase": "idle",
+            "lastAttempt": 1792854880430,
+            "lastSuccess": 1792854927630,
+            "error": null,
+            "latest": {
+              "id": "9e22ee3a-4850-4225-80af-18e89516c404",
+              "createdAt": "2026-10-24T15:14:48.796Z",
+              "bytes": 97521664,
+              "verifiedAt": 1792854910656,
+              "drill": {
+                "checkedAt": 1792854910653,
+                "expired": 1,
+                "unknown": 53,
+                "revoked": 3320
+              }
+            },
+            "count": 2,
+            "bytes": 194680092,
+            "skipped": 0,
+            "budgetExceeded": false,
+            "enabled": true,
+            "intervalMinutes": 5,
+            "keep": 2,
+            "maxBytes": 536870912,
+            "nextAt": 1792855227652
+          },
+          "completed": {
+            "heartbeat": 522011,
+            "read": 5220,
+            "jobs": 175
+          },
+          "dropped": {
+            "heartbeat": 26,
+            "read": 1,
+            "jobs": 0
+          },
+          "errors": 0
+        }
+      ],
+      "final": {
+        "elapsedSeconds": 901.936561569,
+        "markerSequence": 902,
+        "backupChildrenRssMiB": null,
+        "rssMiB": 320.4375,
+        "maxRssMiB": 326.48828125,
+        "heapUsedMiB": 93.72589111328125,
+        "eventLoopP95Ms": 21.692415,
+        "eventLoopMaxMs": 91.029503,
+        "mainBytes": 97681408,
+        "walBytes": 35460872,
+        "halted": false,
+        "timerError": false,
+        "backup": {
+          "phase": "idle",
+          "lastAttempt": 1792854880430,
+          "lastSuccess": 1792854927630,
+          "error": null,
+          "latest": {
+            "id": "9e22ee3a-4850-4225-80af-18e89516c404",
+            "createdAt": "2026-10-24T15:14:48.796Z",
+            "bytes": 97521664,
+            "verifiedAt": 1792854910656,
+            "drill": {
+              "checkedAt": 1792854910653,
+              "expired": 1,
+              "unknown": 53,
+              "revoked": 3320
+            }
+          },
+          "count": 2,
+          "bytes": 194680092,
+          "skipped": 0,
+          "budgetExceeded": false,
+          "enabled": true,
+          "intervalMinutes": 5,
+          "keep": 2,
+          "maxBytes": 536870912,
+          "nextAt": 1792855227652
+        },
+        "originalHistoryPreserved": true,
+        "addedJobs": 720,
+        "allNewDemoJobsSucceededOnce": true,
+        "historySHA256": "585ee254d3ac7d2d74aaaf6b001e0c0dbd50c74c43bcb55d2f3aaac2d2a8a717",
+        "jobs": 100774
+      },
+      "backups": [
+        {
+          "id": "e20a16c4-b152-4150-bac1-c1f30589a90d",
+          "startedSeconds": 60.197358026,
+          "finishedSeconds": 93.37683410999999,
+          "markerBefore": 61,
+          "markerAfter": 94,
+          "writesContinued": true,
+          "bytes": 96808960,
+          "drill": {
+            "checkedAt": 1792854234718,
+            "expired": 5,
+            "unknown": 53,
+            "revoked": 3320
+          },
+          "retainedCount": 1,
+          "retainedBytes": 96809614,
+          "skipped": 0
+        },
+        {
+          "id": "d0d51d98-866c-4926-b64b-7c28be2dad22",
+          "startedSeconds": 393.483486944,
+          "finishedSeconds": 433.917551706,
+          "markerBefore": 394,
+          "markerAfter": 434,
+          "writesContinued": true,
+          "bytes": 97157120,
+          "drill": {
+            "checkedAt": 1792854571283,
+            "expired": 1,
+            "unknown": 53,
+            "revoked": 3320
+          },
+          "retainedCount": 2,
+          "retainedBytes": 193967388,
+          "skipped": 0
+        },
+        {
+          "id": "9e22ee3a-4850-4225-80af-18e89516c404",
+          "startedSeconds": 734.600302293,
+          "finishedSeconds": 782.111922047,
+          "markerBefore": 735,
+          "markerAfter": 782,
+          "writesContinued": true,
+          "bytes": 97521664,
+          "drill": {
+            "checkedAt": 1792854910653,
+            "expired": 1,
+            "unknown": 53,
+            "revoked": 3320
+          },
+          "retainedCount": 2,
+          "retainedBytes": 194680092,
+          "skipped": 0
+        }
+      ],
+      "restored": [
+        {
+          "backup": "backup-2026-10-24T15-09-03-697Z-d0d51d98-866c-4926-b64b-7c28be2dad22",
+          "bytes": 97157120,
+          "records": 123901,
+          "jobs": 100370,
+          "markerSequence": 394,
+          "terminalHash": "5f1e1b22679d3d570dbf81dffb6a3f629b96d15c6e03d8b4303345d3160231f0",
+          "auditHash": "e4f43b7460bfe65c4f335d70007d07cd33004ccebb067ab8c22c2bc988aaa8c5",
+          "terminalHistoryPreserved": true,
+          "auditPreserved": true,
+          "sessionsRevoked": true,
+          "deviceTrustRevoked": true,
+          "demoRulesCleared": true,
+          "queuedExpired": 1,
+          "runningOrUnknown": 53,
+          "noReplayAfterTicks": 3
+        },
+        {
+          "backup": "backup-2026-10-24T15-14-44-748Z-9e22ee3a-4850-4225-80af-18e89516c404",
+          "bytes": 97521664,
+          "records": 124241,
+          "jobs": 100642,
+          "markerSequence": 735,
+          "terminalHash": "721e0069e73554d89c60d4c07a2df287f6c0c0640397db0898fb33be54a12f95",
+          "auditHash": "049e8844f66b6385bf6beff39e8b903a380c21c5d59b189416865841285cd9e1",
+          "terminalHistoryPreserved": true,
+          "auditPreserved": true,
+          "sessionsRevoked": true,
+          "deviceTrustRevoked": true,
+          "demoRulesCleared": true,
+          "queuedExpired": 1,
+          "runningOrUnknown": 53,
+          "noReplayAfterTicks": 3
+        }
+      ],
+      "windowsQoSVerified": false,
+      "productionCapacityVerified": false,
+      "liveSourceUnchangedByRestore": true,
+      "quickProfile": false,
+      "automaticIntervalSeconds": 300,
+      "startupDelaySeconds": 60,
+      "retentionKeep": 2,
+      "sourcesSHA256": {
+        "scripts/measure-operations-load.py": "c3bb4683bef3c1cf72dc1a3e4d80d14b6c76567d8f2960587b1b91dedf54ccaa",
+        "scripts/operations-load-worker.ts": "3624b3d7738970fc38ca8dc3c44e9eee4fc99760fb3e7d1faeb3749f2a72afe9",
+        "server/core.ts": "6bea23a0d2b827810d5b21c827a870e8557698d79e3c02e6365063820f6c2de2",
+        "server/app.ts": "2450d3a9653829aa0395a9d8ca935a640e057417bb5d64ec36202bc26b181ba4",
+        "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+        "server/database-backup.ts": "bb7fc280df0a1da656ed4cb8bd24fc7be724ce08774dc1f39a76765f58135fdc",
+        "server/operations.ts": "871b503e106da6c947cdcb491cfe41f8a925b95c9ec91c3bb0cc86e1755c24ba",
+        "server/automatic-backup.ts": "7897f5d052a889d2b8bf11862f4e6b5c7304b26cf5858730ec85cdb1f44f499d",
+        "server/backup-task.ts": "c02f9e476af2fc91000232641db26d0a31455ae71049f7653567922d5bf8b8ea"
+      },
+      "passed": false
+    }
+  ],
+  "sourcesSHA256": {
+    "package-lock.json": "b05336b4ea3e559d446ff96c886366b8f4254ab4b5a956fb3fe043346eedf214",
+    "package.json": "d02c3fccf0ab0fb7b75a2c628e4753902b00772c89e6ce183eafa637c4ab650a",
+    "scripts/measure-operations-load.py": "b94e86555ba8985088650c11d00170b0d104bd60a66029279e0e8b520127e450",
+    "scripts/operations-load-worker.ts": "3624b3d7738970fc38ca8dc3c44e9eee4fc99760fb3e7d1faeb3749f2a72afe9",
+    "server/app.ts": "2450d3a9653829aa0395a9d8ca935a640e057417bb5d64ec36202bc26b181ba4",
+    "server/audit-schema.ts": "bff188b89e9882929c4c7686db3e639f7afe45f640c37ec941e312f2b3e34dec",
+    "server/audit.ts": "a04b5a130d991167b0032abeb13e9b0ac568a1edab7ab41a08ef47398b2b8f02",
+    "server/automatic-backup.ts": "7897f5d052a889d2b8bf11862f4e6b5c7304b26cf5858730ec85cdb1f44f499d",
+    "server/backup-task.ts": "c02f9e476af2fc91000232641db26d0a31455ae71049f7653567922d5bf8b8ea",
+    "server/core.ts": "6bea23a0d2b827810d5b21c827a870e8557698d79e3c02e6365063820f6c2de2",
+    "server/database-backup.ts": "bb7fc280df0a1da656ed4cb8bd24fc7be724ce08774dc1f39a76765f58135fdc",
+    "server/database-storage.ts": "c0b548628de80b8700d2e285d77747d9db2ae009b5e2efb67edc3f60fd635275",
+    "server/device-access.ts": "bc049198613a5b191e01340b08f37c0979e0f14d9e83b8b01b8b0c5c76604dff",
+    "server/index.ts": "a544cacc24326dc870bccb227836b1e0420ca8cebbd2a66811b1f2997d178677",
+    "server/job-queries.ts": "d41a44dde3a4f86022afb84a73f69ebc214da2519474a6b84a18aea05f0e9c22",
+    "server/local-owner.ts": "617b80cc1d84117b2449d8e8c9a159a30ec57157903b84fb4d63e137f68c1f7d",
+    "server/login-limiter.ts": "da499d88e7655b3956d45eabf2c46e3e9146a2b635d80ce23261682b3e2db9ac",
+    "server/migrations.ts": "5f01e06070fa11e1c29f18272ac5c9213a5791226e74a628baff46a2bb815ecc",
+    "server/operations.ts": "871b503e106da6c947cdcb491cfe41f8a925b95c9ec91c3bb0cc86e1755c24ba",
+    "server/queue-queries.ts": "9719d6914208cc35e50abe3325787a1969f26b02fabb6f0dfbc290857161b57e",
+    "server/snapshots.ts": "cfa0a263e4729c21fd21c6641ab1da2d32f6906a20b7ce8ca03745696feac457",
+    "server/storage-errors.ts": "e75e66bbdaf101de7b0e3f1209f618e5ce0bcbf2c4314a4e6c3ff8b162a0db5b",
+    "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+    "tests/operations_load_generator.py": "1a9658ddb327c6d8259d0d46016c37deaae8c3490ba815edece3b550b032643f"
+  },
+  "notes": [
+    "Quick measured earlier harness fingerprints, preserved unchanged.",
+    "Full profile uses actual Operations scheduler, child, restore and retention.",
+    "No production service, external PC or GitHub involved.",
+    "15 minutes is not an hours-long capacity guarantee; 600/s cycles 3316 protocol identities in about 5.53 seconds."
+  ],
+  "regression": {
+    "typecheck": true,
+    "nodeTests": 165,
+    "generatorUnitTests": 2,
+    "uiChanged": false,
+    "productServerChanged": false,
+    "windowsVerified": false
+  }
+}

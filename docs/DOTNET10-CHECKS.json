@@ -1,0 +1,68 @@
+{
+  "format": "paneltech-dotnet10-checks",
+  "formatVersion": 1,
+  "checkedAt": "2026-10-24T16:03:24.286171+00:00",
+  "sdk": "10.0.402",
+  "runtime": "10.0.13",
+  "tfm": "net10.0",
+  "windowsServicesPackage": "10.0.13",
+  "supportEnd": "2028-11-14",
+  "officialMetadata": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json",
+  "sdkArchive": {
+    "name": "dotnet-sdk-linux-x64.tar.gz",
+    "rid": "linux-x64",
+    "url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.402/dotnet-sdk-10.0.402-linux-x64.tar.gz",
+    "hash": "1904a98dda2db34ba78ba3c4fb1b224455329af91c341d83547843c1839e112b04ae699ee92fa2449a8f62249196a938723078c0c60b9f65c88539d5687729c2"
+  },
+  "checks": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "warnings": 0,
+    "errors": 0,
+    "selfTests": 31,
+    "processRecovery": 32,
+    "apiDryRun": true,
+    "accessFaultProxy": true,
+    "strengthenedNet10Restart": true,
+    "actualNet8ToNet10StateMigration": true,
+    "identityTokenReceiptsPreserved": true,
+    "noReenrollmentOrReplay": true,
+    "installerIdempotence": true,
+    "bashSyntax": true,
+    "cleanArchiveLockedRestoreBuildSelfTest": true
+  },
+  "previousMigrationArtifact": {
+    "tfm": "net8.0",
+    "dllSHA256": "cfe335f67f25e88b68098ee323b0537a0ab8b42d1ebc43f519662638ce75cbdd",
+    "includedInSourceZip": false
+  },
+  "limits": [
+    "Linux only; no Windows/SCM/NetQos/ACL/NTFS/UWF/power or real PCs.",
+    "Exact Windows versions not provided; no blanket OS compatibility claim.",
+    "No win-x64 publish/signing/service deployment tested.",
+    "No GitHub, no external service publication.",
+    "Source state format and C#/PowerShell algorithms unchanged; .NET 10 hosting behavior tested in Linux processes."
+  ],
+  "sourcesSHA256": {
+    "agent/Access.cs": "a5f2e9bf72b2a6bf5f4fac4afbe46bba94af5bec9d743a2a2c299ad66dc0344c",
+    "agent/AgentRuntime.cs": "d2d8952c1b91c79f16c90b4544498d51c52f969ea84e1958438a3dee276ab45e",
+    "agent/Contracts.cs": "92a0ed6be1f60890b397aadd0aebcfeab56a2ddf045a79ced6dff16b300f159e",
+    "agent/PanelTech.Agent.csproj": "edede516b96cec89ea74af669c4196f912f5baef656728701ac637f9a92707cc",
+    "agent/Program.cs": "51ea26c203295d9635592a9fe32314862fa05c9e8877c2c032fdcad97cc232dd",
+    "agent/Qos.cs": "db09b53c600394477380c13979e9b36195478adf98c8d39e4b25834437420fbb",
+    "agent/SelfTest.cs": "2835a90547440dda06d311f82997d104ad04748933783ba3d64c53ad8302b14a",
+    "agent/Worker.cs": "8d8aa8fed3de3c7fa92ce7ee153d139ad88990cb8082a1b8ef6d13953d4c1723",
+    "agent/global.json": "81ae2087dbfb46027fd94748351fb4b1ab24145fbb52544a2822bf128e2e48f1",
+    "agent/packages.lock.json": "8d734d9f8d2743a768752ac456d9190bbc54327e6757752f683fe3d604f25cc8",
+    "agent/qos.ps1": "b1f7e0a1bc63ff887c778308cc1ebf54ac1776bd2a79a5750e6c1c9f40364144",
+    "scripts/check-agent.sh": "acc8fac45e9113e3f81dd9446c8daa29bc5939e19b852ad189d90412bcdc549e",
+    "scripts/install-dotnet.py": "79069e88c39110884854a45ee4c240ed2a296bc325c7cc2257436244c246c967",
+    "scripts/setup-cloud.sh": "77826a66735241ad033f8866b2cfd3f4d19f4fe53b6df8b383b23af0283085c9",
+    "tests/agent-harness/AgentHarness.csproj": "184e3fa7062f80618e52eb16fa1b021508b5f84ea859fe51eedc1c29752838c6",
+    "tests/agent-harness/Program.cs": "8b57ace7177f393f031436bbcf052e7279f0f754ca119a695a93b03dd8e88ff9",
+    "tests/agent-harness/packages.lock.json": "777beeaafd70053e98536a50dfb0e0ecdbd6dc1ec38287235b70a5d4078a4965",
+    "tests/agent_access_smoke.py": "47492788c0f83e93f580566f1f46770a63e59d877236fd933f86bb286579e7a7",
+    "tests/agent_recovery.py": "6538960b1f5c25f57719e6bbeeb3aa790bb290d48fe0d54ab6a4a1d7713c52ff",
+    "tests/agent_smoke.py": "68de268410b7e981b443139e61514ea9b641188babf49af814ff42f226a0e965"
+  }
+}

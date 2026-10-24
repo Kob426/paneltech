@@ -1,0 +1,106 @@
+{
+  "format": "paneltech-operations-checks",
+  "formatVersion": 1,
+  "checkedAt": "2026-10-24T14:12:59.897693+00:00",
+  "block": "4.38 / local part of 7.6",
+  "platform": "Linux / Node 24.19.0 / Python Playwright Chromium",
+  "schemaVersion": 5,
+  "verification": {
+    "fullCheckWeb": {
+      "exitCode": 0,
+      "nodeTestsAtRun": 164,
+      "chromiumScenarios": 8,
+      "databaseCliApi": true,
+      "realWallClockSchedule": {
+        "ok": true,
+        "profile": "real startup timer + live API + verified backup/restore drill + restart",
+        "elapsedSeconds": 60.45,
+        "successfulMonitoringReads": 121,
+        "copiesAfterRestart": 1,
+        "realAgents": false
+      }
+    },
+    "finalSupplement": {
+      "exitCode": 0,
+      "typecheck": true,
+      "nodeTests": 165,
+      "newOperationsTests": 15,
+      "build": true,
+      "operationsBrowserWidths": [
+        1512,
+        390
+      ],
+      "reason": "Added deterministic metadata-write failure coverage and clearer failure message; unknown hidden entries are retained and counted."
+    },
+    "agentApiRegression": {
+      "exitCode": 0,
+      "workerDryRun": true,
+      "accessLostResponseRecoveryDryRun": true,
+      "csharpChanged": false,
+      "buildSelfProcessRerun": false
+    },
+    "cleanArchive": {
+      "offlineNpmCi": true,
+      "productionBuild": true,
+      "runtime": {
+        "ok": true,
+        "cleanArchive": true,
+        "command": "npm run demo",
+        "mode": "DEMO",
+        "realAgents": false,
+        "manualBackup202": true,
+        "childAndRestoreDrill": true,
+        "cliVerifyAndSeparateRestore": true
+      },
+      "containsDatabaseOrState": false
+    }
+  },
+  "defaults": {
+    "enabled": true,
+    "startupDelaySeconds": 60,
+    "intervalMinutes": 360,
+    "keep": 7,
+    "maxMiB": 1024,
+    "retainAtLeastOne": true,
+    "restoreEachNewCopyBeforeRetention": true,
+    "processTimeoutSeconds": 120
+  },
+  "browserChecks": [
+    "real backup and isolated restore",
+    "lost committed POST without mutation replay",
+    "real filesystem lock and explicit retry after fixing",
+    "stale GET snapshot and disabled action",
+    "admin vs operator",
+    "dark desktop/mobile contrast and viewport; rendered screenshots inspected"
+  ],
+  "limits": [
+    "Runtime schedule only while one API process runs; system clocks must remain synchronized.",
+    "Budget is soft, retains at least one copy and excludes unmanaged/corrupt/partial files; transient backup+restore space required.",
+    "Status inventory is as of previous verification; status persistence itself can fail with disk errors.",
+    "No off-site, encryption, external notifications or monitoring of stopped OS/API.",
+    "No Windows, actual club PCs, real QoS, NTFS/ACL/SCM, actual disk exhaustion/power failure, or final infrastructure security review.",
+    "Previous LOAD/SOAK/AGENT-ACCESS reports retain original fingerprints; new worker+restore load was not measured."
+  ],
+  "githubUsed": false,
+  "servicePublished": false,
+  "realDevicesConnected": false,
+  "sourcesSHA256": {
+    "server/automatic-backup.ts": "7897f5d052a889d2b8bf11862f4e6b5c7304b26cf5858730ec85cdb1f44f499d",
+    "server/operations.ts": "871b503e106da6c947cdcb491cfe41f8a925b95c9ec91c3bb0cc86e1755c24ba",
+    "server/backup-task.ts": "c02f9e476af2fc91000232641db26d0a31455ae71049f7653567922d5bf8b8ea",
+    "server/database-backup.ts": "bb7fc280df0a1da656ed4cb8bd24fc7be724ce08774dc1f39a76765f58135fdc",
+    "server/index.ts": "a544cacc24326dc870bccb227836b1e0420ca8cebbd2a66811b1f2997d178677",
+    "server/app.ts": "2450d3a9653829aa0395a9d8ca935a640e057417bb5d64ec36202bc26b181ba4",
+    "shared/operations.ts": "528315c678d49dbcd0de721f7bfdc509420675b70401da000c367a0197b72eaa",
+    "web/src/components/ServerOperations.vue": "8d34913bc7d71fd6177efa065fe02d1304c87280f1d11ab785fa8bb99a65785d",
+    "web/src/App.vue": "af66db7014978650fea00558d2f2a3f4daf967e896fe8c4160a67b98cf39da25",
+    "web/src/style.css": "73ce2a35cc6586c3b71e9f4dd7c5c5a0148bc9b551797837b03618534f96bdb8",
+    "web/src/components/AuditPanel.vue": "8d39fd1f190f21eb379827f1137e3a8db8998e31cc3813c4033b09627ae4e428",
+    "tests/operations.test.ts": "62e3009f94c1252f23444edb9884fe394c3c534c7a8d96a2a8b712d8fdfec027",
+    "tests/operations_smoke.py": "32a84ec514b9347625b635bb76a8f4a61dfe0d315d92958559df135e632225ec",
+    "tests/browser_operations.py": "14ce7c53c16b1eedf6ecdc5aed16d8444fa469d4510df677be68c949dee4823d",
+    "scripts/check-web.sh": "84827c61c60d54db37b73fe8c9bbdd309f37a1a7ce528a8118e00533f3b0db08",
+    "package.json": "c4678eaa4522b438a8eefea4535cc97e0f469d517d57f6e482cef684546fbe9a",
+    "package-lock.json": "b05336b4ea3e559d446ff96c886366b8f4254ab4b5a956fb3fe043346eedf214"
+  }
+}

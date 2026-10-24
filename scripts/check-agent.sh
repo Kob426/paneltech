@@ -19,6 +19,7 @@ export DOTNET_GENERATE_ASPNET_CERTIFICATE=false
   "$paneltech_dotnet" restore ../tests/agent-harness/AgentHarness.csproj --locked-mode
   "$paneltech_dotnet" build ../tests/agent-harness/AgentHarness.csproj --no-restore -c Release -m:2
 )
-"$paneltech_dotnet" agent/bin/Release/net8.0/PanelTech.Agent.dll --self-test
+"$paneltech_dotnet" agent/bin/Release/net10.0/PanelTech.Agent.dll --self-test
 python3 tests/agent_recovery.py
 python3 tests/agent_smoke.py
+python3 tests/agent_access_smoke.py

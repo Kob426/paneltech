@@ -11,9 +11,15 @@ import urllib.request
 ROOT = Path(__file__).resolve().parents[1]
 DOTNET = os.environ.get("PANELTECH_DOTNET") or shutil.which("dotnet") or "/workspace/.tools/dotnet/dotnet"
 BASE = "http://127.0.0.1:3101/api"
+CURRENT_DLL = Path(os.environ.get("PANELTECH_AGENT_DLL", str(ROOT / "agent/bin/Release/net10.0/PanelTech.Agent.dll"))).resolve()
 
 
-def run():
+def run(previous_dll=None):
+    if previous_dll is not None:
+        previous_dll=Path(previous_dll).resolve()
+        assert previous_dll.is_file(), "Previous agent DLL is missing"
+        metadata=json.loads(previous_dll.with_suffix('.runtimeconfig.json').read_text())
+        assert metadata['runtimeOptions']['tfm']=='net8.0', "Migration fixture requires a real net8.0 package"
     with tempfile.TemporaryDirectory(prefix="paneltech-agent-test-") as temp:
         temp = Path(temp)
         log = open(temp / "processes.log", "w+")
@@ -36,7 +42,7 @@ def run():
             print("fixture jobs", request("/history")[0]); raise AssertionError("Condition timed out")
 
         def start_agent(enroll=False):
-            args = [DOTNET, str(ROOT / "agent/bin/Release/net8.0/PanelTech.Agent.dll"), "--config", str(temp / "config.json")]
+            args = [DOTNET, str(previous_dll if enroll and previous_dll is not None else CURRENT_DLL), "--config", str(temp / "config.json")]
             if enroll:
                 args += ["--enrollment-file", str(temp / "enroll.txt")]
             return subprocess.Popen(args, cwd=ROOT, env=dict(os.environ, DOTNET_CLI_HOME=str(temp / "dotnet-home")), stdout=log, stderr=log)
@@ -74,23 +80,30 @@ def run():
             assert device["inspectedAt"] is None, "Dry-run must not claim factual inspection"
             jobs, _ = request("/jobs", "POST", {"deviceIds": [device["id"]], "gameId": game["id"], "variant": 36, "operation": "apply_marking"})
             def finished():
-                return request("/history")[0][0]["state"] == "failed"
+                return request("/history")[0]["items"][0]["state"] == "failed"
             wait(finished)
-            job = request("/history")[0][0]
+            job = request("/history")[0]["items"][0]
             assert job["id"] == jobs[0]["id"] and job["code"] == "dry_run"
             assert request("/state")[0]["devices"][0]["rules"] == []
             stop(agent)
+            old_identity=json.loads((temp/"state/identity.json").read_text())
+            old_receipts=json.loads((temp/"state/receipts.json").read_text())
+            assert old_receipts, "No persisted job receipt"
             before = request("/state")[0]["devices"][0]["lastSeen"]
             (temp / "enroll.txt").unlink()
             agent = start_agent()
             wait(lambda: request("/state")[0]["devices"][0]["lastSeen"] > before)
             state = request("/state")[0]
             assert len(state["devices"]) == 1 and state["devices"][0]["id"] == device["id"]
+            assert json.loads((temp/"state/identity.json").read_text())==old_identity, "Identity or token changed during upgrade"
+            assert {r["job"]["id"] for r in json.loads((temp/"state/receipts.json").read_text())}=={r["job"]["id"] for r in old_receipts}, "Receipt history changed during upgrade"
+            assert request("/history")[0]["items"][0]["attempts"]==1, "Upgrade redelivered a command"
             assert state["devices"][0]["inspectedAt"] is None
             request("/admin/devices/" + device["id"] + "/revoke", "POST", {})
             last = request("/state")[0]["devices"][0]["lastSeen"]
             assert agent.wait(timeout=8) == 1, "Revoked worker must stop with an error, preserving state"
             assert request("/state")[0]["devices"][0]["lastSeen"] == last
+            if previous_dll is not None:print("PASS actual .NET 8 → 10 migration: same identity/token, persisted receipts, no re-enrollment or command replay; Linux dry-run only")
             print("PASS .NET Linux worker: enrollment → polling → dry-run rejected as QoS success → persistent identity/token/outbox → process restart → revocation; no Windows operations")
         except Exception:
             log.flush()
@@ -104,4 +117,4 @@ def run():
 
 
 if __name__ == "__main__":
-    run()
+    run(os.environ.get("PANELTECH_PREVIOUS_AGENT_DLL"))

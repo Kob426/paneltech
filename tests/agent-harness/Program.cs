@@ -12,14 +12,15 @@ using(var probe=new HttpClient{BaseAddress=new Uri(config.ServerUrl),Timeout=Tim
 var runtime=new TestRuntime(config.StateDirectory,args.ElementAtOrDefault(1)??"",long.Parse(args.ElementAtOrDefault(2)??"0"),args.ElementAtOrDefault(3)??"test-boot");
 await Host.CreateDefaultBuilder().ConfigureLogging(l=>l.ClearProviders().AddSimpleConsole()).ConfigureServices(s=>s.AddHostedService(p=>new Worker(config,true,null,p.GetRequiredService<ILogger<Worker>>(),new FakeExecutor(config.StateDirectory),runtime,p.GetRequiredService<IHostApplicationLifetime>()))).Build().RunAsync();
 sealed class TestRuntime(string directory,string barrier,long offset,string boot):AgentRuntime {
- public override long Now=>base.Now+offset;
+ public override long Now=>base.Now+offset+(long.TryParse(File.Exists(Path.Combine(directory,"clock-offset"))?File.ReadAllText(Path.Combine(directory,"clock-offset")):"0",out var jump)?jump:0);
  public override Task<string> BootId(CancellationToken ct)=>Task.FromResult(boot);
  public override Task Delay(TimeSpan duration,CancellationToken ct)=>Task.Delay(30,ct);
- public override async Task Checkpoint(string name,CancellationToken ct){if(name!=barrier)return;File.WriteAllText(Path.Combine(directory,"barrier"),name);while(!File.Exists(Path.Combine(directory,"continue")))await Task.Delay(10,ct);}
+ public override async Task Checkpoint(string name,CancellationToken ct){var fail=Path.Combine(directory,"fail-"+name);if(File.Exists(fail)){Directory.CreateDirectory(Path.Combine(directory,"receipts.json.tmp"));}if(name!=barrier)return;File.WriteAllText(Path.Combine(directory,"barrier"),name);while(!File.Exists(Path.Combine(directory,"continue")))await Task.Delay(10,ct);}
 }
 sealed class FakeExecutor(string directory):IAgentExecutor {
  public Task<Rule[]> Inspect(string bootId,CancellationToken ct)=>Task.FromResult(Disk.Read<Rule[]>(Path.Combine(directory,"fake-rules.json"))??[]);
  public Task<Result> Execute(Job j,CancellationToken ct){
+  if(File.Exists(Path.Combine(directory,"executor-throws")))throw new InvalidDataException("SECRET_STATE_CANARY");
   File.AppendAllText(Path.Combine(directory,"fake-executions.txt"),j.Id+Environment.NewLine);
   Rule[] rules=j.Operation=="apply_marking"?j.Exes.Select(e=>new Rule("TEST-"+e,j.GameId,e,j.Variant!.Value,true)).ToArray():[];
   Disk.Write(Path.Combine(directory,"fake-rules.json"),rules);

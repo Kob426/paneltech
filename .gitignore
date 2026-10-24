@@ -9,3 +9,30 @@ __pycache__/
 test-results/
 tests/agent-harness/bin/
 tests/agent-harness/obj/
+
+# Database copies and recovery staging contain confidential application data.
+backup-*/
+automatic-*/
+.drill-*/
+.partial-*/
+.restore-*.sqlite*
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite-journal
+.restore-*/
+
+# Agent identity, journals, recovery capabilities and quarantined local state.
+agent-state/
+**/identity.json*
+**/receipts.json*
+**/ownership.json*
+**/rollback.json*
+**/recovery-plan.json*
+quarantine-*/
+paneltech-recovery-*.json
+
+# Local release packages and temporary packaging directories.
+.artifacts/
+.paneltech-agent-build-*/
+paneltech-agent-win-x64*.zip

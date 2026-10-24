@@ -1,0 +1,1099 @@
+{
+  "kind": "synthetic-linux-load-comparison",
+  "date": "2026-10-24",
+  "scope": "one local Node API process; no Windows, real PCs, external network or TLS",
+  "clubs": 52,
+  "pcsPerClub": 65,
+  "devices": 3380,
+  "completedJobProfiles": [
+    10000,
+    100000
+  ],
+  "unresolvedJobs": 52,
+  "auditEventsPerProfile": [
+    2000,
+    20000
+  ],
+  "httpReadRequests": 120,
+  "httpHeartbeatRequests": 3380,
+  "httpMixedRequests": 3500,
+  "httpConcurrency": {
+    "read": 6,
+    "heartbeat": 32,
+    "mixed": 38
+  },
+  "windowsQoSVerified": false,
+  "productionCapacityVerified": false,
+  "beforeSchema": 4,
+  "afterSchema": 5,
+  "node": "v24.19.0",
+  "sqlite": "3.53.3",
+  "cpuModel": "AMD EPYC 9V74 80-Core Processor",
+  "httpDriverSHA256": "1ff0faaae2b40bb1d1c2acab3134933c08fe5627b9455db027127e1c798c3134",
+  "beforeSourceSHA256": {
+    "server/core.ts": "cbeca2a6cbd3b976a0431c4dd3997e687671e8b72d32f27adf30a451666e64bc",
+    "server/app.ts": "6b4a5d5f3eab3cb9bc011416d43a8099bc552dac7acea6e85e1b1ae19a7b56c1",
+    "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+    "server/migrations.ts": "6d43032180c6e67809c6ff71c71e99b95324a663db82952d4912d5b8efd9a15c",
+    "server/job-queries.ts": "8751e89b30ca62dbd671d954fb2b8c2b4558dcc2dcdbe06683b1d1d484a921bf",
+    "server/audit.ts": "a04b5a130d991167b0032abeb13e9b0ac568a1edab7ab41a08ef47398b2b8f02"
+  },
+  "afterSourceSHA256": {
+    "server/core.ts": "ee3df365da12e00fd022a45ec8e008c5c6cec5b77572a4bb8adfee5903c68bf9",
+    "server/app.ts": "75a0e4f52e8f86de100c3120a64a7d91efe1c014a6096c6230b5323c71f139a3",
+    "server/store.ts": "78aec5d9a4d63619749b7b7516ff2e1299fb32321763f7eac2610cb79dae7673",
+    "server/migrations.ts": "5f01e06070fa11e1c29f18272ac5c9213a5791226e74a628baff46a2bb815ecc",
+    "server/job-queries.ts": "d41a44dde3a4f86022afb84a73f69ebc214da2519474a6b84a18aea05f0e9c22",
+    "server/audit.ts": "a04b5a130d991167b0032abeb13e9b0ac568a1edab7ab41a08ef47398b2b8f02",
+    "server/queue-queries.ts": "9719d6914208cc35e50abe3325787a1969f26b02fabb6f0dfbc290857161b57e"
+  },
+  "beforeFixtures": [
+    {
+      "seeded": true,
+      "clubs": 52,
+      "pcs": 3380,
+      "completedJobs": 10000,
+      "schema": 4,
+      "bytes": 10792960,
+      "node": "v24.19.0",
+      "sqlite": "3.53.3",
+      "cpu": "AMD EPYC 9V74 80-Core Processor"
+    },
+    {
+      "seeded": true,
+      "clubs": 52,
+      "pcs": 3380,
+      "completedJobs": 100000,
+      "schema": 4,
+      "bytes": 96366592,
+      "node": "v24.19.0",
+      "sqlite": "3.53.3",
+      "cpu": "AMD EPYC 9V74 80-Core Processor"
+    }
+  ],
+  "afterFixtures": [
+    {
+      "seeded": true,
+      "clubs": 52,
+      "pcs": 3380,
+      "completedJobs": 10000,
+      "schema": 5,
+      "bytes": 11153408,
+      "node": "v24.19.0",
+      "sqlite": "3.53.3",
+      "cpu": "AMD EPYC 9V74 80-Core Processor"
+    },
+    {
+      "seeded": true,
+      "clubs": 52,
+      "pcs": 3380,
+      "completedJobs": 100000,
+      "schema": 5,
+      "bytes": 96714752,
+      "node": "v24.19.0",
+      "sqlite": "3.53.3",
+      "cpu": "AMD EPYC 9V74 80-Core Processor"
+    }
+  ],
+  "notes": [
+    "Core time excludes opening the Store; startupMs measures Store open/validation only.",
+    "A core worker has a 30 s wall cap including setup; HTTP has a 20 s request window after startup/login.",
+    "Timeout results are censored; errors after forced termination are harness-aborted connections. No speedup ratio is inferred from timeouts.",
+    "The HTTP driver function is identical before/after; backend sources were frozen locally before optimization.",
+    "Direct core before-profile samples were captured before adding the optional tick64 phase; timed operations/repetition counts are unchanged.",
+    "Fixed Core clock prevents differing TTL/offline outcomes during slow measurements; HTTP clock advances with real elapsed time.",
+    "maxRssMiB includes startup/validation/operation peak in the Node worker, excluding Python clients.",
+    "Short closed-loop runs with new TCP connections; no prolonged soak, constant offered-QPS capacity or real network/Windows proof."
+  ],
+  "before": [
+    {
+      "completedJobs": 10000,
+      "phase": "expire",
+      "startupMs": 1182.054091,
+      "memoryStartMiB": 115.09,
+      "maxRssMiB": 357.07,
+      "heapUsedMiB": 65.84619140625,
+      "timesMs": [
+        435.22029699999985,
+        317.08259099999987,
+        354.20013199999994
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "status": "ok",
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "poll-idle",
+      "startupMs": 980.234628,
+      "memoryStartMiB": 116.71,
+      "maxRssMiB": 368.34,
+      "heapUsedMiB": 76.71340942382812,
+      "timesMs": [
+        925.5783529999999,
+        832.3442399999999,
+        863.09141
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "status": "ok",
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "create65",
+      "startupMs": 930.8267899999998,
+      "memoryStartMiB": 115.78,
+      "maxRssMiB": 465.41,
+      "heapUsedMiB": 141.29891204833984,
+      "timesMs": [
+        17776.918568999998
+      ],
+      "historyUnchanged": null,
+      "addedJobs": 65,
+      "status": "ok",
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "tick",
+      "status": "timeout",
+      "wallSeconds": 30.052,
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "expire",
+      "startupMs": 8352.896499999999,
+      "memoryStartMiB": 139.47,
+      "maxRssMiB": 1326.45,
+      "heapUsedMiB": 454.2595901489258,
+      "timesMs": [
+        3433.39969,
+        3043.5314929999986,
+        3094.1594330000007
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "status": "ok",
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "poll-idle",
+      "status": "timeout",
+      "wallSeconds": 30.082,
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "create65",
+      "status": "timeout",
+      "wallSeconds": 30.096,
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "tick",
+      "status": "timeout",
+      "wallSeconds": 30.059,
+      "processWallLimitSeconds": 30
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "tick64",
+      "processWallLimitSeconds": 30,
+      "status": "timeout",
+      "wallSeconds": 30.053
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "tick64",
+      "processWallLimitSeconds": 30,
+      "status": "timeout",
+      "wallSeconds": 30.066
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "http-read",
+      "startupMs": 1146.625727,
+      "memoryStartMiB": 114.9,
+      "status": "timeout",
+      "requestWindowSeconds": 20,
+      "requests": 120,
+      "completed": 58,
+      "errors": 6,
+      "errorsByType": {
+        "ConnectionResetError": 5,
+        "RemoteDisconnected": 1
+      },
+      "concurrency": 6,
+      "elapsedSeconds": 20.021,
+      "throughputRps": 2.9,
+      "latencyP50Ms": 2037.8420959750656,
+      "latencyP95Ms": 2142.076799995266,
+      "latencyMaxMs": 2145.6827460206114,
+      "maxResponseBytes": 2072608,
+      "stateMaxResponseBytes": 2072608,
+      "stateDevices": 3380,
+      "read": {
+        "completed": 58,
+        "latencyP50Ms": 2037.8420959750656,
+        "latencyP95Ms": 2142.076799995266,
+        "latencyMaxMs": 2145.6827460206114
+      },
+      "heartbeat": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      }
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "http-heartbeat",
+      "startupMs": 931.2504970000001,
+      "memoryStartMiB": 115.25,
+      "status": "timeout",
+      "requestWindowSeconds": 20,
+      "requests": 3380,
+      "completed": 18,
+      "errors": 32,
+      "errorsByType": {
+        "ConnectionResetError": 31,
+        "RemoteDisconnected": 1
+      },
+      "concurrency": 32,
+      "elapsedSeconds": 20.034,
+      "throughputRps": 0.9,
+      "latencyP50Ms": 10111.34364802274,
+      "latencyP95Ms": 18755.158200016012,
+      "latencyMaxMs": 19797.45121198357,
+      "maxResponseBytes": 65,
+      "stateMaxResponseBytes": null,
+      "stateDevices": null,
+      "read": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      },
+      "heartbeat": {
+        "completed": 18,
+        "latencyP50Ms": 10111.34364802274,
+        "latencyP95Ms": 18755.158200016012,
+        "latencyMaxMs": 19797.45121198357
+      }
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "http-mixed",
+      "startupMs": 988.016233,
+      "memoryStartMiB": 117.63,
+      "status": "timeout",
+      "requestWindowSeconds": 20,
+      "requests": 3500,
+      "completed": 22,
+      "errors": 38,
+      "errorsByType": {
+        "ConnectionResetError": 37,
+        "RemoteDisconnected": 1
+      },
+      "concurrency": 38,
+      "elapsedSeconds": 20.037,
+      "throughputRps": 1.1,
+      "latencyP50Ms": 7909.1622209816705,
+      "latencyP95Ms": 17632.84572600969,
+      "latencyMaxMs": 19751.287965016672,
+      "maxResponseBytes": 2065716,
+      "stateMaxResponseBytes": 2065716,
+      "stateDevices": 3380,
+      "read": {
+        "completed": 6,
+        "latencyP50Ms": 1223.572006012546,
+        "latencyP95Ms": 1987.153481983114,
+        "latencyMaxMs": 2285.9483570209704
+      },
+      "heartbeat": {
+        "completed": 16,
+        "latencyP50Ms": 11213.525347004179,
+        "latencyP95Ms": 18675.692730001174,
+        "latencyMaxMs": 19751.287965016672
+      }
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "http-read",
+      "startupMs": 8866.28755,
+      "memoryStartMiB": 130.52,
+      "status": "timeout",
+      "requestWindowSeconds": 20,
+      "requests": 120,
+      "completed": 6,
+      "errors": 6,
+      "errorsByType": {
+        "ConnectionResetError": 5,
+        "RemoteDisconnected": 1
+      },
+      "concurrency": 6,
+      "elapsedSeconds": 20.052,
+      "throughputRps": 0.3,
+      "latencyP50Ms": 9551.788581011351,
+      "latencyP95Ms": 16623.058909986867,
+      "latencyMaxMs": 19805.471721017966,
+      "maxResponseBytes": 2072541,
+      "stateMaxResponseBytes": 2072541,
+      "stateDevices": 3380,
+      "read": {
+        "completed": 6,
+        "latencyP50Ms": 9551.788581011351,
+        "latencyP95Ms": 16623.058909986867,
+        "latencyMaxMs": 19805.471721017966
+      },
+      "heartbeat": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      }
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "http-heartbeat",
+      "startupMs": 8379.337614,
+      "memoryStartMiB": 130.82,
+      "status": "timeout",
+      "requestWindowSeconds": 20,
+      "requests": 3380,
+      "completed": 1,
+      "errors": 32,
+      "errorsByType": {
+        "ConnectionResetError": 31,
+        "RemoteDisconnected": 1
+      },
+      "concurrency": 32,
+      "elapsedSeconds": 20.064,
+      "throughputRps": 0.05,
+      "latencyP50Ms": 13618.421899998793,
+      "latencyP95Ms": 13618.421899998793,
+      "latencyMaxMs": 13618.421899998793,
+      "maxResponseBytes": 65,
+      "stateMaxResponseBytes": null,
+      "stateDevices": null,
+      "read": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      },
+      "heartbeat": {
+        "completed": 1,
+        "latencyP50Ms": 13618.421899998793,
+        "latencyP95Ms": 13618.421899998793,
+        "latencyMaxMs": 13618.421899998793
+      }
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "http-mixed",
+      "startupMs": 9759.186758,
+      "memoryStartMiB": 125.48,
+      "status": "timeout",
+      "requestWindowSeconds": 20,
+      "requests": 3500,
+      "completed": 5,
+      "errors": 38,
+      "errorsByType": {
+        "ConnectionResetError": 37,
+        "RemoteDisconnected": 1
+      },
+      "concurrency": 38,
+      "elapsedSeconds": 20.084,
+      "throughputRps": 0.25,
+      "latencyP50Ms": 11106.22398799751,
+      "latencyP95Ms": 14512.923923990456,
+      "latencyMaxMs": 18729.72512699198,
+      "maxResponseBytes": 2072541,
+      "stateMaxResponseBytes": 2072541,
+      "stateDevices": 3380,
+      "read": {
+        "completed": 5,
+        "latencyP50Ms": 11106.22398799751,
+        "latencyP95Ms": 14512.923923990456,
+        "latencyMaxMs": 18729.72512699198
+      },
+      "heartbeat": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      }
+    }
+  ],
+  "after": [
+    {
+      "completedJobs": 10000,
+      "phase": "expire",
+      "processWallLimitSeconds": 30,
+      "startupMs": 505.75146699999993,
+      "memoryStartMiB": 110.44,
+      "maxRssMiB": 112.81,
+      "heapUsedMiB": 20.835739135742188,
+      "timesMs": [
+        0.3215149999999767,
+        0.02331400000002759,
+        0.016684999999938555
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "poll-idle",
+      "processWallLimitSeconds": 30,
+      "startupMs": 364.60907,
+      "memoryStartMiB": 112.66,
+      "maxRssMiB": 115.54,
+      "heapUsedMiB": 17.423133850097656,
+      "timesMs": [
+        0.5924549999999726,
+        0.17416700000001129,
+        0.09434900000007929
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "create65",
+      "processWallLimitSeconds": 30,
+      "startupMs": 342.05078100000003,
+      "memoryStartMiB": 112.01,
+      "maxRssMiB": 115.01,
+      "heapUsedMiB": 15.500511169433594,
+      "timesMs": [
+        18.175522
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 65,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "tick",
+      "processWallLimitSeconds": 30,
+      "startupMs": 323.42356099999995,
+      "memoryStartMiB": 112.5,
+      "maxRssMiB": 115.12,
+      "heapUsedMiB": 22.0150146484375,
+      "timesMs": [
+        18.268640000000005
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "tick64",
+      "processWallLimitSeconds": 30,
+      "startupMs": 334.16240200000004,
+      "memoryStartMiB": 112.19,
+      "maxRssMiB": 116.44,
+      "heapUsedMiB": 20.01300048828125,
+      "timesMs": [
+        81.83310900000004
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 65,
+      "executedDemoJobs": 64,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "http-read",
+      "startupMs": 372.36887499999995,
+      "memoryStartMiB": 111.67,
+      "status": "ok",
+      "requestWindowSeconds": 20,
+      "requests": 120,
+      "completed": 120,
+      "errors": 0,
+      "errorsByType": {},
+      "concurrency": 6,
+      "elapsedSeconds": 0.93,
+      "throughputRps": 129.04,
+      "latencyP50Ms": 45.85604200838134,
+      "latencyP95Ms": 55.28667999897152,
+      "latencyMaxMs": 56.71355398953892,
+      "maxResponseBytes": 139868,
+      "stateMaxResponseBytes": 139868,
+      "stateDevices": 65,
+      "read": {
+        "completed": 120,
+        "latencyP50Ms": 45.85604200838134,
+        "latencyP95Ms": 55.28667999897152,
+        "latencyMaxMs": 56.71355398953892
+      },
+      "heartbeat": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      },
+      "maxRssMiB": 146.31,
+      "heapUsedMiB": 35.65782165527344,
+      "eventLoopP95Ms": 37.322751,
+      "eventLoopMaxMs": 57.638911
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "http-heartbeat",
+      "startupMs": 369.81337300000007,
+      "memoryStartMiB": 110.67,
+      "status": "ok",
+      "requestWindowSeconds": 20,
+      "requests": 3380,
+      "completed": 3380,
+      "errors": 0,
+      "errorsByType": {},
+      "concurrency": 32,
+      "elapsedSeconds": 2.955,
+      "throughputRps": 1143.72,
+      "latencyP50Ms": 25.643775006756186,
+      "latencyP95Ms": 40.62401098781265,
+      "latencyMaxMs": 52.685381000628695,
+      "maxResponseBytes": 65,
+      "stateMaxResponseBytes": null,
+      "stateDevices": null,
+      "read": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      },
+      "heartbeat": {
+        "completed": 3380,
+        "latencyP50Ms": 25.643775006756186,
+        "latencyP95Ms": 40.62401098781265,
+        "latencyMaxMs": 52.685381000628695
+      },
+      "maxRssMiB": 284.39,
+      "heapUsedMiB": 87.89591217041016,
+      "eventLoopP95Ms": 13.680639,
+      "eventLoopMaxMs": 22.364159
+    },
+    {
+      "completedJobs": 10000,
+      "phase": "http-mixed",
+      "startupMs": 351.042604,
+      "memoryStartMiB": 111.77,
+      "status": "ok",
+      "requestWindowSeconds": 20,
+      "requests": 3500,
+      "completed": 3500,
+      "errors": 0,
+      "errorsByType": {},
+      "concurrency": 38,
+      "elapsedSeconds": 4.044,
+      "throughputRps": 865.42,
+      "latencyP50Ms": 25.572295009624213,
+      "latencyP95Ms": 91.50037201470695,
+      "latencyMaxMs": 116.42624597880058,
+      "maxResponseBytes": 139868,
+      "stateMaxResponseBytes": 139868,
+      "stateDevices": 65,
+      "read": {
+        "completed": 120,
+        "latencyP50Ms": 84.35185698908754,
+        "latencyP95Ms": 98.507304006489,
+        "latencyMaxMs": 116.42624597880058
+      },
+      "heartbeat": {
+        "completed": 3380,
+        "latencyP50Ms": 25.45297800679691,
+        "latencyP95Ms": 89.21677799662575,
+        "latencyMaxMs": 109.72965499968268
+      },
+      "maxRssMiB": 285.36,
+      "heapUsedMiB": 84.31729125976562,
+      "eventLoopP95Ms": 20.463615,
+      "eventLoopMaxMs": 63.242239
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "expire",
+      "processWallLimitSeconds": 30,
+      "startupMs": 3299.97085,
+      "memoryStartMiB": 127.04,
+      "maxRssMiB": 128.16,
+      "heapUsedMiB": 17.30455780029297,
+      "timesMs": [
+        0.4394889999998668,
+        0.038527000000158296,
+        0.018007000000125117
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "poll-idle",
+      "processWallLimitSeconds": 30,
+      "startupMs": 3342.604998,
+      "memoryStartMiB": 128.31,
+      "maxRssMiB": 144.06,
+      "heapUsedMiB": 48.40669250488281,
+      "timesMs": [
+        0.6630000000000109,
+        0.11433900000020003,
+        0.2714019999998527
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "create65",
+      "processWallLimitSeconds": 30,
+      "startupMs": 3154.3080560000003,
+      "memoryStartMiB": 129.48,
+      "maxRssMiB": 132.98,
+      "heapUsedMiB": 33.95698547363281,
+      "timesMs": [
+        19.46481100000028
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 65,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "tick",
+      "processWallLimitSeconds": 30,
+      "startupMs": 3087.857035,
+      "memoryStartMiB": 127.83,
+      "maxRssMiB": 143.58,
+      "heapUsedMiB": 48.35875701904297,
+      "timesMs": [
+        20.1185559999999
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 0,
+      "executedDemoJobs": 0,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "tick64",
+      "processWallLimitSeconds": 30,
+      "startupMs": 2951.80303,
+      "memoryStartMiB": 129.07,
+      "maxRssMiB": 142.82,
+      "heapUsedMiB": 20.87250518798828,
+      "timesMs": [
+        82.97950500000024
+      ],
+      "historyUnchanged": true,
+      "addedJobs": 65,
+      "executedDemoJobs": 64,
+      "status": "ok"
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "http-read",
+      "startupMs": 3020.619905,
+      "memoryStartMiB": 126.11,
+      "status": "ok",
+      "requestWindowSeconds": 20,
+      "requests": 120,
+      "completed": 120,
+      "errors": 0,
+      "errorsByType": {},
+      "concurrency": 6,
+      "elapsedSeconds": 2.275,
+      "throughputRps": 52.74,
+      "latencyP50Ms": 112.27512601180933,
+      "latencyP95Ms": 122.8831420012284,
+      "latencyMaxMs": 126.71856599627063,
+      "maxResponseBytes": 139933,
+      "stateMaxResponseBytes": 139933,
+      "stateDevices": 65,
+      "read": {
+        "completed": 120,
+        "latencyP50Ms": 112.27512601180933,
+        "latencyP95Ms": 122.8831420012284,
+        "latencyMaxMs": 126.71856599627063
+      },
+      "heartbeat": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      },
+      "maxRssMiB": 151.72,
+      "heapUsedMiB": 21.073654174804688,
+      "eventLoopP95Ms": 28.262399,
+      "eventLoopMaxMs": 57.409535
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "http-heartbeat",
+      "startupMs": 3024.253459,
+      "memoryStartMiB": 127.48,
+      "status": "ok",
+      "requestWindowSeconds": 20,
+      "requests": 3380,
+      "completed": 3380,
+      "errors": 0,
+      "errorsByType": {},
+      "concurrency": 32,
+      "elapsedSeconds": 2.94,
+      "throughputRps": 1149.79,
+      "latencyP50Ms": 24.52514600008726,
+      "latencyP95Ms": 41.00531298900023,
+      "latencyMaxMs": 55.51544402260333,
+      "maxResponseBytes": 65,
+      "stateMaxResponseBytes": null,
+      "stateDevices": null,
+      "read": {
+        "completed": 0,
+        "latencyP50Ms": null,
+        "latencyP95Ms": null,
+        "latencyMaxMs": null
+      },
+      "heartbeat": {
+        "completed": 3380,
+        "latencyP50Ms": 24.52514600008726,
+        "latencyP95Ms": 41.00531298900023,
+        "latencyMaxMs": 55.51544402260333
+      },
+      "maxRssMiB": 281.83,
+      "heapUsedMiB": 59.274269104003906,
+      "eventLoopP95Ms": 13.451263,
+      "eventLoopMaxMs": 22.478847
+    },
+    {
+      "completedJobs": 100000,
+      "phase": "http-mixed",
+      "startupMs": 3153.402669,
+      "memoryStartMiB": 129.16,
+      "status": "ok",
+      "requestWindowSeconds": 20,
+      "requests": 3500,
+      "completed": 3500,
+      "errors": 0,
+      "errorsByType": {},
+      "concurrency": 38,
+      "elapsedSeconds": 5.256,
+      "throughputRps": 665.96,
+      "latencyP50Ms": 25.634036981500685,
+      "latencyP95Ms": 152.19006000552326,
+      "latencyMaxMs": 179.2699710058514,
+      "maxResponseBytes": 139933,
+      "stateMaxResponseBytes": 139933,
+      "stateDevices": 65,
+      "read": {
+        "completed": 120,
+        "latencyP50Ms": 146.71946901944466,
+        "latencyP95Ms": 166.65680598816834,
+        "latencyMaxMs": 179.2699710058514
+      },
+      "heartbeat": {
+        "completed": 3380,
+        "latencyP50Ms": 25.333023979328573,
+        "latencyP95Ms": 151.8241379817482,
+        "latencyMaxMs": 173.88937299256213
+      },
+      "maxRssMiB": 287.55,
+      "heapUsedMiB": 82.5618667602539,
+      "eventLoopP95Ms": 25.919487,
+      "eventLoopMaxMs": 57.311231
+    }
+  ],
+  "sqlDiagnosis": {
+    "intermediate": {
+      "completedJobs": 100000,
+      "phase": "profile-reads",
+      "processWallLimitSeconds": 30,
+      "startupMs": 3095.333015,
+      "maxRssMiB": 126.24,
+      "timesMs": {
+        "workspace": 361.24094000000014,
+        "history": 15.214988999999605,
+        "devices": 1.2639689999996335,
+        "counts": 5.492909000000054
+      },
+      "queries": [
+        {
+          "sql": "SELECT data FROM records WHERE kind='job' AND id IN (SELECT id FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.state') IN ('queued','running','unknown') UNION SELECT id FROM (SELECT id FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? ORDER BY json_extract(data,'$.created') DESC,rowid DESC LIMIT 60) UNION SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY json_extract(data,'$.deviceId') ORDER BY json_extract(data,'$.created') DESC,rowid DESC) AS n FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.gameId')=?) WHERE n=1 UNION SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY json_extract(data,'$.deviceId') ORDER BY json_extract(data,'$.created') DESC,rowid DESC) AS n FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.gameId')=? AND json_extract(data,'$.operation')='apply_marking' AND json_extract(data,'$.state')='succeeded') WHERE n=1 UNION SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY json_extract(data,'$.deviceId') ORDER BY json_extract(data,'$.feedback.at') DESC,json_extract(data,'$.created') DESC,rowid DESC) AS n FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.gameId')=? AND json_extract(data,'$.operation')='apply_marking' AND json_extract(data,'$.state')='succeeded' AND json_extract(data,'$.feedback.outcome')='helped') WHERE n=1) ORDER BY json_extract(data,'$.created') DESC,rowid DESC",
+          "ms": 356.5316899999998,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX sqlite_autoindex_records_1 (kind=? AND id=?)",
+            "LIST SUBQUERY 9",
+            "MERGE (UNION)",
+            "LEFT",
+            "MERGE (UNION)",
+            "LEFT",
+            "SEARCH records USING INDEX sqlite_autoindex_records_1 (kind=?)",
+            "RIGHT",
+            "CO-ROUTINE (subquery-2)",
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR LAST TERM OF ORDER BY",
+            "SCAN (subquery-2)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "RIGHT",
+            "MERGE (UNION)",
+            "LEFT",
+            "MERGE (UNION)",
+            "LEFT",
+            "CO-ROUTINE (subquery-4)",
+            "CO-ROUTINE (subquery-11)",
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "SCAN (subquery-11)",
+            "SCAN (subquery-4)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "RIGHT",
+            "CO-ROUTINE (subquery-6)",
+            "CO-ROUTINE (subquery-12)",
+            "SEARCH records USING INDEX jobs_state (<expr>=?)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "SCAN (subquery-12)",
+            "SCAN (subquery-6)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "RIGHT",
+            "CO-ROUTINE (subquery-8)",
+            "CO-ROUTINE (subquery-13)",
+            "SEARCH records USING INDEX jobs_state (<expr>=?)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "SCAN (subquery-13)",
+            "SCAN (subquery-8)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "USE TEMP B-TREE FOR ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT COALESCE(MAX(rowid),0) AS n FROM records WHERE kind='job'",
+          "ms": 5.67933499999981,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING COVERING INDEX sqlite_autoindex_records_1 (kind=?)"
+          ]
+        },
+        {
+          "sql": "SELECT json_extract(data,'$.clubId') AS id,COUNT(*) AS total,SUM(CASE WHEN COALESCE(json_extract(data,'$.revoked'),0)=0 AND json_extract(data,'$.lastSeen')>? THEN 1 ELSE 0 END) AS online FROM records WHERE kind='device' GROUP BY json_extract(data,'$.clubId')",
+          "ms": 5.080179000000044,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX sqlite_autoindex_records_1 (kind=?)",
+            "USE TEMP B-TREE FOR GROUP BY"
+          ]
+        },
+        {
+          "sql": "SELECT json_extract(data,'$.batchId') AS id,MAX(json_extract(data,'$.created')) AS created,COUNT(*) AS total FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? GROUP BY json_extract(data,'$.batchId') ORDER BY created DESC,id DESC LIMIT 25",
+          "ms": 3.3083300000002964,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR GROUP BY",
+            "USE TEMP B-TREE FOR ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT DISTINCT json_extract(data,'$.author') AS author FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? ORDER BY author COLLATE NOCASE",
+          "ms": 2.8062780000000203,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR DISTINCT",
+            "USE TEMP B-TREE FOR ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT * FROM snapshots WHERE id=?",
+          "ms": 1.1048519999994824,
+          "calls": 214,
+          "plan": [
+            "SEARCH snapshots USING INTEGER PRIMARY KEY (rowid=?)"
+          ]
+        },
+        {
+          "sql": "SELECT data FROM records WHERE kind='job' AND rowid<=? AND json_extract(data,'$.clubId')=? ORDER BY json_extract(data,'$.created') DESC,rowid DESC LIMIT ? OFFSET ?",
+          "ms": 0.14289099999996324,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR LAST TERM OF ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT COUNT(*) AS n FROM records WHERE kind='job' AND rowid<=? AND json_extract(data,'$.clubId')=?",
+          "ms": 0.12614600000006249,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)"
+          ]
+        },
+        {
+          "sql": "SELECT data FROM records INDEXED BY devices_club WHERE kind='device' AND json_extract(data,'$.clubId')=? ORDER BY rowid",
+          "ms": 0.05066499999975349,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX devices_club (<expr>=?)"
+          ]
+        }
+      ],
+      "status": "ok"
+    },
+    "final": {
+      "completedJobs": 100000,
+      "phase": "profile-reads",
+      "processWallLimitSeconds": 30,
+      "startupMs": 2993.2771230000003,
+      "maxRssMiB": 126.33,
+      "timesMs": {
+        "workspace": 21.053405999999995,
+        "history": 21.698159999999916,
+        "devices": 1.1692180000000008,
+        "counts": 5.703570000000127
+      },
+      "queries": [
+        {
+          "sql": "SELECT data FROM records WHERE kind='job' AND id IN (SELECT id FROM records INDEXED BY queue_device_active WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.state') IN ('queued','running','unknown') UNION SELECT id FROM (SELECT id FROM records INDEXED BY jobs_club_created WHERE kind='job' AND json_extract(data,'$.clubId')=? ORDER BY json_extract(data,'$.created') DESC,rowid DESC LIMIT 60) UNION SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY json_extract(data,'$.deviceId') ORDER BY json_extract(data,'$.created') DESC,rowid DESC) AS n FROM records INDEXED BY jobs_club_created WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.gameId')=?) WHERE n=1 UNION SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY json_extract(data,'$.deviceId') ORDER BY json_extract(data,'$.created') DESC,rowid DESC) AS n FROM records INDEXED BY jobs_club_created WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.gameId')=? AND json_extract(data,'$.operation')='apply_marking' AND json_extract(data,'$.state')='succeeded') WHERE n=1 UNION SELECT id FROM (SELECT id,ROW_NUMBER() OVER (PARTITION BY json_extract(data,'$.deviceId') ORDER BY json_extract(data,'$.feedback.at') DESC,json_extract(data,'$.created') DESC,rowid DESC) AS n FROM records INDEXED BY jobs_club_created WHERE kind='job' AND json_extract(data,'$.clubId')=? AND json_extract(data,'$.gameId')=? AND json_extract(data,'$.operation')='apply_marking' AND json_extract(data,'$.state')='succeeded' AND json_extract(data,'$.feedback.outcome')='helped') WHERE n=1) ORDER BY json_extract(data,'$.created') DESC,rowid DESC",
+          "ms": 14.49023699999998,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX sqlite_autoindex_records_1 (kind=? AND id=?)",
+            "LIST SUBQUERY 9",
+            "MERGE (UNION)",
+            "LEFT",
+            "MERGE (UNION)",
+            "LEFT",
+            "SCAN records USING INDEX queue_device_active",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "RIGHT",
+            "CO-ROUTINE (subquery-2)",
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR LAST TERM OF ORDER BY",
+            "SCAN (subquery-2)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "RIGHT",
+            "MERGE (UNION)",
+            "LEFT",
+            "MERGE (UNION)",
+            "LEFT",
+            "CO-ROUTINE (subquery-4)",
+            "CO-ROUTINE (subquery-11)",
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "SCAN (subquery-11)",
+            "SCAN (subquery-4)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "RIGHT",
+            "CO-ROUTINE (subquery-6)",
+            "CO-ROUTINE (subquery-12)",
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "SCAN (subquery-12)",
+            "SCAN (subquery-6)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "RIGHT",
+            "CO-ROUTINE (subquery-8)",
+            "CO-ROUTINE (subquery-13)",
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "SCAN (subquery-13)",
+            "SCAN (subquery-8)",
+            "USE TEMP B-TREE FOR ORDER BY",
+            "USE TEMP B-TREE FOR ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT COALESCE(MAX(rowid),0) AS n FROM records WHERE kind='job'",
+          "ms": 8.866203999999925,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING COVERING INDEX sqlite_autoindex_records_1 (kind=?)"
+          ]
+        },
+        {
+          "sql": "SELECT json_extract(data,'$.clubId') AS id,COUNT(*) AS total,SUM(CASE WHEN COALESCE(json_extract(data,'$.revoked'),0)=0 AND json_extract(data,'$.lastSeen')>? THEN 1 ELSE 0 END) AS online FROM records WHERE kind='device' GROUP BY json_extract(data,'$.clubId')",
+          "ms": 5.401582999999846,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX sqlite_autoindex_records_1 (kind=?)",
+            "USE TEMP B-TREE FOR GROUP BY"
+          ]
+        },
+        {
+          "sql": "SELECT DISTINCT json_extract(data,'$.author') AS author FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? ORDER BY author COLLATE NOCASE",
+          "ms": 3.1891740000000937,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR DISTINCT",
+            "USE TEMP B-TREE FOR ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT json_extract(data,'$.batchId') AS id,MAX(json_extract(data,'$.created')) AS created,COUNT(*) AS total FROM records WHERE kind='job' AND json_extract(data,'$.clubId')=? GROUP BY json_extract(data,'$.batchId') ORDER BY created DESC,id DESC LIMIT 25",
+          "ms": 2.863593000000037,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR GROUP BY",
+            "USE TEMP B-TREE FOR ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT * FROM snapshots WHERE id=?",
+          "ms": 1.57658900000024,
+          "calls": 214,
+          "plan": [
+            "SEARCH snapshots USING INTEGER PRIMARY KEY (rowid=?)"
+          ]
+        },
+        {
+          "sql": "SELECT COUNT(*) AS n FROM records WHERE kind='job' AND rowid<=? AND json_extract(data,'$.clubId')=?",
+          "ms": 0.2059439999998176,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)"
+          ]
+        },
+        {
+          "sql": "SELECT data FROM records WHERE kind='job' AND rowid<=? AND json_extract(data,'$.clubId')=? ORDER BY json_extract(data,'$.created') DESC,rowid DESC LIMIT ? OFFSET ?",
+          "ms": 0.12532499999997526,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX jobs_club_created (<expr>=?)",
+            "USE TEMP B-TREE FOR LAST TERM OF ORDER BY"
+          ]
+        },
+        {
+          "sql": "SELECT data FROM records INDEXED BY devices_club WHERE kind='device' AND json_extract(data,'$.clubId')=? ORDER BY rowid",
+          "ms": 0.05191599999989194,
+          "calls": 1,
+          "plan": [
+            "SEARCH records USING INDEX devices_club (<expr>=?)"
+          ]
+        }
+      ],
+      "status": "ok"
+    }
+  }
+}

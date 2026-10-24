@@ -1,3 +1,4 @@
+import {withCurrentVersion} from './edit-request';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { once } from 'node:events';
@@ -16,6 +17,7 @@ async function fixture(realAgents = false, secureCookies = false) {
   await once(server, 'listening');
   const base = `http://127.0.0.1:${(server.address() as {port:number}).port}/api`;
   async function request(path:string, options:{method?:string; body?:unknown; raw?:string; auth?:Auth; headers?:Record<string,string>} = {}) {
+    options={...options,body:withCurrentVersion(store,path,options.body)};
     const response = await fetch(base + path, {
       method: options.method ?? (options.body === undefined && options.raw === undefined ? 'GET' : 'POST'),
       headers: {'Content-Type':'application/json', ...(options.auth ? {Cookie:options.auth.cookie,'X-CSRF-Token':options.auth.csrf} : {}), ...options.headers},

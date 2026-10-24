@@ -44,7 +44,7 @@ def run():
                             page.get_by_role('checkbox',name='Выбрать ПК-01',exact=True).check()
                             for name in ['Применить к 1 ПК','Удалить правила игры','Инспекция','Проверка агента']:
                                 expect(page.get_by_role('button',name=name,exact=name!='Применить к 1 ПК')).to_be_disabled()
-                            assert page.request.get(URL+'/api/history').json() == []
+                            assert page.request.get(URL+'/api/history').json()['items'] == []
                             assert not contrast_issues(page)
                             assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth')
                             (ROOT/'test-results').mkdir(exist_ok=True)
@@ -58,6 +58,7 @@ def run():
                             op.get_by_role('button',name='Войти в панель').click()
                             expect(op.get_by_text('Попросите администратора добавить игру и её exe.')).to_be_visible()
                             expect(op.get_by_role('button',name='Добавить игру',exact=True)).to_have_count(0)
+                            expect(op.locator('form[aria-label="Карточка игры"], form[aria-label="Клуб и варианты"], form[aria-label="Новый сотрудник"]')).to_have_count(0)
                             operator_context.close()
                             page.get_by_role('button',name='Добавить игру',exact=True).click()
                             expect(page.get_by_text('Игр пока нет.',exact=False)).to_be_visible()
@@ -93,19 +94,50 @@ def run():
                             expect(game.get_by_role('alert')).to_have_count(0)
                             page.get_by_role('button',name='Управление',exact=True).click()
                             club = page.get_by_role('form',name='Клуб и варианты')
+                            expect(page.get_by_role('button',name='Сменить токен ПК-01')).to_be_disabled()
+                            expect(page.get_by_role('button',name='Восстановить доступ ПК-01')).to_be_disabled()
                             club.get_by_label('Название',exact=True).fill('Тестовый клуб')
                             for value, message in [('36','формат ID:название'),('64:Нет','от 0 до 63'),('36:A\n36:B','не должны повторяться')]:
                                 club.get_by_role('textbox',name='Варианты, ID:название').fill(value)
                                 club.get_by_role('button',name='Сохранить клуб').click()
                                 expect(club.get_by_role('alert')).to_contain_text(message)
                             club.get_by_role('textbox',name='Варианты, ID:название').fill('0:Без маркировки\n63:Максимум')
+                            # Distinguish a committed write from a failed follow-up list refresh.
+                            club_writes = []
+                            def saved_without_refresh(route):
+                                club_writes.append(route.request.method)
+                                response = route.fetch()
+                                assert response.status == 201
+                                page.route('**/api/state*',lambda state: state.fulfill(status=503,json={'message':'Unavailable'}),times=1)
+                                route.fulfill(response=response)
+                            page.route('**/api/admin/clubs',saved_without_refresh)
                             club.get_by_role('button',name='Сохранить клуб').click()
                             expect(club.get_by_role('heading',name='Изменить клуб')).to_be_visible()
+                            expect(page.get_by_role('alert').filter(has_text='Изменения сохранены, но обновить список не удалось')).to_be_visible()
+                            expect(page.locator('.connection-status')).to_contain_text('API подключён',timeout=8000)
+                            page.unroute('**/api/admin/clubs')
+                            assert club_writes == ['POST'], 'No replay after a committed write with failed GET'
                             club.get_by_role('button',name='Сохранить клуб').click()
                             expect(page.locator('.clubs button').filter(has_text='Тестовый клуб')).to_have_count(1)
                             club.get_by_role('button',name='Новый',exact=True).click()
                             expect(club.get_by_role('textbox',name='Варианты, ID:название')).to_have_value('36:Вариант 36\n40:Вариант 40')
                             employee = page.get_by_role('form',name='Новый сотрудник')
+                            # Moving cached forms between tabs must not reset unsaved fields.
+                            club.get_by_label('Название',exact=True).fill('Черновик клуба при навигации')
+                            employee.get_by_label('Логин',exact=True).fill('draft_staff')
+                            employee.get_by_label('Пароль, минимум 12 символов').fill('DraftPassword-2026!')
+                            page.get_by_role('button',name='Каталог игр',exact=True).click()
+                            game.get_by_label('Название',exact=True).fill('Черновик игры при навигации')
+                            game.get_by_role('textbox',name='Имена exe').fill('draft.exe')
+                            page.get_by_role('button',name='Управление',exact=True).click()
+                            expect(club.get_by_label('Название',exact=True)).to_have_value('Черновик клуба при навигации')
+                            expect(employee.get_by_label('Логин',exact=True)).to_have_value('draft_staff')
+                            expect(employee.get_by_label('Пароль, минимум 12 символов')).to_have_value('DraftPassword-2026!')
+                            page.get_by_role('button',name='Каталог игр',exact=True).click()
+                            expect(game.get_by_label('Название',exact=True)).to_have_value('Черновик игры при навигации')
+                            expect(game.get_by_role('textbox',name='Имена exe')).to_have_value('draft.exe')
+                            page.get_by_role('button',name='Управление',exact=True).click()
+                            club.get_by_role('button',name='Новый',exact=True).click()
                             employee.get_by_label('Логин',exact=True).fill('ab')
                             employee.get_by_label('Пароль, минимум 12 символов').fill('short')
                             employee.get_by_role('button',name='Создать пользователя').click()
@@ -138,7 +170,7 @@ def run():
                             expect(page.get_by_role('button',name='Повторить загрузку сотрудников')).to_have_count(0)
                             # 503 on a write keeps draft and disables other writes until polling recovers.
                             def unavailable_club(route):
-                                page.route('**/api/state',lambda state: state.abort('failed'))
+                                page.route('**/api/state*',lambda state: state.abort('failed'))
                                 route.fulfill(status=503,json={'message':'Unavailable'})
                             page.route('**/api/admin/clubs',unavailable_club)
                             club.get_by_label('Название',exact=True).fill('Сохранить черновик')
@@ -148,7 +180,7 @@ def run():
                             for button in [club.get_by_role('button',name='Сохранить клуб'),employee.get_by_role('button',name='Создать пользователя'),row.get_by_role('button',name='Сохранить',exact=True)]:
                                 expect(button).to_be_disabled()
                             page.unroute('**/api/admin/clubs')
-                            page.unroute('**/api/state')
+                            page.unroute('**/api/state*')
                             assert page.evaluate('document.documentElement.scrollWidth <= window.innerWidth'), 'Page overflow'
                             issues=contrast_issues(page)
                             assert not issues, issues[:10]
@@ -169,6 +201,11 @@ def run():
                             page.get_by_role('button',name='Войти в панель').click()
                             page.get_by_role('button',name='Управление',exact=True).click()
                             expect(page.get_by_role('form',name='Новый сотрудник').get_by_label('Пароль, минимум 12 символов')).to_have_value('')
+                            expect(employee.get_by_label('Логин',exact=True)).to_have_value('')
+                            expect(club.get_by_label('Название',exact=True)).to_have_value('')
+                            page.get_by_role('button',name='Каталог игр',exact=True).click()
+                            expect(game.get_by_label('Название',exact=True)).to_have_value('')
+                            expect(game.get_by_role('textbox',name='Имена exe')).to_have_value('')
                             assert not errors, errors
                         finally:
                             context.close()

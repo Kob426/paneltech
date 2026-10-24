@@ -1,7 +1,9 @@
 import { computed, onUnmounted, ref } from 'vue';
 
+export type ApiClient = ReturnType<typeof useApiClient>['api'];
+
 export class ApiError extends Error {
-  constructor(message: string, public status = 0) { super(message); }
+  constructor(message: string, public status = 0,public code='') { super(message); }
 }
 
 // Only GET polling is retried by the caller. Mutations are never replayed here.
@@ -43,7 +45,7 @@ export function useApiClient(csrf: { value: string }, onUnauthorized: () => void
       mark(true); // A 400/401/403 is a reachable API, not a transport outage.
       if (!response.ok) {
         if (response.status === 401 && path !== '/login') onUnauthorized();
-        throw new ApiError(result.message ?? 'Ошибка запроса', response.status);
+        throw new ApiError(result.message ?? 'Ошибка запроса', response.status,result.code);
       }
       return result;
     } catch (cause) {

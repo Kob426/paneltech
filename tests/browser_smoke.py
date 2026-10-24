@@ -14,12 +14,27 @@ URL = f"http://127.0.0.1:{PORT}"
 
 
 def contrast_issues(page):
-    """Check visible DOM text against its resolved solid background, not a full WCAG audit."""
+    """Check dark surfaces, editable text and visible DOM text; not a full WCAG audit."""
     return page.evaluate(r"""() => {
       const rgba = s => (s.match(/[\d.]+/g) || []).map(Number);
       const over = (f,b) => { const a=f[3] ?? 1; return [0,1,2].map(i=>f[i]*a+b[i]*(1-a)); };
-      const luminance = c => c.map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4).reduce((v,x,i)=>v+x*[.2126,.7152,.0722][i],0);
+      const luminance = c => c.slice(0,3).map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4).reduce((v,x,i)=>v+x*[.2126,.7152,.0722][i],0);
       const issues=[]; const walk=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+      if(getComputedStyle(document.documentElement).colorScheme!=='dark') issues.push({theme:'Native controls must use the dark scheme'});
+      for(const el of document.querySelectorAll('.sidebar,.panel,.login-card,.modal[open],pre,th,.bulk-bar,input:not([type="checkbox"]),select,textarea')) {
+        if(!el.getClientRects().length || el.closest(':disabled') || getComputedStyle(el).visibility!=='visible') continue;
+        const style=getComputedStyle(el), bg=rgba(style.backgroundColor);
+        if((bg[3]??1)>.9 && luminance(bg)>.15) issues.push({surface:el.tagName,background:style.backgroundColor});
+        if(el.matches('input,select,textarea')) {
+          const fg=rgba(style.color), a=luminance(fg), b=luminance(bg), ratio=(Math.max(a,b)+.05)/(Math.min(a,b)+.05);
+          if(ratio<4.5) issues.push({control:el.tagName,ratio,color:style.color,bg});
+          if(el.matches('input[placeholder],textarea[placeholder]')) {
+            const placeholder=luminance(rgba(getComputedStyle(el,'::placeholder').color));
+            const ratio=(Math.max(placeholder,b)+.05)/(Math.min(placeholder,b)+.05);
+            if(ratio<4.5) issues.push({placeholder:el.tagName,ratio});
+          }
+        }
+      }
       while(walk.nextNode()) {
         const node=walk.currentNode, text=node.textContent.trim(), el=node.parentElement;
         if(!text || !el || !el.getClientRects().length || el.closest(':disabled,[aria-hidden="true"],.brand-mark,script,style')) continue;
@@ -75,6 +90,10 @@ def run():
                 errors = []
                 page.on("pageerror", lambda e: errors.append(str(e)))
                 page.goto(URL)
+                expect(page.get_by_role("button", name="Войти в панель")).to_be_visible()
+                assert not contrast_issues(page)
+                (ROOT / "test-results").mkdir(exist_ok=True)
+                page.screenshot(path=str(ROOT / "test-results/login-dark.png"), full_page=True)
                 page.get_by_role("button", name="Войти в панель").click()
                 expect(page.get_by_role("heading", name="Компьютеры")).to_be_visible()
                 page.get_by_role("checkbox", name="Выбрать все ПК", exact=True).check()
@@ -92,12 +111,12 @@ def run():
                 page.keyboard.press("Escape")
                 expect(dialog).not_to_be_visible()
                 expect(trigger).to_be_focused()
-                assert page.request.get(URL + "/api/history").json() == [], "Escape must not submit a job"
+                assert page.request.get(URL + "/api/history").json()["items"] == [], "Escape must not submit a job"
                 trigger.click()
                 page.keyboard.press("Enter")  # Cancel receives initial focus, so Enter is safe.
                 expect(dialog).not_to_be_visible()
                 expect(trigger).to_be_focused()
-                assert page.request.get(URL + "/api/history").json() == []
+                assert page.request.get(URL + "/api/history").json()["items"] == []
                 trigger.click()
                 expect(dialog).to_be_visible()
                 expect(page.get_by_role("dialog")).to_contain_text("Аврора")
@@ -160,7 +179,10 @@ def run():
                 expect(page.locator("tbody")).to_contain_text("DEMO: ручная отметка из браузерного теста")
                 page.get_by_role("button", name="Компьютеры", exact=True).click()
                 pc1 = page.locator("tbody tr").first
-                pc1.get_by_role("button", name="Имитировать перезагрузку").click()
+                pc1.get_by_role("button", name="Открыть ПК ПК-01", exact=True).click()
+                pc_card = page.get_by_role("complementary", name="Карточка ПК")
+                pc_card.locator("details > summary").click()
+                pc_card.get_by_role("button", name="Имитировать перезагрузку").click()
                 expect(pc1).to_contain_text("Кэш правил: 0")
                 expect(pc1.locator("td.recommendation")).to_contain_text("Голосовой чат")
                 page.get_by_role("checkbox", name="Выбрать ПК-01", exact=True).check()
@@ -179,7 +201,7 @@ def run():
                 expect(page.locator("tbody tr").first).to_contain_text("Правил: 1")
                 # The POST reaches the API but its response is lost: never replay it automatically.
                 page.get_by_label("Сценарий ПК-01", exact=True).select_option("success")
-                before_lost = len(page.request.get(URL + "/api/history").json())
+                before_lost = len(page.request.get(URL + "/api/history").json()["items"])
                 delivered_posts = []
                 def lose_post_response(route):
                     delivered_posts.append(route.request.url)
@@ -192,23 +214,23 @@ def run():
                 expect(page.locator(".connection-status")).to_have_text("API подключён", timeout=12000)
                 page.unroute("**/api/jobs", lose_post_response)
                 assert len(delivered_posts) == 1
-                assert len(page.request.get(URL + "/api/history").json()) == before_lost + 1
+                assert len(page.request.get(URL + "/api/history").json()["items"]) == before_lost + 1
                 # Prevent action submission while state polling is unavailable; recover via GET only.
-                before = len(page.request.get(URL + "/api/history").json())
-                page.route("**/api/state", lambda route: route.abort())
+                before = len(page.request.get(URL + "/api/history").json()["items"])
+                page.route("**/api/state*", lambda route: route.abort())
                 expect(page.locator(".connection-status")).to_have_text("API недоступен", timeout=12000)
                 expect(page.get_by_role("button", name="Применить к 1 ПК")).to_be_disabled()
                 expect(page.get_by_role("button", name="Инспекция", exact=True)).to_be_disabled()
-                assert len(page.request.get(URL + "/api/history").json()) == before
+                assert len(page.request.get(URL + "/api/history").json()["items"]) == before
                 # Hold the next GET to observe reconnecting before a confirmed successful response.
-                page.unroute("**/api/state")
+                page.unroute("**/api/state*")
                 paused = []
-                page.route("**/api/state", lambda route: paused.append(route))
+                page.route("**/api/state*", lambda route: paused.append(route))
                 expect(page.locator(".connection-status")).to_have_text("Восстановление связи с API", timeout=12000)
                 expect(page.get_by_role("button", name="Применить к 1 ПК")).to_be_disabled()
                 for route in paused[:]:
                     route.continue_()
-                page.unroute("**/api/state")
+                page.unroute("**/api/state*")
                 expect(page.locator(".connection-status")).to_have_text("API подключён", timeout=12000)
                 expect(page.get_by_role("button", name="Применить к 1 ПК")).to_be_enabled()
                 page.get_by_role("button", name="История", exact=True).click()
@@ -222,9 +244,9 @@ def run():
                 state = admin.get(URL + "/api/state").json()
                 aurora = next(c for c in state["clubs"] if c["id"] == "aurora")
                 long_club = "Аврора · DEMO — " + "К" * 64
-                assert admin.put(URL + "/api/admin/clubs/aurora", headers=csrf_headers, data={"name":long_club,"variants":aurora["variants"]}).status == 200
+                assert admin.put(URL + "/api/admin/clubs/aurora", headers=csrf_headers, data={"name":long_club,"variants":aurora["variants"],"expectedVersion":aurora["version"]}).status == 200
                 original_game = next(g for g in state["games"] if g["id"] == "fortnite")
-                assert admin.put(URL + "/api/admin/games/fortnite", headers=csrf_headers, data={"name":"Fortnite — " + "Д" * 70,"exes":original_game["exes"]}).status == 200
+                assert admin.put(URL + "/api/admin/games/fortnite", headers=csrf_headers, data={"name":"Fortnite — " + "Д" * 70,"exes":original_game["exes"],"expectedVersion":original_game["revision"]}).status == 200
                 assert admin.post(URL + "/api/admin/clubs", headers=csrf_headers, data={"name":"Пустой тестовый клуб","variants":[{"id":36,"name":"Тестовый вариант"}]}).status == 201
                 expect(page.get_by_role("heading", name=long_club, exact=True)).to_be_visible(timeout=10000)
                 page.locator(".clubs button").filter(has_text="Пустой тестовый клуб").click()
@@ -242,8 +264,8 @@ def run():
                 card = page.locator('article.job[data-job-id="' + uncertain['id'] + '"]')
                 expect(card.locator(".badge")).to_have_text("Неизвестно", timeout=10000)
                 before = next(d for d in admin.get(URL + "/api/state").json()["devices"] if d["id"] == "aurora-5")["rules"]
-                assert admin.put(URL + "/api/admin/games/fortnite", headers=csrf_headers, data={"name":"Fortnite — новая ревизия","exes":["NewRevision.exe"]}).status == 200
-                assert admin.put(URL + "/api/admin/clubs/aurora", headers=csrf_headers, data={"name":long_club,"variants":[{"id":40,"name":"Остался вариант 40"}]}).status == 200
+                assert admin.put(URL + "/api/admin/games/fortnite", headers=csrf_headers, data={"name":"Fortnite — новая ревизия","exes":["NewRevision.exe"],"expectedVersion":original_game["revision"]+1}).status == 200
+                assert admin.put(URL + "/api/admin/clubs/aurora", headers=csrf_headers, data={"name":long_club,"variants":[{"id":40,"name":"Остался вариант 40"}],"expectedVersion":aurora["version"]+1}).status == 200
                 expect(page.locator(".action-fields select").first).to_contain_text("новая ревизия", timeout=10000)
                 expect(page.locator(".action-fields select").nth(1).locator("option")).to_have_count(1)
                 expect(page.get_by_role("button", name="Применить к 1 ПК")).to_be_disabled()
@@ -254,7 +276,7 @@ def run():
                 card.get_by_role("button", name="Сверить фактические правила симулятора").click()
                 expect(card.locator(".badge")).to_have_text("Выполнено")
                 expect(card).to_contain_text(f"по снимку задания r{uncertain['revision']}")
-                checked = next(j for j in admin.get(URL + "/api/history").json() if j["id"] == uncertain["id"])
+                checked = next(j for j in admin.get(URL + "/api/history").json()["items"] if j["id"] == uncertain["id"])
                 assert checked["exes"] == uncertain["exes"] and checked["variant"] == 36 and checked["attempts"] == 1
                 assert next(d for d in admin.get(URL + "/api/state").json()["devices"] if d["id"] == "aurora-5")["rules"] == before
                 # Choosing an available variant is explicit; no automatic restore/new mutation.
